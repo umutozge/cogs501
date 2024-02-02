@@ -1,4 +1,4 @@
-# COGS 501 -- Algorithmic Structures in Cognition (METU CogSci)
+## COGS 501 -- Algorithmic Structures in Cognition (METU CogSci)
 
 Please come to the first hour
 

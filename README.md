@@ -14,4 +14,4 @@ Feb 19 2024, 🕐 9:40 @Informatics Institute S03
 
 |Week| Date   |
 :--- |:-------|
-2    | [Feb 26](weeks/week2.md)|
+2    | [Feb 26](weeks/week02.md)|

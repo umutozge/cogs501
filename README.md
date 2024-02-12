@@ -15,6 +15,9 @@ Feb 19 2024, 🕐 9:40 @Informatics Institute S03
 
 
 
+[Course Syllabus](Syllabus.md)
+
+
 
 ###  Weekly Schedule
 

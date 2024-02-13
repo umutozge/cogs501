@@ -1,3 +1,5 @@
+`📆 26/2`
+
 #### Readings
 
 * [Prologue](https://htdp.org/2023-8-14/Book/part_prologue.html)

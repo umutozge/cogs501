@@ -21,7 +21,7 @@ Feb 19 2024, 🕐 9:40 @Informatics Institute S03
 
 ###  Weekly Schedule
 
-|Week| Date   |
+|Week| Work |
 :--- |:-------|
 1    | First meeting |
-2    | [Feb 26](weeks/week02.md)|
+2    | [:calendar: 26/2](weeks/week02.md)|

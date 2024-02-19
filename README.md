@@ -19,7 +19,7 @@ Feb 19 2024, 🕐 9:40 @Informatics Institute S03
 
 
 <details>
-<summary>###Weekly Schedule</summary>
+<summary>Weekly schedule</summary>
 
 |Week| Work |
 :--- |:-------|

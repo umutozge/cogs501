@@ -18,10 +18,14 @@ Feb 19 2024, 🕐 9:40 @Informatics Institute S03
 [Course Syllabus](Syllabus.md)
 
 
-
-###  Weekly Schedule
+<details>
+<summary>###Weekly Schedule</summary>
 
 |Week| Work |
 :--- |:-------|
 1    | First meeting |
-2    | [:calendar: 26/2](weeks/week02.md)|
+2    | [:calendar: 26/2](weeks/w02.md)|
+
+</details>
+
+

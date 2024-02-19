@@ -5,7 +5,7 @@
 
 
 ```
-Thursdays 🕐 9:40 @Informatics Institute S03
+Mondays 🕐 9:40 @Informatics Institute S03
 ```
 
 <details>

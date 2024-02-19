@@ -10,7 +10,7 @@ Please come to the first hour
 
 
 ```
-Feb 19 2024, 🕐 9:40 @Informatics Institute S03
+Thursdays 🕐 9:40 @Informatics Institute S03
 ```
 
 
@@ -19,7 +19,10 @@ Feb 19 2024, 🕐 9:40 @Informatics Institute S03
 
 
 <details>
-<summary>Weekly schedule</summary>
+<summary>
+
+#### Weekly schedule
+</summary>
 
 |Week| Work |
 :--- |:-------|

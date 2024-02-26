@@ -1,7 +1,7 @@
-### COGS 501 -- Algorithmic Structures in Cognition (METU CogSci)
+COGS 501 -- Algorithmic Structures in Cognition (METU CogSci)
+-------------------------------------------------------------
 
-
-[Umut Özge](mailto:umozge@metu.edu.tr), [Ecenur Çağırıcı (TA)](mailto:ecenurc@metu.edu.tr)
+[Umut Özge](mailto:umozge@metu.edu.tr), [Ecenur Çağırıcı](mailto:ecenurc@metu.edu.tr)(TA)
 
 
 ```
@@ -18,6 +18,7 @@ Mondays 🕐 9:40 @Informatics Institute S03
 :--- |:-------|
 1    | First meeting |
 2    | [:calendar: 26/2](weeks/w02.md)|
+3    | [:calendar: 4/3](weeks/w03.md)|
 
 </details>
 

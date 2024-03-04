@@ -18,7 +18,8 @@ Mondays 🕐 9:40 @Informatics Institute S03
 :--- |:-------|:----|
 1    | First meeting |
 2    | [:calendar: 26/2](weeks/w02.md)|[q02](weeks/q02.md)|
-3    | [:calendar: 4/3](weeks/w03.md)||
+3    | [:calendar: 4/3](weeks/w03.md)|[q03](weeks/q03.md)|
+3    | [:calendar: 11/3](weeks/w04.md)||
 
 </details>
 

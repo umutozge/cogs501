@@ -10,8 +10,7 @@ Mondays 🕐 9:40 @Informatics Institute S03
 
 <details>
 <summary>
-
-#### Weekly schedule
+Weekly schedule
 </summary>
 
 |Week| Work | Quiz |
@@ -25,8 +24,7 @@ Mondays 🕐 9:40 @Informatics Institute S03
 
 <details>
 <summary>
-
-#### Syllabus 
+Syllabus 
 </summary>
 
 ##### Prerequisites

@@ -8,7 +8,7 @@ COGS 501 -- Algorithmic Structures in Cognition (METU CogSci)
 Mondays 🕐 9:40 @Informatics Institute S03
 ```
 
-<details>
+<details open>
 <summary>
 Weekly schedule
 </summary>

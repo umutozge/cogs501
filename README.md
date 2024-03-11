@@ -19,7 +19,7 @@ Weekly schedule
 2    | [:calendar: 26/2](weeks/w02.md)|[q02](weeks/q02.md)|
 3    | [:calendar: 4/3](weeks/w03.md)|[q03](weeks/q03.md)|
 4    | [:calendar: 11/3](weeks/w04.md)|[q04](weeks/q04.md)|
-5    | [:calendar: 11/3](weeks/w05.md)||
+5    | [:calendar: 18/3](weeks/w05.md)||
 
 </details>
 

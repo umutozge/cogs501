@@ -23,7 +23,7 @@ Weekly schedule
 6    | [:calendar: 25/3](weeks/w06.md)|[q06](weeks/q06.md)|
 7    | [:calendar: 1/4](weeks/w07.md)|[q07](weeks/q07.md)|
 8    | [:calendar: 15/4](weeks/w08.md)|[q08](weeks/q08.md)|
-9    | [:calendar: 15/4](weeks/w09.md)||
+9    | [:calendar: 22/4](weeks/w09.md)||
 
 </details>
 

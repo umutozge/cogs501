@@ -25,8 +25,8 @@ Weekly schedule
 8    | [:calendar: 15/4](weeks/w08.md)|[q08](weeks/q08.md)|
 9    | [:calendar: 22/4](weeks/w09.md)|[q09](weeks/q09.md)|
 10   | [:calendar: 29/4](weeks/w10.md)| - |
-11   | [:calendar:  6/5](weeks/w11.md) ||
-12   | :calendar: 13/5||
+11   | [:calendar:  6/5](weeks/w11.md)|[q11](weeks/q11.md)|
+12   | [:calendar: 13/5](weeks/w12.md)||
 13   | :calendar: 20/5||
 14   | :calendar: 27/5||
 

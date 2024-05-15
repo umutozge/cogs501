@@ -26,8 +26,8 @@ Weekly schedule
 9    | [:calendar: 22/4](weeks/w09.md)|[q09](weeks/q09.md)|
 10   | [:calendar: 29/4](weeks/w10.md)| - |
 11   | [:calendar:  6/5](weeks/w11.md)|[q11](weeks/q11.md)|
-12   | [:calendar: 13/5](weeks/w12.md)||
-13   | :calendar: 20/5||
+12   | [:calendar: 13/5](weeks/w12.md)|[q12](weeks/q12.md)|
+13   | [:calendar: 20/5](weeks/w13.md)|[]|
 14   | :calendar: 27/5||
 
 </details>
@@ -73,6 +73,3 @@ Only available by official medical report.
 It's OK to attend only the quizzes, which tend to be toward the end.
 
 </details>
-
-
-

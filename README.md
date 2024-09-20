@@ -5,7 +5,7 @@ COGS 501 -- Algorithmic Structures in Cognition (METU CogSci)
 
 
 ```
-Mondays 🕐 9:40 @Informatics Institute S03
+Wednesdays 🕐 14:40 @Informatics Institute S03
 ```
 
 <details open>
@@ -15,61 +15,40 @@ Weekly schedule
 
 |Week| Work | Quiz |
 :--- |:-------|:----|
-1    | First meeting |
-2    | [:calendar: 26/2](weeks/w02.md)|[q02](weeks/q02.md)|
-3    | [:calendar: 4/3](weeks/w03.md)|[q03](weeks/q03.md)|
-4    | [:calendar: 11/3](weeks/w04.md)|[q04](weeks/q04.md)|
-5    | [:calendar: 18/3](weeks/w05.md)|[q05](weeks/q05.md)|
-6    | [:calendar: 25/3](weeks/w06.md)|[q06](weeks/q06.md)|
-7    | [:calendar: 1/4](weeks/w07.md)|[q07](weeks/q07.md)|
-8    | [:calendar: 15/4](weeks/w08.md)|[q08](weeks/q08.md)|
-9    | [:calendar: 22/4](weeks/w09.md)|[q09](weeks/q09.md)|
-10   | [:calendar: 29/4](weeks/w10.md)| - |
-11   | [:calendar:  6/5](weeks/w11.md)|[q11](weeks/q11.md)|
-12   | [:calendar: 13/5](weeks/w12.md)|[q12](weeks/q12.md)|
-13   | [:calendar: 20/5](weeks/w13.md)|[q13](weeks/q13.md)|
-14   | [:calendar: 27/5](weeks/w14.md)||
+1    | [:calendar: 2/10](weeks/w01.md)| |
 
 </details>
 
-<details>
+<details open>
 <summary>
 Syllabus
 </summary>
 
 ##### Prerequisites
 
-None.
+Non-CogSci students **must** attend the first session to be eligible to take the course.
 
-##### Textbooks
+##### Material 
 
-* [Discrete Mathematics: An Open Introduction, 3rd ed.](https://discrete.openmathbooks.org/dmoi3/frontmatter.html)
-* [How to Design Programs, 2nd ed.](https://htdp.org/)
-* Rosen (2019). Discrete Mathematics and its Applications, 8th edition, McGraw Hill.
+* Stavely (2014). _Programming and Mathematical Thinking: A Gentle Introduction
+    to Discrete Math Featuring Python_. The New Mexico Tech Press.
+* Everything that is discussed in-class.
+* Possibly supplementary readings.
 
-##### Plan (tentative)
+##### Requirements 
 
-* Chapters 0, 1, 3 of Discrete Math.
-* Sections I and II of HTDP
+* Weekly quizzes
+* Final exam (`<=` 20%)
 
-##### Conduct
-
-* Study the weekly content at home.
-* Ask your questions in class.
-* Answer our questions in the weekly quiz.
-
-##### Grading
-
-* 50% Weekly in-class quizzes (10-12 in total, we pick best 8-10)
-* 20% Programming assignment(s)
-* 30% Final exam (in-class)
+The weight of each item will be decided on the basis of its difficulty. There
+will be bonuses to make up for missed quizzes and bad days.
 
 ##### Make-ups
 
-Only available by official medical report.
+Only available by official medical report covering the session date.
 
 ##### Attendance
 
-It's OK to attend only the quizzes, which tend to be toward the end.
+It's OK to attend only the quizzes, which will usually start at 17:00.
 
 </details>

@@ -32,7 +32,7 @@ Non-CogSci students **must** attend the first session to be eligible to take the
 
 * Stavely (2014). _Programming and Mathematical Thinking: A Gentle Introduction
     to Discrete Math Featuring Python_. The New Mexico Tech Press.
-* Everything that is discussed in-class.
+* Everything that is discussed in the class.
 * Possibly supplementary readings.
 
 ##### Requirements 

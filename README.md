@@ -15,7 +15,8 @@ Weekly schedule
 
 |Week| Work | Quiz |
 :--- |:-------|:----|
-1    | [:calendar: 2/10](weeks/w01.md)| |
+|1   | [:calendar: 2/10](weeks/w01.md)| |
+|2   | [:calendar: 9/10](weeks/w02.md)| |
 
 </details>
 

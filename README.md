@@ -18,7 +18,7 @@ Weekly schedule
 |2   | [:calendar: 9/10](weeks/w02.md)| [q02](quizzes/q02.md)|
 |3   | [:calendar: 16/10](weeks/w03.md)| [q03](quizzes/q03.md)|
 |4   | [:calendar: 23/10](weeks/w04.md)| |
-|5   | [:calendar: 23/10](weeks/w05.md)| |
+|5   | [:calendar: 30/10](weeks/w05.md)| |
 
 
 </details>

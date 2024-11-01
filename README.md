@@ -19,6 +19,7 @@ Weekly schedule
 |3   | [:calendar: 16/10](weeks/w03.md)| [q03](quizzes/q03.md)|
 |4   | [:calendar: 23/10](weeks/w04.md)| |
 |5   | [:calendar: 30/10](weeks/w05.md)| |
+|6   | [:calendar: 6/11](weeks/R.20241106.md)| |
 
 
 </details>

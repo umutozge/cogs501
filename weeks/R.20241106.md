@@ -18,6 +18,6 @@ COGS 501 - :calendar: 06/11 - Fall 2024
 * Construct the sequence in the reverse order, first 1, last seed. Don't use a
     reversing operation over the result, construct the sequence in the reverse
     order.
-* Solve the above problems with recursion. This may appear hard, but try to do
+* Solve the last two problems with recursion. This may appear hard, but try to do
     your best.
 

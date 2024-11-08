@@ -20,7 +20,7 @@ Weekly schedule
 |4   | [:calendar: 23/10](weeks/w04.md)| |
 |5   | [:calendar: 30/10](weeks/w05.md)| [quiz](quizzes/q05.md)|
 |6   | [:calendar: 6/11](weeks/R.20241106.md)| |
-|7   | [:calendar: 6/11](weeks/R.20241113.md)| |
+|7   | [:calendar: 13/11](weeks/R.20241113.md)| |
 
 
 </details>

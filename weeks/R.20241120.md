@@ -2,7 +2,7 @@ COGS 501 - :calendar: 20/11 - Fall 2024
 -----------------------------------------------
 
 #### Reading
-* No reading, just coding, a lot of coding... 
+* No reading, just coding...
 
 #### Checklist 
 * Define a function that takes an integer `n` and a list `seq`, and returns a

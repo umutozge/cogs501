@@ -5,11 +5,11 @@ Quiz (30/10) - COGS 501
 **Solution:**
 
 ```python
-def Collatz(n):
+def collatz(n):
     if n == 1:
         return 1
     elif n % 2 == 0:
-        return n // 2
+        return n / 2
     else:
         return 3*n + 1
 ```
@@ -27,7 +27,7 @@ def col_exceeds(n):
     while n != 1:
         if n > n1: # If the number is larger than our original n, we add 1 to our count.
             count += 1
-        n = Collatz(n)
+        n = collatz(n)
 
     print(count) # Here we print how many we counted within the while loop.
 ```
@@ -59,14 +59,13 @@ def col_exceeds(n):
 
 **Solution:**
 ```python
+
 def divisible(m, n):
-    if (m - n) < 1:
-        if (m - n) == 0:
-            print(1)
-        else:
-            print(0)
+    """Return 1 if m is divisible by n, else return 0"""
+    if m > n:
+        return divisible((m - n), n)
     else:
-        divisible((m - n), n)
+        print(1 if m - n == 0 else 0)
 ```
 
 **Non-recursive solution:**
@@ -74,5 +73,5 @@ def divisible(m, n):
 def divisible(m, n):
     while m >= n:
         m -= n
-    print(1) if m == 0 else print(0)
+    print(1 if m == 0 else 0)
 ```

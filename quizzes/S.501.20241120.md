@@ -23,6 +23,23 @@ def insertbefore(n, seq):
     return seq + [n]
 ```
 
+**Solution-3:**
+
+```python
+def insert_before(n, seq):
+    result = []
+    length = len(seq)
+
+    for x in seq:
+        if x > n:
+            return result + [n] + seq[seq.index(x):]
+        else:
+            result += [x]
+
+    if length == len(result):
+        return result + [n]
+```
+
 2. 🤑 **[2pts]** Solve the above problem by recursion.
 
 **Solution:**

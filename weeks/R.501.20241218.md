@@ -5,7 +5,7 @@ COGS 501 - :calendar: 11/12 - Fall 2024
 * No reading, just coding... Do as much as you can.
 
 #### Checklist 
-* Download the IMDB top-1000 [imdb_top_1000.csv](dataset).
+* Download the IMDB top-1000 [imdb_top_1000.csv](imdb_top_1000.csv).
 * Read this file (or a reduced version of it, if you like) and turn it into a `DataFrame`. A `DataFrame` is a dictionary
     with two keys: `columns`,`data`. The value of the `columns` field is the
     list of strings representing the column names (=first line in the file). The

@@ -26,7 +26,7 @@ Weekly schedule
 10   | | [quiz](quizzes/S.501.20241204.md)|
 11   | [:calendar: 11/12](weeks/R.501.20241211.md) | [quiz](quizzes/S.501.20241211.md)|
 12   | [:calendar: 18/12](weeks/R.501.20241218.md) | [quiz](quizzes/S.501.20241218.md)|
-13   | [:calendar: 25/12](weeks/R.501.20241225.md) | |
+13   | [:calendar: 25/12](weeks/R.501.20241225.md) | [quiz](quizzes/S.501.20241225.md)|
 
 
 </details>

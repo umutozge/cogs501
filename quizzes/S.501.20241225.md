@@ -16,6 +16,8 @@ def column_values(df, col):
 
 2. **[2pts]** Define a function that generates a random bit string of length `length`. Remember that a bit string is a string (or list) of `0`s and `1`s. Assume you have a two place function `randint` which produces a random number including and between its two integer arguments.
 
+**Solution:**
+
 ```python
 def random_bit_string(length):
     acc = []

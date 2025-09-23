@@ -1,5 +1,5 @@
-COGS 501 -- Algorithmic Structures in Cognition (METU CogSci)
--------------------------------------------------------------
+COGS 501 -- Algorithmic Structures in Cognition (METU CogSci) -- Fall 2025
+---------------------------------------------------------------------------
 
 [Umut Özge](mailto:umozge@metu.edu.tr), [Ecenur Çağırıcı Doğan](mailto:ecenurc@metu.edu.tr) (TA)
 

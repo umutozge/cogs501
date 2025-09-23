@@ -1,10 +1,10 @@
 COGS 501 -- Algorithmic Structures in Cognition (METU CogSci)
 -------------------------------------------------------------
 
-[Umut Özge](mailto:umozge@metu.edu.tr), [Ecenur Çağırıcı](mailto:ecenurc@metu.edu.tr)(TA)
+[Umut Özge](mailto:umozge@metu.edu.tr), [Ecenur Çağırıcı](mailto:ecenurc@metu.edu.tr) (TA)
 
 ```
-Wednesdays 🕐 14:40 @Informatics Institute S03
+Thursdays 🕐 14:40 @Informatics Institute S03
 ```
 
 <details open>
@@ -15,18 +15,7 @@ Weekly schedule
 |Week| Work | Quiz |
 :--- |:-------|:----|
 |1   | [:calendar: 2/10](weeks/w01.md)| |
-|2   | [:calendar: 9/10](weeks/w02.md)| [quiz](quizzes/q02.md)|
-|3   | [:calendar: 16/10](weeks/w03.md)| [quiz](quizzes/q03.md)|
-|4   | [:calendar: 23/10](weeks/w04.md)| |
-|5   | [:calendar: 30/10](weeks/w05.md)| [quiz](quizzes/S.501.20241030.md)|
-|6   | [:calendar: 6/11](weeks/R.501.20241106.md)| [quiz](quizzes/S.501.20241106.md)|
-|7   | [:calendar: 13/11](weeks/R.501.20241113.md)| [quiz](quizzes/S.501.20241113.md)|
-|8   | [:calendar: 20/11](weeks/R.501.20241120.md)| [quiz](quizzes/S.501.20241120.md)|
-|9   | [:calendar: 27/11](weeks/R.501.20241127.md)| [quiz](quizzes/S.501.20241127.md)|
-10   | | [quiz](quizzes/S.501.20241204.md)|
-11   | [:calendar: 11/12](weeks/R.501.20241211.md) | [quiz](quizzes/S.501.20241211.md)|
-12   | [:calendar: 18/12](weeks/R.501.20241218.md) | [quiz](quizzes/S.501.20241218.md)|
-13   | [:calendar: 25/12](weeks/R.501.20241225.md) | [quiz](quizzes/S.501.20241225.md)|
+|2   | [:calendar: 9/10](weeks/w02.md)| |
 
 
 </details>
@@ -36,31 +25,33 @@ Weekly schedule
 Syllabus
 </summary>
 
-##### Prerequisites
+## Prerequisites
 
-Non-CogSci students **must** attend the first session to be eligible to take the course.
+The course is open, without any prerequisites, to any graduate student, with Cogsci first, Informatics second, and the rest third priority.
 
-##### Material 
+## Material
 
-* Stavely (2014). _Programming and Mathematical Thinking: A Gentle Introduction
-    to Discrete Math Featuring Python_. The New Mexico Tech Press.
+* [Composing Programs](https://www.composingprograms.com/)
+* Epp, Susanna S. (2018). *Discrete Mathematics with Applications*. 5th ed., Cengage Learning.
 * Everything that is discussed in the class.
-* Possibly supplementary readings.
 
-##### Requirements 
+## Requirements
 
 * Weekly quizzes
-* Final exam (`<=` 20%)
+* Midterm exam
+* Final exam
 
-The weight of each item will be decided on the basis of its difficulty. There
-will be bonuses to make up for missed quizzes and bad days.
+all written and in class.
 
-##### Make-ups
+The weight of each question will be decided on the basis of its difficulty. There
+will be bonuses to make up for missed or bad days.
 
-Only available by official medical report covering the session date.
+## Make-ups
 
-##### Attendance
+Only available by official medical report or business trip document covering the session date.
 
-It's OK to attend only the quizzes, which will usually start at 17:00.
+## Attendance
+
+It's OK to attend only the quizzes, which will usually start around 17:00.
 
 </details>

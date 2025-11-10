@@ -9,7 +9,7 @@ Thursdays 🕐 14:40 @Informatics Institute S03
 
 <details open>
 <summary>
-Weekly schedule
+Weekly schedul
 </summary>
 
 |Week| Work | Quiz |

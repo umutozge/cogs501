@@ -19,6 +19,7 @@ Weekly schedule
 |3   | canceled [:calendar: 16/10]()| |
 |4   | [:calendar: 23/10](weeks/w04.md)| |
 |5   | [:calendar: 30/10](weeks/w05.md)| |
+|6   | [:calendar: 6/11](weeks/w06.md)|[quiz](quizzes/q06s.md) |
 
 
 

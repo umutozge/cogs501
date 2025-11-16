@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>/blog/post-iteration-by-while/</loc>
+<lastmod>2025-11-13T00:00:00+03:00</lastmod>
+</url>
+<url>
+<loc>/sbout/</loc>
+</url>
+<url>
+<loc>/categories/</loc>
+</url>
+<url>
+<loc>/ex_iteration/</loc>
+</url>
+<url>
+<loc>/</loc>
+</url>
+<url>
+<loc>/q06s/</loc>
+</url>
+<url>
+<loc>/schedule/</loc>
+</url>
+<url>
+<loc>/syllabus/</loc>
+</url>
+<url>
+<loc>/tags/</loc>
+</url>
+<url>
+<loc>/posts/</loc>
+</url>
+</urlset>

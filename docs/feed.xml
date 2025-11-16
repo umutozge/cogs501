@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-16T10:18:14+03:00</updated><id>/feed.xml</id><title type="html">COGS 501</title><subtitle>Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.</subtitle><author><name>First Lastname</name></author><entry><title type="html">Iteration by `while`</title><link href="/blog/post-iteration-by-while/" rel="alternate" type="text/html" title="Iteration by `while`" /><published>2025-11-13T00:00:00+03:00</published><updated>2025-11-13T00:00:00+03:00</updated><id>/blog/post-iteration-by-while</id><content type="html" xml:base="/blog/post-iteration-by-while/"><![CDATA[<p>Let’s start with a simple function defined over integers called the Collatz function \(C\).</p>
+
+\[C(n) =
+\begin{cases}
+\frac{n}{2} &amp; \text{if } n \text{ is even}\\
+3n + 1 &amp; \text{if } n \text{ is odd}
+\end{cases}\]
+
+<p><strong>Collatz’ conjecture</strong> states that for any positive integer \(n\), repeated application of \(C\) will eventually reach 1.
+The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the sequence of numbers obtained by repeatedly applying \(C\) starting from \(n\) until reaching 1. We will call \(n\) the <strong>seed</strong> of the sequence, and also use phrases like “a (Collatz) sequence seeded by \(n\)”, and so on. When we talk about the Collatz sequence of a number, we will include the starting number and the ending 1 in the sequence, this is good because by looking at the sequence, you immediately see how it started and that it is completed. Finally, we will use the phrase
+“Collatz sequence seeded by \(n\)” to refer to the Collatz sequence generated to reduce \(n\) to 1.</p>
+
+<p class="notice--warning"><strong>Check:</strong> Write the Collatz sequence seeded by 11.</p>
+
+<p>One can be interested in many questions about Collatz sequence. For one:</p>
+
+<p class="notice--info"><strong>Question:</strong> Given an upper bound \(k \geq 1\), find the seed \(n \leq k\) that produces the longest Collatz sequence.</p>
+
+<p>The first question to ask about a programming problem is what are the inputs and outputs of the function we want to write. Here, the input is a positive integer \(k\), and the output is another positive integer \(n \leq k\) that produces the longest Collatz sequence among all integers from 1 to \(k\).</p>
+
+<p>Once this global input-output relation is clear, the next step is to think about how to break this relation into smaller parts, or simpler problems that we can solve one by one to reach the final solution. At this point, a strategy that works quite well in most cases is to ask “What do I have to be able to do in order to solve this problem?”</p>
+
+<p>Let’s list:</p>
+<ol>
+  <li>Given a seed \(n\), we need to be able to compute the Collatz sequence seeded by \(n\).</li>
+  <li>We need to be able to compute the length of a given sequence.</li>
+  <li>We need to be able to compare lengths of multiple sequences and come up with the longest sequence.</li>
+  <li>Finding the longest sequence is not enough, we also need to remember the seed that produced that sequence.</li>
+</ol>
+
+<p>We can start with the first one. What is the input-output relation for this subproblem? Input is a positive  integer \(n\), and output is the Collatz sequence seeded by \(n\), which is a list (or sequence) of integers. We have a problem here since we do not know yet constructing lists in Python. But we can at least print the numbers in the Collatz sequence one by one. Here is how we can do that using a <code class="language-plaintext highlighter-rouge">while</code> loop:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">print_collatz_sequence</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s">"""Print the Collatz sequence seeded by n."""</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>   <span class="c1"># checks whether n is even
+</span>            <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Print the last element of the sequence
+</span></code></pre></div></div>
+
+<p>There is a very important principle in good programming that we need to follow as tightly as we can:</p>
+
+<p class="notice--success"><strong>Principle:</strong> Each function should do one thing.</p>
+
+<p>Think for a moment whether <code class="language-plaintext highlighter-rouge">print_collatz_sequence</code> follows this principle. It might appear to be so. But actually, it does two things. It computes the Collatz function for numbers within a loop, and it prints the numbers. That there are two separable tasks might not be obvious to you for the moment, but here is a simple test: What if we wanted to add the numbers in a Collatz sequence rather than print them on screen? That code would be very similar to the one we wrote. There would be the exact same or very similar lines for computing the next number in the sequence. The following bit:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>   <span class="c1"># checks whether n is even
+</span>    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>The only difference would be that instead of printing the number, we would add it to a running total. This shows that our function is doing two things: computing the next number in the sequence, and printing it. Here is a useful principle:</p>
+
+<p class="notice--success"><strong>Principle:</strong> Examining the function you wrote, if you discover blocks of code (like the <code class="language-plaintext highlighter-rouge">if</code> statement above) that might be useful for other tasks as well, separate that block into another function and use that function instead of the block.</p>
+
+<p>In our example, this principle dictates us to write a separate function to apply the Collatz function:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">collatz</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s">"""The Collatz function
+
+    &gt;&gt;&gt; collatz(0)
+    0
+    &gt;&gt;&gt; collatz(3)
+    10
+    &gt;&gt;&gt; collatz(8)
+    4
+    &gt;&gt;&gt; collatz(-8)
+    -4
+    """</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span><span class="o">//</span><span class="mi">2</span>     <span class="c1"># // instead of / for an integer result
+</span>    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">3</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+</code></pre></div></div>
+
+<p>and handle the printing of the sequence with:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">print_collatz_sequence</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s">"""Print the Collatz sequence seeded by n.
+
+    &gt;&gt;&gt; print_collatz_sequence(8)
+    8
+    4
+    2
+    1
+    """</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">collatz</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Print the last element of the sequence
+</span></code></pre></div></div>
+
+<p>What we actually want is the length of the sequence, not its display on the screen. To get the length we will have to violate our principle of doing one thing at a time in a function. But this is only a temporary thing, once we learn how to form the sequences themselves, rather than their prints on the screen, we will get back to our principle. For now, counting has to be done like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">collatz_length</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s">"""The length of the Collatz sequence seeded by n (n and 1 are included)
+
+    &gt;&gt;&gt; collatz_length(8)
+    4
+    &gt;&gt;&gt; collatz_length(3)
+    8
+    """</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">collatz</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">counter</span>
+</code></pre></div></div>
+
+<p>We seem to have all the ingredients we need to solve our original problem. But let’s do not rush. Let’s try to abstract a little away from our problem. The problem can be thought as a composition of two components:
+    1. There is a <strong>message source</strong> that generates numbers in order. You can also think of it as a stream, or a channel.
+    1. There is a <strong>listener</strong> (or <strong>receiver</strong>) that listens to the channel and keeps the record of the largest number received so far.</p>
+
+<p>The generating source can vary from problem to problem, but the listener has a more general character. For example, the source could have been random integers between, say 1 and 1000000 (a million), and assume we were asked to find the largest such integer in \(k\) random integers. The code would look like:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">largest_random</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="s">"""Return the largest of k ranndom integers between 1 and 1000000."""</span>
+    <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+    <span class="n">largest_so_far</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">counter</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="n">largest_so_far</span><span class="p">:</span>
+            <span class="n">largest_so_far</span> <span class="o">=</span> <span class="n">r</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">largest_so_far</span>
+</code></pre></div></div>
+
+<p>The function <code class="language-plaintext highlighter-rouge">randint</code> is imported from the <code class="language-plaintext highlighter-rouge">random</code> module, and generates a random integer between the two arguments (inclusive).</p>
+
+<p>If our problem were to find the largest length rather than the seed that yields the largest length, we would have a very similar function:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">largest_collatz_length</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="s">"""The largest Collatz length for the seeds between 1 and k."""</span>
+    <span class="n">largest_so_far</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">counter</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">:</span>
+        <span class="n">current_length</span> <span class="o">=</span> <span class="n">collatz_length</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">current_length</span> <span class="o">&gt;</span> <span class="n">largest_so_far</span><span class="p">:</span>
+            <span class="n">largest_so_far</span> <span class="o">=</span> <span class="n">current_length</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">largest_so_far</span>
+</code></pre></div></div>
+
+<p>Ours is a little more complicated than this. We need to remember the seed that produced the largest length as well. Here is the final code:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximal_collatz_seed</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="s">"""The largest seed between 1 and k that produces the largest Collatz length."""</span>
+    <span class="n">largest_length</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">seed_with_largest_length</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">counter</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">:</span>
+        <span class="n">current_length</span> <span class="o">=</span> <span class="n">collatz_length</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">current_length</span> <span class="o">&gt;</span> <span class="n">largest_length</span><span class="p">:</span>
+            <span class="n">largest_length</span> <span class="o">=</span> <span class="n">current_length</span>
+            <span class="n">seed_with_largest_length</span> <span class="o">=</span> <span class="n">counter</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">seed_with_largest_length</span>
+
+</code></pre></div></div>
+
+<p>Once again we could not follow our principle of “one thing at a time” in the above function. The source component and listener component are fused together. In the earlier case we were helpless because we did not know how to construct sequences. If we knew we could have seaparated the construction and length components. The reason we are helpless in the current case is that we do not know about higher order functions – functions that take other functions as arguments. Once we learn about them, we will be able to separate the source and listener components.</p>
+
+<p>Finally, notice that I wrote “The largest seed between 1 and k that produces the largest Collatz length” in the docstring. Why is that? Why did I say “the <em>largest</em> seed”?</p>]]></content><author><name>First Lastname</name></author><category term="Blog" /><category term="programming" /><category term="iteration" /><category term="while loop" /><summary type="html"><![CDATA[Let’s start with a simple function defined over integers called the Collatz function \(C\).]]></summary></entry></feed>

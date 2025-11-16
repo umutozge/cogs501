@@ -21,7 +21,7 @@ var store = [{
     "excerpt":"[2pts*] Translate the following into first order logic: i. Every student in this class has submitted at least one assignment. - S(x): “x is a student in this class” - A(x, y): “x has submitted assignment y” \\[\\forall x (S(x) \\to \\exists y A(x,y))\\] ii. There is a professor who...","url": "https://umutozge.github.io/cogs501/q06s/"
   },{
     "title": "Schedule",
-    "excerpt":"Week Reading Exercises Posts Quiz :calendar: 2/10         :calendar: 9/10         :calendar: 23/10         :calendar: 30/10         :calendar: 6/11       quiz :calendar: 13/11 CP 1.5, Epp 3, sections on Prolog can be omitted. 1-5 of Iteration...","url": "https://umutozge.github.io/cogs501/schedule/"
+    "excerpt":"Week Reading Exercises Post Quiz :calendar: 2/10         :calendar: 9/10         :calendar: 23/10         :calendar: 30/10         :calendar: 6/11       quiz :calendar: 13/11 CP 1.5, Epp 3, sections on Prolog can be omitted. 1-5 of Iteration...","url": "https://umutozge.github.io/cogs501/schedule/"
   },{
     "title": "Syllabus",
     "excerpt":"Prerequisites The course is open, without any prerequisites, to any graduate student, with Cogsci first, Informatics second, and the rest third priority. Material Composing Programs Epp, Susanna S. (2018). Discrete Mathematics with Applications. 5th ed., Cengage Learning. Everything that is discussed in the class. Requirements Weekly quizzes Midterm exam Final...","url": "https://umutozge.github.io/cogs501/syllabus/"

@@ -24,7 +24,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="COGS 501">
 <meta property="og:title" content="Iteration by while">
-<meta property="og:url" content="https://umutozge.github.io/cogs501/blog/post-iteration-by-while/">
+<meta property="og:url" content="http://localhost:4000/cogs501/blog/2025/11/13/iteration-by-while.html">
 
 
   <meta property="og:description" content="Let’s start with a simple function defined over integers called the Collatz function \(C\).">
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://umutozge.github.io/cogs501/blog/post-iteration-by-while/">
+<link rel="canonical" href="http://localhost:4000/cogs501/blog/2025/11/13/iteration-by-while.html">
 
 
 
@@ -77,6 +77,7 @@
 <script type="text/javascript">
   window.MathJax = {
     tex: {
+      packages: ['base','ams'],
       tags: 'all'
     },
     options: {
@@ -89,6 +90,37 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<style>
+.mathbox {
+  font-style: normal !important;
+  border-left: 4px solid #4a90e2;
+  background: #d8ebf1;
+  margin: 1.2em 0;
+  padding: 1em 1.5em;
+  box-shadow: 0 1px 6px 0 #ddeef7;
+  font-size: 0.8em;
+}
+.mathbox.theorem       { border-color: #4a90e2; }
+.mathbox.definition    { border-color: #50b45a; }
+.mathbox.corollary     { border-color: #e28e4a; }
+.mathbox.lemma         { border-color: #8e4ae2; }
+.mathbox.proof         { border-color: #8898b4; background: #f8f8fa; }
+.mathbox .box-title {
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.4em;
+  font-size: 1em;
+}
+.box-description {
+  font-size: 1em;
+  font-weight: bold;
+  color: #888;
+  margin-left: 0.5em;
+}
+</style>
 
 
     <!-- start custom head snippets -->
@@ -190,7 +222,11 @@
           
           <ul>
             
-              <li><a href="/cogs501/ex_iteration/">Iteration</a></li>
+              <li><a href="/cogs501/_pages/exercises/iteration/">Iteration</a></li>
+            
+              <li><a href="/cogs501/_pages/exercises/higher-order-functions/">Higher order functions</a></li>
+            
+              <li><a href="/cogs501/_pages/exercises/numbers/">Number Theory</a></li>
             
           </ul>
           
@@ -234,7 +270,7 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://umutozge.github.io/cogs501/blog/post-iteration-by-while/" itemprop="url">Iteration by <code class="language-plaintext highlighter-rouge">while</code>
+            <a href="http://localhost:4000/cogs501/blog/2025/11/13/iteration-by-while.html" itemprop="url">Iteration by <code class="language-plaintext highlighter-rouge">while</code>
 </a>
           </h1>
           
@@ -426,7 +462,7 @@ The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the s
 
 </code></pre></div></div>
 
-<p>Once again we could not follow our principle of “one thing at a time” in the above function. The source component and listener component are fused together. In the earlier case we were helpless because we did not know how to construct sequences. If we knew we could have seaparated the construction and length components. The reason we are helpless in the current case is that we do not know about higher order functions – functions that take other functions as arguments. Once we learn about them, we will be able to separate the source and listener components.</p>
+<p>Once again we could not follow our principle of “one thing at a time” in the above function. The source component and listener component are fused together. In the earlier case we were helpless because we did not know how to construct sequences. If we knew we could have separated the construction and length components. The reason we are helpless in the current case is that we do not know about higher order functions – functions that take other functions as arguments. Once we learn about them, we will be able to separate the source and listener components.</p>
 
 <p>Finally, notice that I wrote “The largest seed between 1 and k that produces the largest Collatz length” in the docstring. Why is that? Why did I say “the <em>largest</em> seed”?</p>
 
@@ -445,6 +481,8 @@ The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the s
   <p class="page__taxonomy">
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
+    
+      <a href="/cogs501/tags/#cogs501" class="page__taxonomy-item p-category" rel="tag">cogs501</a><span class="sep">, </span>
     
       <a href="/cogs501/tags/#iteration" class="page__taxonomy-item p-category" rel="tag">iteration</a><span class="sep">, </span>
     
@@ -482,6 +520,15 @@ The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the s
       
 
       
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="/cogs501/blog/2025/11/21/higher-order-functions.html" class="pagination--pager" title="Higher order functions">Next</a>
+    
+  </nav>
+
 
     </div>
 
@@ -497,9 +544,48 @@ The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the s
   <div class="grid__wrapper">
     
       
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cogs501/blog/2025/11/21/higher-order-functions.html" rel="permalink">Higher order functions
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2025-11-21T00:00:00+03:00">2025-11-21</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Remember our earlier discussion of Collatz function and sequences. Here is our task:
+
+</p>
+  </article>
+</div>
+
+    
   </div>
 </div>
 
+  
   
 </div>
 
@@ -527,7 +613,7 @@ The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the s
         
 
 
-<div class="page__footer-copyright">&copy; 2025 <a href="https://umutozge.github.io">COGS 501</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">COGS 501</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

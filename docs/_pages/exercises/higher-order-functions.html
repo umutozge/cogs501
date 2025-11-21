@@ -10,7 +10,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Syllabus - COGS 501</title>
+<!-- begin _includes/seo.html --><title>Exercises on higher-order functions - COGS 501</title>
 <meta name="description" content="Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.">
 
 
@@ -21,8 +21,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="COGS 501">
-<meta property="og:title" content="Syllabus">
-<meta property="og:url" content="http://localhost:4000/cogs501/syllabus/">
+<meta property="og:title" content="Exercises on higher-order functions">
+<meta property="og:url" content="http://localhost:4000/cogs501/_pages/exercises/higher-order-functions.html">
 
 
   <meta property="og:description" content="Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.">
@@ -38,7 +38,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/cogs501/syllabus/">
+<link rel="canonical" href="http://localhost:4000/cogs501/_pages/exercises/higher-order-functions.html">
 
 
 
@@ -200,7 +200,7 @@
           
           <ul>
             
-              <li><a href="/cogs501/syllabus/" class="active">Syllabus</a></li>
+              <li><a href="/cogs501/syllabus/">Syllabus</a></li>
             
               <li><a href="/cogs501/schedule/">Schedule</a></li>
             
@@ -257,7 +257,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Syllabus">
+    <meta itemprop="headline" content="Exercises on higher-order functions">
     
     
     
@@ -266,11 +266,9 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="http://localhost:4000/cogs501/syllabus/" itemprop="url">Syllabus
+            <a href="http://localhost:4000/cogs501/_pages/exercises/higher-order-functions.html" itemprop="url">Exercises on higher-order functions
 </a>
           </h1>
-          
-          <p class="page__subtitle">Fall 2025, Umut Ozge, TAs: İlteriş Bozkurt, Ecenur Çağırıcı Doğan, Burcu Alakuş</p>
           
           
 
@@ -280,38 +278,49 @@
 
       <section class="page__content" itemprop="text">
         
-        <h3 id="prerequisites">Prerequisites</h3>
+        <ol>
+  <li>
+    <p>Define a function <code class="language-plaintext highlighter-rouge">apply_twice</code> that takes a function <code class="language-plaintext highlighter-rouge">f</code> and a value <code class="language-plaintext highlighter-rouge">x</code>, and returns the result of applying <code class="language-plaintext highlighter-rouge">f</code> to <code class="language-plaintext highlighter-rouge">x</code> two times.</p>
 
-<p>The course is open, without any prerequisites, to any graduate student, with Cogsci first, Informatics second, and the rest third priority.</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">sqr</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
 
-<h3 id="material">Material</h3>
+ <span class="k">def</span> <span class="nf">apply_twice</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+         <span class="s">"""apply f to x twice.
 
-<ul>
-  <li><a href="https://www.composingprograms.com/">Composing Programs</a></li>
-  <li>Epp, Susanna S. (2018). <em>Discrete Mathematics with Applications</em>. 5th ed., Cengage Learning.</li>
-  <li>Everything that is discussed in the class.</li>
-</ul>
+         &gt;&gt;&gt; apply_twice(sqr, 3)
+         81
+         """</span>
+</code></pre></div>    </div>
+    <!--  ```python
+ def apply_twice(f, x):
+         """Return f(f(x)).
 
-<h3 id="requirements">Requirements</h3>
+         >>> apply_twice(lambda x: x + 3, 7)
+         13
+         >>> apply_twice(lambda x: x * 2, 5)
+         20
+         >>> apply_twice(str.upper, 'hello')
+         'HELLO'
+         """
+         return f(f(x))
+ ``` -->
+  </li>
+  <li>Define a function <code class="language-plaintext highlighter-rouge">applier</code> that applies a given function <code class="language-plaintext highlighter-rouge">f</code> to the argument <code class="language-plaintext highlighter-rouge">x</code> for <code class="language-plaintext highlighter-rouge">n</code> times.
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">sqr</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
 
-<ul>
-  <li>Weekly quizzes</li>
-  <li>Midterm exam</li>
-  <li>Final exam</li>
-</ul>
+ <span class="k">def</span> <span class="nf">applier</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+         <span class="s">"""apply f to x  n times.
 
-<p>all written and in class.</p>
-
-<p>The weight of each question will be decided on the basis of its difficulty. There
-will be bonuses to make up for missed or bad days.</p>
-
-<h3 id="make-ups">Make-ups</h3>
-
-<p>Only available by official medical report or business trip document covering the session date.</p>
-
-<h3 id="attendance">Attendance</h3>
-
-<p>It’s OK to attend only the quizzes, which will usually start around 17:00.</p>
+         &gt;&gt;&gt; applier(sqr, 3,2)
+         81
+         """</span>
+</code></pre></div>    </div>
+    <p>Define two versions, one with <code class="language-plaintext highlighter-rouge">while</code> the other with <code class="language-plaintext highlighter-rouge">proc_seq</code> from <a href="/cogs501/blog/2025/11/21/higher-order-functions.html">here</a>.</p>
+  </li>
+  <li>Given an integer \(k&gt;1\), compute the largest positive integer \(n\) smaller than \(k\) s.t. there is no other integer between 1 and \(k\) with a larger Collatz length. Use <code class="language-plaintext highlighter-rouge">proc_seq</code> from <a href="/cogs501/blog/2025/11/21/higher-order-functions.html">here</a>.</li>
+</ol>
 
         
       </section>

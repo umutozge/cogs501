@@ -1,0 +1,22 @@
+/* Theorem, Definition, Corollary boxes */
+.mathbox {
+  border-left: 4px solid #4a90e2;
+  background: #f2f7fb;
+  margin: 1.2em 0;
+  padding: 1em 1.5em;
+  box-shadow: 0 1px 6px 0 #ddeef7;
+  font-size: 1.05em;
+}
+.mathbox.theorem       { border-color: #4a90e2; }
+.mathbox.definition    { border-color: #50b45a; }
+.mathbox.corollary     { border-color: #e28e4a; }
+.mathbox.lemma         { border-color: #8e4ae2; }
+.mathbox.proof         { border-color: #8898b4; background: #f8f8fa; }
+.mathbox .box-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.4em;
+  display: block;
+}
+

@@ -22,7 +22,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="COGS 501">
 <meta property="og:title" content="COGS 501">
-<meta property="og:url" content="https://umutozge.github.io/cogs501/">
+<meta property="og:url" content="http://localhost:4000/cogs501/">
 
 
   <meta property="og:description" content="Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.">
@@ -38,7 +38,7 @@
 
 
 
-<link rel="canonical" href="https://umutozge.github.io/cogs501/">
+<link rel="canonical" href="http://localhost:4000/cogs501/">
 
 
 
@@ -49,7 +49,7 @@
   "@context": "https://schema.org",
   "@type": "Person",
     "name": null,
-    "url": "https://umutozge.github.io/cogs501/"
+    "url": "http://localhost:4000/cogs501/"
 }
 </script>
 
@@ -83,6 +83,7 @@
 <script type="text/javascript">
   window.MathJax = {
     tex: {
+      packages: ['base','ams'],
       tags: 'all'
     },
     options: {
@@ -95,6 +96,37 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<style>
+.mathbox {
+  font-style: normal !important;
+  border-left: 4px solid #4a90e2;
+  background: #d8ebf1;
+  margin: 1.2em 0;
+  padding: 1em 1.5em;
+  box-shadow: 0 1px 6px 0 #ddeef7;
+  font-size: 0.8em;
+}
+.mathbox.theorem       { border-color: #4a90e2; }
+.mathbox.definition    { border-color: #50b45a; }
+.mathbox.corollary     { border-color: #e28e4a; }
+.mathbox.lemma         { border-color: #8e4ae2; }
+.mathbox.proof         { border-color: #8898b4; background: #f8f8fa; }
+.mathbox .box-title {
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.4em;
+  font-size: 1em;
+}
+.box-description {
+  font-size: 1em;
+  font-weight: bold;
+  color: #888;
+  margin-left: 0.5em;
+}
+</style>
 
 
     <!-- start custom head snippets -->
@@ -196,7 +228,11 @@
           
           <ul>
             
-              <li><a href="/cogs501/ex_iteration/">Iteration</a></li>
+              <li><a href="/cogs501/_pages/exercises/iteration/">Iteration</a></li>
+            
+              <li><a href="/cogs501/_pages/exercises/higher-order-functions/">Higher order functions</a></li>
+            
+              <li><a href="/cogs501/_pages/exercises/numbers/">Number Theory</a></li>
             
           </ul>
           
@@ -270,7 +306,43 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/cogs501/blog/post-iteration-by-while/" rel="permalink">Iteration by <code class="language-plaintext highlighter-rouge">while</code>
+        <a href="/cogs501/blog/2025/11/21/higher-order-functions.html" rel="permalink">Higher order functions
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2025-11-21T00:00:00+03:00">2025-11-21</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Remember our earlier discussion of Collatz function and sequences. Here is our task:
+
+</p>
+  </article>
+</div>
+
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cogs501/blog/2025/11/13/iteration-by-while.html" rel="permalink">Iteration by <code class="language-plaintext highlighter-rouge">while</code>
 </a>
       
     </h2>
@@ -352,7 +424,7 @@
         
 
 
-<div class="page__footer-copyright">&copy; 2025 <a href="https://umutozge.github.io">COGS 501</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">COGS 501</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

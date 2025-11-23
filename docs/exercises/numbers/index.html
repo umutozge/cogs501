@@ -10,7 +10,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Exercises on higher-order functions - COGS 501</title>
+<!-- begin _includes/seo.html --><title>Exercises on Number Theory - COGS 501</title>
 <meta name="description" content="Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.">
 
 
@@ -21,8 +21,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="COGS 501">
-<meta property="og:title" content="Exercises on higher-order functions">
-<meta property="og:url" content="https://umutozge.github.io/cogs501/_pages/exercises/higher-order-functions.html">
+<meta property="og:title" content="Exercises on Number Theory">
+<meta property="og:url" content="http://localhost:4000/cogs501/exercises/numbers/">
 
 
   <meta property="og:description" content="Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.">
@@ -38,7 +38,7 @@
 
 
 
-<link rel="canonical" href="https://umutozge.github.io/cogs501/_pages/exercises/higher-order-functions.html">
+<link rel="canonical" href="http://localhost:4000/cogs501/exercises/numbers/">
 
 
 
@@ -218,11 +218,11 @@
           
           <ul>
             
-              <li><a href="/cogs501/_pages/exercises/iteration/">Iteration</a></li>
+              <li><a href="/cogs501/exercises/iteration/">Iteration</a></li>
             
-              <li><a href="/cogs501/_pages/exercises/higher-order-functions/">Higher order functions</a></li>
+              <li><a href="/cogs501/exercises/higher-order-functions/">Higher order functions</a></li>
             
-              <li><a href="/cogs501/_pages/exercises/numbers/">Number Theory</a></li>
+              <li><a href="/cogs501/exercises/numbers/" class="active">Number Theory</a></li>
             
           </ul>
           
@@ -257,7 +257,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Exercises on higher-order functions">
+    <meta itemprop="headline" content="Exercises on Number Theory">
     
     
     
@@ -266,7 +266,7 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://umutozge.github.io/cogs501/_pages/exercises/higher-order-functions.html" itemprop="url">Exercises on higher-order functions
+            <a href="http://localhost:4000/cogs501/exercises/numbers/" itemprop="url">Exercises on Number Theory
 </a>
           </h1>
           
@@ -279,48 +279,23 @@
       <section class="page__content" itemprop="text">
         
         <ol>
+  <li>List all the divisors, proper divisors, and prime divisors of 28.</li>
+  <li>Provide a definition of a composite number using the concept of proper divisors.</li>
   <li>
-    <p>Define a function <code class="language-plaintext highlighter-rouge">apply_twice</code> that takes a function <code class="language-plaintext highlighter-rouge">f</code> and a value <code class="language-plaintext highlighter-rouge">x</code>, and returns the result of applying <code class="language-plaintext highlighter-rouge">f</code> to <code class="language-plaintext highlighter-rouge">x</code> two times.</p>
+    <p>Here is a definition:</p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">sqr</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-   <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
-
- <span class="k">def</span> <span class="nf">apply_twice</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-         <span class="s">"""apply f to x twice.
-
-         &gt;&gt;&gt; apply_twice(sqr, 3)
-         81
-         """</span>
-</code></pre></div>    </div>
-    <!--  ```python
- def apply_twice(f, x):
-         """Return f(f(x)).
-
-         >>> apply_twice(lambda x: x + 3, 7)
-         13
-         >>> apply_twice(lambda x: x * 2, 5)
-         20
-         >>> apply_twice(str.upper, 'hello')
-         'HELLO'
-         """
-         return f(f(x))
- ``` -->
+    <blockquote class="mathbox definition" id="def:trivial">
+      <p><strong>Definition 1</strong> (trivial divisors) <br /><br />
+Given an integer \(n\), we say that 1,-1,\(n\), and \(-n\)  are the <strong>trivial divisors</strong> of \(n\).</p>
+    </blockquote>
+    <p>Define prime and composite numbers using the concept of trivial divisors.</p>
   </li>
-  <li>Define a function <code class="language-plaintext highlighter-rouge">applier</code> that applies a given function <code class="language-plaintext highlighter-rouge">f</code> to the argument <code class="language-plaintext highlighter-rouge">x</code> for <code class="language-plaintext highlighter-rouge">n</code> times.
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">sqr</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-   <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
-
- <span class="k">def</span> <span class="nf">applier</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-         <span class="s">"""apply f to x  n times.
-
-         &gt;&gt;&gt; applier(sqr, 3,2)
-         81
-         """</span>
-</code></pre></div>    </div>
-    <p>Define two versions, one with <code class="language-plaintext highlighter-rouge">while</code> the other with <code class="language-plaintext highlighter-rouge">proc_seq</code> from <a href="/cogs501/blog/2025/11/21/higher-order-functions.html">here</a>.</p>
-  </li>
-  <li>Given an integer \(k&gt;1\), compute the largest positive integer \(n\) smaller than \(k\) s.t. there is no other integer between 1 and \(k\) with a larger Collatz length. Use <code class="language-plaintext highlighter-rouge">proc_seq</code> from <a href="/cogs501/blog/2025/11/21/higher-order-functions.html">here</a>.</li>
+  <li>Prove that for any integer \(n\), if \(n\) is even, then \(n^2\) is even. Use the definitions of even numbers and divisibility in your proof.</li>
+  <li>Prove that the product of an even integer with an odd integer is even.</li>
+  <li>Prove that if \(a\mid b\) and \(b\mid c\), then \(a\mid c\) for any integers \(a,b,c \in \mathbb{Z}\).</li>
+  <li>Prove that for any composite integer \(n\), \(n = ab\) for some \(a,b \in \mathbb{Z}\) where \(1 &lt; a &lt; n\) and  \(1 &lt; b &lt; n\).</li>
 </ol>
+
 
         
       </section>
@@ -371,7 +346,7 @@
         
 
 
-<div class="page__footer-copyright">&copy; 2025 <a href="https://umutozge.github.io">COGS 501</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">COGS 501</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

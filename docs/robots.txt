@@ -1,1 +1,1 @@
-Sitemap: https://umutozge.github.io/docs/sitemap.xml
+Sitemap: https://umutozge.github.io/cogs501/sitemap.xml

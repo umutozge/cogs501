@@ -475,9 +475,9 @@ Given any integer \(n &gt; 0\) and any base \(b \geq 2\), there exist unique int
 
 <p>Let’s go back to divisibility by 3. When we write a number in this form, we immediately see that the base terms \(10^i\) except when \(i=0\) are irrelevant for divisibility by 3, you can just ignore them. Why?</p>
 
-<p>Let’s go on trying to discover the gaps in our knowledge and understanding. What is divisibility by 3? If \(3 \mid n\), then there exists an integer \(k\) such that \(n = 3k\). Is there an alternative expression of this state of affairs that would be more useful to us? What about \(n\bmod 3 = 0\). When we are invited to check whether \(3\mid 5097\), we are actually checking whether \(5097 \bmod 3 = 0\). Can we express ‘\(5097 \bmod 3\)’ in terms of 5097’s digits?</p>
+<p>Let’s go on trying to discover some other potential gaps in our knowledge and understanding. What is divisibility by 3? If \(3 \mid n\), then there exists an integer \(k\) such that \(n = 3k\). Is there an alternative expression of this state of affairs that would be more useful to us? What about \(n\bmod 3 = 0\). When we are invited to check whether \(3\mid 5097\), we are actually checking whether \(5097 \bmod 3 = 0\). Can we express ‘\(5097 \bmod 3\)’ in terms of 5097’s digits?</p>
 
-<p>For a moment forget about digits. Assume we are asked to find whether 7 is divisible by 3. What do we do? We compute \(7 \bmod 3\) and discover that it is not zero, and answer ‘No’ to the question. What about 3 dividing 17? You would start computing \(17 \bmod 3\) right away, but you can also use the result of an earlier computation? (Imagine yourself in a situation where you are asked ‘\(7873298475 \bmod 42\)’ and you know the result for ‘\(7873298400 \bmod 42\)’, wouldn’t it be nice to get away by computing only ‘\(75 \bmod 42\)’ and recycle your earlier result?) Why not, for example, say that \(7\bmod 3=1\) and \(10 \bmod 3= 1\), so \(17\bmod 3\) must be their sum 2, which indeed is \(17\bmod 3\). Can I generalize this? Can I say that given two positive integers \(a\) and \(b\), \((a + b) \bmod 3 = a \bmod 3 + b \bmod 3\)? This doesn’t work, because if both \(a \bmod 3\) and \(b \bmod 3\) equal 2, their sum is 4, which is not a valid value for \(\bmod 3\) – for instance \((8 + 11)\bmod 3\neq (8\bmod 3) + (11\bmod 3)\). But observe that applying \(\bmod 3\) to the result, 4 in this case, will give you the right result. In other words, our specific example obeys the following template \((a + b) \bmod 3 = ((a \bmod 3) + (b \bmod 3)) \bmod 3\)? Does this hold generally? For all \(m&gt;0\)? Yes, it does. Let us state this as a theorem<sup id="fnref:modadd" role="doc-noteref"><a href="#fn:modadd" class="footnote" rel="footnote">2</a></sup> and prove it.</p>
+<p>For a moment forget about digits. Assume we are asked to find whether 7 is divisible by 3. What do we do? We compute \(7 \bmod 3\) and discover that it is not zero, and answer ‘No’ to the question. What about 3 dividing 17? You would start computing \(17 \bmod 3\) right away, but can’t you also use the result of an earlier computation? (Imagine yourself in a situation where you are asked ‘\(7873298475 \bmod 42\)’ and you know the result for ‘\(7873298400 \bmod 42\)’, wouldn’t it be nice to get away by computing only ‘\(75 \bmod 42\)’ and recycle your earlier result?) Why not, for example, say that \(7\bmod 3=1\) and \(10 \bmod 3= 1\), so \(17\bmod 3\) must be their sum 2, which indeed is \(17\bmod 3\). Can I generalize this? Can I say that given two positive integers \(a\) and \(b\), \((a + b) \bmod 3 = a \bmod 3 + b \bmod 3\)? This doesn’t work, because if both \(a \bmod 3\) and \(b \bmod 3\) equal 2, their sum is 4, which is not a valid value for \(\bmod 3\) – for instance \((8 + 11)\bmod 3\neq (8\bmod 3) + (11\bmod 3)\). But observe that applying \(\bmod 3\) to the result, 4 in this case, will give you the right result. In other words, our specific example obeys the following template \((a + b) \bmod 3 = ((a \bmod 3) + (b \bmod 3)) \bmod 3\)? Does this hold generally? For all \(m&gt;0\)? Yes, it does. Let us state this as a theorem<sup id="fnref:modadd" role="doc-noteref"><a href="#fn:modadd" class="footnote" rel="footnote">2</a></sup> and prove it.</p>
 
 <blockquote class="mathbox theorem" id="thm:modular-addition">
   <p><strong>Theorem</strong> (modular addition) <br /><br />
@@ -491,10 +491,10 @@ By the Division Algorithm \((a + b) \bmod m = r_1 = a + b - pm\), for some \(p\)
 Likewise \(((a \bmod m) + (b \bmod m) ) \bmod m = r_2 = (a - qm) + (b - sm) - tm\), for some \(q,s,t\).<sup id="fnref:rda" role="doc-noteref"><a href="#fn:rda" class="footnote" rel="footnote">3</a></sup><br />
 We need to show that \(r_1 = r_2\).<br />
 By rearrangment, \(r_2 = a + b - m(q + s + t)\)
-Then \(r_1 - r_2 = m(p - q - s - t)\)<br />
+Then \(r_1 - r_2 = m(q+s+t-p)\)<br />
 We know that \(r_1,r_2&lt; m\), by the definition of the remainder in the Division Algorithm.<br />
-Therefore, \(r_1-r_2\) cannot be equal to or greater than \(m\) and cannot be less than or equal to \(-m\), or  \(-m &lt; r_1 - r_2 &lt; m\).<br />
-The only way this condition holds is when \(p-g-s-t\), an integer, is equal to 0, which means \(r_1 = r_2\).<br /></p>
+Therefore, \(r_1-r_2\) cannot be equal to or greater than \(m\) and cannot be less than or equal to \(-m\), i.e.  \(-m &lt; r_1 - r_2 &lt; m\).<br />
+The only way this condition holds is when \(q+s+t-p\), an integer, is equal to 0, which means \(r_1 = r_2\).<br /></p>
 </blockquote>
 
 <p>The same logic holds for multiplication as well:</p>
@@ -557,11 +557,11 @@ Which is to say that a positive integer \(n\) is divisible by 3 iff the sum of t
 
 <p>Think and try before I give you a clue.</p>
 
-<p>Clue 1: The claim states that there cannot be any integer \(p\neq 3\) such that \(p, p+2, p+4\) are all prime.</p>
+<p>Clue 1: The claim states that there cannot be any integer \(p\neq 3\) such that \(p, p+2, p+4\) are all prime. Make sure you understand the conditions of the problem.</p>
 
 <p>Think and try before I give you another clue.</p>
 
-<p>Clue 2: You can show any such triple must include a number divisible by 3.</p>
+<p>Clue 2: You can show any such triple other than 3,5,7 must include a number divisible by 3.</p>
 
 <p>Think and try before I give you the final clue.</p>
 

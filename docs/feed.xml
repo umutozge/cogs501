@@ -1,4 +1,403 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/cogs501/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/cogs501/" rel="alternate" type="text/html" /><updated>2025-11-24T11:43:34+03:00</updated><id>http://localhost:4000/cogs501/feed.xml</id><title type="html">COGS 501</title><subtitle>Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.</subtitle><author><name>First Lastname</name></author><entry><title type="html">Higher order functions</title><link href="http://localhost:4000/cogs501/blog/2025/11/21/higher-order-functions.html" rel="alternate" type="text/html" title="Higher order functions" /><published>2025-11-21T00:00:00+03:00</published><updated>2025-11-21T00:00:00+03:00</updated><id>http://localhost:4000/cogs501/blog/2025/11/21/higher-order-functions</id><content type="html" xml:base="http://localhost:4000/cogs501/blog/2025/11/21/higher-order-functions.html"><![CDATA[<p>Remember our <a href="/cogs501/blog/2025/11/13/iteration-by-while.html">earlier</a> discussion of Collatz function and sequences. Here is our task:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/cogs501/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/cogs501/" rel="alternate" type="text/html" /><updated>2025-11-25T15:48:24+03:00</updated><id>http://localhost:4000/cogs501/feed.xml</id><title type="html">COGS 501</title><subtitle>Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.</subtitle><author><name>First Lastname</name></author><entry><title type="html">Euclid’s Algorithm</title><link href="http://localhost:4000/cogs501/blog/2025/11/24/euclids-algorithm.html" rel="alternate" type="text/html" title="Euclid’s Algorithm" /><published>2025-11-24T00:00:00+03:00</published><updated>2025-11-24T00:00:00+03:00</updated><id>http://localhost:4000/cogs501/blog/2025/11/24/euclids-algorithm</id><content type="html" xml:base="http://localhost:4000/cogs501/blog/2025/11/24/euclids-algorithm.html"><![CDATA[<p class="notice--warning"><strong>Check:</strong> Make sure you are fine with <a href="/cogs501/blog/2025/11/24/intro-number-theory.html">very basic number theory</a>.</p>
+
+<blockquote class="mathbox definition" id="def:gcd">
+  <p><strong>Definition</strong> (greatest common divisor) <br /><br />
+Given two integers \(a\) and \(b\), the <strong>greatest common divisor</strong> (GCD) of \(a\) and \(b\), denoted by \(\gcd(a,b)\), is the largest integer that divides both \(a\) and \(b\).</p>
+</blockquote>
+
+<p>Euclid’s algorithm (300 BC) which computes the GCD of two positive integers is one of the oldest algorithms still useful today.</p>
+
+<p>The algorithm for computing GCD of \(a\) and \(b\), where \(a&gt;b\):</p>
+<ul>
+  <li>To compute \(gcd(a,b)\):
+    <ul>
+      <li>Let \(r = a\bmod b\);</li>
+      <li>if \(r = 0\), then the answer is \(b\).</li>
+      <li>else, the answer is \(gcd(b,r)\).</li>
+    </ul>
+  </li>
+</ul>
+
+<p>This simple yet ingenious algorithm may not be easy to understand without examples.<sup id="fnref:euc" role="doc-noteref"><a href="#fn:euc" class="footnote" rel="footnote">1</a></sup> Take the numbers 48 and 18.</p>
+
+\[48 = 2 \times 18 + 12\]
+
+<p>As the remainder is not 0, we repeat the process with 18 and 12:</p>
+
+\[18 = 1 \times 12 + 6\]
+
+<p>One more time with 12 and 6:</p>
+
+\[12 = 2 \times 6 + 0\]
+
+<p>As the remainder is now 0, we can stop. The GCD of 48 and 18 is therefore 6.</p>
+
+<p>Another quick example: what is the GCD of 476 and 272? The answer is 68, as we can see from the following steps:</p>
+
+\[\begin{align*}
+476 &amp; = 1 \times 272 + 204 \\
+272 &amp; = 1 \times 204 + 68 \\
+204 &amp; = 3 \times 68 + 0
+\end{align*}\]
+
+<p>So much for <em>how</em> the algorithm works. But <em>why</em> does it work?</p>
+
+<p>The critical observation is that the GCD of any \(a\) and \(b\), with \(a&gt;b\), is the same as the GCD of \(b\) and the remainder of dividing \(a\) by \(b\). In a concise and more formal way, we can state this as:</p>
+
+\[\begin{align}
+\forall a,b,r\in \mathbb{Z} \text{ s.t. } a&gt;b, gcd(a,b) = gcd(b,a \bmod b)
+\label{gcdequal}
+\end{align}\]
+
+<p>Why is \eqref{gcdequal} true?</p>
+
+<p>We will see two proofs of \eqref{gcdequal}, both correct. You decide which one is “better”.</p>
+
+<blockquote class="mathbox proof" id="proof:gcd-euclid-1">
+  <p><strong>Proof</strong> (\eqref{gcdequal}, version 1):<br />
+Let’s say \(gcd(a,b)=g\), we want to show that \(gcd(b,r)=g\), where \(r=a \bmod b\).
+We can think of this task as two sub-tasks: (1) show that \(g\) divides both \(b\) and \(r\), and (2) show that any other common divisor of \(b\) and \(r\) cannot be larger than \(g\).<br />
+First part: <br /></p>
+  <ol>
+    <li>As \(gcd(a,b)=g\), then \(g\) divides both \(a\) and \(b\), and we can write \(a=mg\) and \(b=ng\) for some integers \(m,n\).<br /></li>
+    <li>Let \(r=a \bmod b\), which means \(a=kb+r\), and therefore \(r=a-kb\) for some integer \(k\).<br /></li>
+    <li>Replace \(a,b\) with \(mg,ng\) respectively in the equation for \(r\) to get \(r=mg-k(ng)=g(m-kn)\).<br /></li>
+    <li>As \(m-kn\) is an integer, we can conclude that \(r\) is divisible by \(g\).<br /></li>
+    <li>We already know that \(g\mid b\), therefore \(g\) is a common divisor of \(b\) and \(r\).<br /></li>
+  </ol>
+
+  <p>Second part:<br /></p>
+  <ol>
+    <li>Assume that there is another common divisor of \(b\) and \(r\), call it \(h\), where \(h &gt; g\).<br /></li>
+    <li>First, \(h\nmid a\), because otherwise \(h\) becomes a common divisor of \(a\) and \(b\) larger than their GCD \(g\), which is a contradiction.<br /></li>
+    <li>As \(h\) divides both \(b\) and \(r\), we can write \(b=ph\) and \(r=qh\) for some integers \(p,q\).<br /></li>
+    <li>Replace \(b\) and \(r\) in the equation \(a=kb+r\) with \(ph\) and \(qh\), respectively. We get \(a=k(ph)+qh=h(kp+q)\), which in turn means \(h\mid a\), given that \(kp+q\) is guaranteed to be an integer. Again we contradicted ourselves.<br /></li>
+    <li>Therefore \(b\) and \(r\) cannot have a common divisor larger than \(g\), completing the proof<br /></li>
+  </ol>
+</blockquote>
+
+<p>Here is a slightly different proof. In this we will not proceed over the GCD of \(a\) and \(b\) directly, but prove that the set of common divisors of \(a\) and \(b\) is the same with the set of common divisors of \(b\) and \(r\). As the GCD is defined as the largest common divisor, if the two sets are the same, their GCDs must be the same as well.</p>
+
+<blockquote class="mathbox proof" id="proof:gcd-euclid-2">
+  <p><strong>Proof</strong> (\eqref{gcdequal}, version 2):<br />
+Let \(A = \lbrace x: x\mid a, x\mid b \rbrace\) and \(B = \lbrace y: y\mid b, y\mid r \rbrace\) be the sets of common divisors of \(a\) and \(b\), and \(b\) and \(r\), respectively. We want to show that \(A = B\).<br />
+First show \(A \subseteq B\):<br />
+Pick any \(g\in A\), then by the exact same steps in the earlier proof, you deduce \(g\mid b\) and \(g\mid r\), and therefore \(g\in B\).<br />
+Second show \(B \subseteq A\):<br />
+Pick any \(h\in B\), then by the exact same steps in the earlier proof, you deduce \(h\mid a\) and \(h\mid b\), and therefore \(h\in A\).<br /></p>
+</blockquote>
+
+<p>In my opinion, there is an air of elegance in the second proof, in the sense that it does not resort to proof by contradiction.</p>
+
+<p>Having proved \eqref{gcdequal},  we now know that we can reduce the problem of finding GCD of \(a\) and \(b\) to finding GCD of \(b\) and \(r\). To complete the picture for now, we will count on our intuition, without a rigorous proof,<sup id="fnref:converge" role="doc-noteref"><a href="#fn:converge" class="footnote" rel="footnote">2</a></sup> that repeating this process will eventually lead us to a remainder of 0, at which point the other number is the GCD.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:euc" role="doc-endnote">
+      <p>Even better are the visualizations you can find on Wikipedia. <a href="#fnref:euc" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:converge" role="doc-endnote">
+      <p>You need to show (1) that the remainders must decrease in each step, and (2) that they cannot go below 0; so eventually we must reach 0. <a href="#fnref:converge" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>First Lastname</name></author><category term="Blog" /><category term="algorithms" /><category term="iteration" /><category term="proof" /><category term="cogs501" /><summary type="html"><![CDATA[Check: Make sure you are fine with very basic number theory.]]></summary></entry><entry><title type="html">A tiny bite of Number Theory</title><link href="http://localhost:4000/cogs501/blog/2025/11/24/intro-number-theory.html" rel="alternate" type="text/html" title="A tiny bite of Number Theory" /><published>2025-11-24T00:00:00+03:00</published><updated>2025-11-24T00:00:00+03:00</updated><id>http://localhost:4000/cogs501/blog/2025/11/24/intro-number-theory</id><content type="html" xml:base="http://localhost:4000/cogs501/blog/2025/11/24/intro-number-theory.html"><![CDATA[<p>This is a healthy minimum dose of number theory to make you feel comfortable with the concepts we will be using in this course.</p>
+
+<p>We do not start from the absolute beginning. We take for granted integers and arithmetic operations. We start by some terminology.
+The set of integers, denoted by \(\mathbb{Z}\), is the set of whole numbers including negative numbers, zero, and positive numbers. When we say <strong>positive integers</strong> – aka <strong>natural numbers</strong> – we exclude zero and, obviously, negative integers. The set of positive integers is denoted by \(\mathbb{Z}^+\). If you want to include zero but leave out negative integers, the term is <strong>non-negative integers</strong>. The set of non-negative integers is denoted by \(\mathbb{Z}_{\geq 0}\), and so on with other subscripts. When we say number we will mean integer unless stated otherwise.</p>
+
+<p>The two foundational concepts of number theory are <strong>divisibility</strong> and  <strong>parity</strong> (i.e. even v. odd). The former is more primitive, in the sense that once we define divisibility, we can use this definition to define parity. Here we go:</p>
+
+<blockquote class="mathbox definition" id="def:div">
+  <p><strong>Definition 1</strong> (divisibility) <br /><br />
+An integer \(a\neq 0\) <strong>divides</strong> another integer \(b\), denoted by \(a \mid b\), if there exists an integer \(k\) such that \(b = ka\). We say \(a\) is a <strong>divisor</strong> (or <strong>factor</strong>) of \(b\), and \(b\) is a <strong>multiple</strong> of \(a\). <br /><br />
+If \(a\) does not divide \(b\), we write \(a \nmid b\).</p>
+</blockquote>
+
+<p class="notice--warning"><strong>Check</strong> Express divisibility in first-order logic.</p>
+
+<p>Here is the Division Algorithm, which is actually not an algorithm but a theorem:</p>
+
+<blockquote class="mathbox theorem" id="thm:division-algorithm">
+  <p><strong>Theorem</strong> (Division Algorithm) <br /><br />
+Given any integers \(a\) and \(b\) with \(b&gt;0\), there are unique integers \(q\) and \(r\) such that \(a = bq + r\) and \(0 \leq r &lt; b\).</p>
+</blockquote>
+
+<p>Some more terminology:</p>
+
+<blockquote class="mathbox definition" id="def:quotient-remainder">
+  <p><strong>Definition</strong> (quotient and remainder) <br /><br />
+In the equality of the Division Algorithm, \(a\) is the <strong>dividend</strong>, \(b\) is the <strong>divisor</strong>, \(q\) is the <strong>quotient</strong> and \(r\) is the <strong>remainder</strong>. Other notations for quotient and remainder are \(q = a\; \mathrm{div}\;  b\) and \(r = a \bmod b\).</p>
+</blockquote>
+
+<p>The quotient of dividing \(a\) by \(b\) can be expressed by the floor function which given a number (not necessarily integer) returns the largest integer not greater than that number. For example, \(\lfloor 3.7 \rfloor = 3\), \(\lfloor -2.3 \rfloor = -3\), and so on. Using the floor function, we can express the quotient as \(q = \lfloor \frac{a}{b} \rfloor\).</p>
+
+<p class="notice--warning"><strong>Check:</strong> What is the quotient and remainder when -11 is divided by 3?</p>
+
+<p>If you answered the above incorrectly as ‘quotient is -3 and remainder is -2’, on the grounds that \(-11=-3\times3 -2\), you have to re-read <a href="#thm:division-algorithm">Theorem (Division Algorithm)</a>.</p>
+
+<p class="notice--success"><strong>Programming note:</strong> In Python, the floor division operator <code class="language-plaintext highlighter-rouge">//</code> computes the quotient, while the modulo operator <code class="language-plaintext highlighter-rouge">%</code> computes the remainder.</p>
+
+<p>The infinite set \(\mathbb{Z}\) can be partitioned into two infinite subsets: <strong>even</strong> and <strong>odd</strong> integers. Partitioning means when you take the union of even integers and odd integers you get back to \(\mathbb{Z}\), while their intersection is the empty set. In more simple terms, if you are an integer, then you are either odd or even, you cannot be both, and you cannot be anything else. We define these sets:</p>
+
+<blockquote class="mathbox definition" id="def-even-odd">
+  <p><strong>Definition 2</strong> (parity) <br /><br />
+\(\begin{align}
+\forall n \in \mathbb{Z}, n \text{ is even iff }  2\mid n \\
+\forall n \in \mathbb{Z}, n \text{ is odd iff } 2\nmid n
+\end{align}\)</p>
+</blockquote>
+
+<p>In other words  “\(n\) is even” and “\(2 \mid n\)” are the two ways, the latter being more symbolic, to say the same thing. (Isn’t what I just wrote is the definition of definition?)</p>
+
+<p class="notice--warning"><strong>Check:</strong> According to our definition of parity, do we treat 0 as even, odd, or neither?</p>
+
+<p>Given \(n\in \mathbb{Z}\), the set \(\lbrace x : x\mid n\rbrace\) is named the <strong>divisors</strong> of \(n\).<sup id="fnref:divisors" role="doc-noteref"><a href="#fn:divisors" class="footnote" rel="footnote">1</a></sup></p>
+
+<blockquote class="mathbox definition" id="def:proper">
+  <p><strong>Definition 2</strong> (proper divisors) <br /><br />
+Given an integer \(n\), The <strong>proper divisors</strong> of \(n\) is the set \(\lbrace x: x\neq n, x&gt;0, x\mid n\rbrace\).</p>
+</blockquote>
+
+<p class="notice--warning"><strong>Check:</strong> What are the proper divisors of 12? What about -12?</p>
+
+<p>Here is the standard definition of prime numbers:</p>
+
+<blockquote class="mathbox definition" id="def:prime">
+  <p><strong>Definition 3</strong> (prime) <br /><br />
+A positive integer \(p &gt; 1\) is called a <strong>prime number</strong> (or simply is <strong>prime</strong>) if its only positive divisors are 1 and \(p\) itself.</p>
+</blockquote>
+
+<p>Can you think of an alternative definition of prime numbers using the concept of proper divisors we just defined?</p>
+
+<p>Here it is:</p>
+
+<blockquote class="mathbox definition" id="def:prime-alt">
+  <p><strong>Definition</strong> (prime – alternative) <br /><br />
+A positive integer \(p &gt; 1\) with no proper divisor other than 1 is called a <strong>prime number</strong> (or simply is <strong>prime</strong>).</p>
+</blockquote>
+
+<p>Here is another one that does not need \(&gt;1\) condition:</p>
+
+<blockquote class="mathbox definition" id="def:prime-alt3">
+  <p><strong>Definition</strong> (prime – alternative 3) <br /><br />
+A positive integer \(p\) that has exactly 2 divisors is <strong>prime</strong>..</p>
+</blockquote>
+
+<blockquote class="mathbox definition" id="def:composite">
+  <p><strong>Definition</strong> (composite numbers) <br /><br />
+A positive integer \(n &gt; 1\) that is not prime is <strong>composite</strong>.
+Or, equivalently,<br /> \(\forall n &gt;1, n \text{ is composite iff } \exists z \text{ s.t. } z\mid n \text{ and } 1 &lt; z &lt; n\).</p>
+</blockquote>
+
+<p>So much for definitions. Let’s now look at some truths we can prove using these definitions. The technical name for such truths is <strong>theorems</strong>. Here is a theorem about parity:</p>
+
+<blockquote class="mathbox theorem" id="thm:odd-square">
+  <p><strong>Theorem 1</strong> <br /><br />
+For any integer \(n\), if \(n\) is odd, then \(n^2\) is odd.</p>
+</blockquote>
+
+<p>Here is a proof:</p>
+
+<blockquote class="mathbox proof" id="proof:odd-square">
+  <p><strong>Proof 1</strong> (Theorem 1)<br /><br />
+Given that \(n\) is odd, \(n = 2k + 1\) for some integer \(k\).<br /> Then, \(n^2 = (2k +1) (2k +1) = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1\).<br /> Since \(2k^2 + 2k\) is an integer, we can say that \(n = 2p + 1\) for some integer \(p=2k^2 + 2k\), and therefore we can conclude that \(n^2\) is odd.</p>
+</blockquote>
+
+<p>Looks reasonable. But it is not reasonable. We made use of two “truths” that we have not defined or proved yet: (1) any odd number \(n\) equals \(2k + 1\) for some integer \(k\), and (2) if \(a\) and \(b\) are integers, so are \(a+b\) and \(ab\). To make our proof rigorous, we need to avoid using any unproven statements and undefined terms.</p>
+
+<p>We will first take the following theorem for granted without proving it:</p>
+
+<blockquote class="mathbox theorem" id="thm:closure">
+  <p><strong>Theorem 2</strong> (closure)<br /><br />
+The set of integers \(\mathbb{Z}\) is closed under addition, multiplication and subtraction. In other words, for any \(a,b \in \mathbb{Z}\), \(a + b, ab, a-b \in \mathbb{Z}\).</p>
+</blockquote>
+
+<p class="notice--warning"><strong>Check:</strong> Why is \(\mathbb{Z}\) not closed under division?</p>
+
+<p>Now let us prove this very useful theorem about odd numbers:</p>
+
+<blockquote class="mathbox theorem" id="thm:odd-numbers">
+  <p><strong>Theorem 3</strong> (odd numbers)<br /><br />
+For any integer \(n\), \(n\) is odd iff there exists an integer \(k\) such that \(n = 2k + 1\).</p>
+</blockquote>
+
+<p>When we are given an odd number \(n\), what do we know about it? All we know is that \(2\nmid n\). How do we leap from this knowledge to the conclusion that \(n = 2k + 1\) for some integer \(k\)? The statement we want to prove says that any odd number must be of the form \(2k + 1\) for some integer \(k\). Does the \(2k\) bit look familiar from somewhere? Yes, \(2k\) is an even number. At first sight, we are inclined to read the theorem as “Given any odd number there is some \(k\) such that…”. But you can read it as “Given any odd number \(n\), there is some even number (namely, \(2k\)) such that \(n\) is one plus that even number”. If we can prove this statement that would complete the proof. Think a little on how to proceed.</p>
+
+<p>If we can show that any even number plus 1 results in an odd number, then we are done. Why? Because given any odd number \(n\), we can let \(m = n - 1\). Since \(n\) is odd, \(m\) must be even (because if \(m\) were odd, then adding 1 to it would yield an even number, contradicting the fact that \(n\) is odd). Here is our auxiliary proof for this theorem:</p>
+
+<blockquote class="mathbox theorem" id="thm:even-plus-one">
+  <p><strong>Theorem 4</strong>  (even plus one)<br /><br />
+Given any even number \(m\), \(m + 1\) is odd.</p>
+</blockquote>
+
+<blockquote class="mathbox proof" id="proof:even-plus-one">
+  <p><strong>Proof</strong> (even plus one)<br /><br />
+Let \(m\) be even. Then \(2\mid m\), which means there exists an integer \(t\) such that \(m = 2t\).<br />
+Then, \(m + 1 = 2t + 1\).<br />
+\(2\nmid 2t +1\), because if it did, then there would exist an integer \(s\) such that \(2t +1 = 2s\).<br />
+No such \(s\) can exist, because that would imply \(s = t + \frac{1}{2}\) to be an integer, which it is not.<br />
+Therefore, given any even number \(m\), \(m + 1\) is odd.</p>
+</blockquote>
+
+<p>Now we can prove Theorem 3:</p>
+
+<blockquote class="mathbox proof" id="proof:odd-square">
+  <p><strong>Proof:</strong> (Theorem 3)<br /><br />
+Let \(n\) be odd.<br />
+Then \(n-1\) is even by Theorem 4.<br />
+Which implies that \(n -1 = 2k\) for some integer \(k\).<br />
+If so, then \(n = 2k + 1\) for some integer \(k\).<br /></p>
+</blockquote>
+
+<p>With Theorem 3 proved, we can now complete the proof of Theorem 1:</p>
+
+<blockquote class="mathbox proof" id="proof:odd-square">
+  <p><strong>Proof</strong> (Theorem 1)<br /><br />
+Let \(n\) be odd.<br />
+Then \(n = 2k +1\) for some \(k\) by Theorem 3<br />
+Then, \(n^2 = (2k +1) (2k +1) = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1\).<br /> Since \(2k^2 + 2k\) is an integer by Theorem 2, we can say that \(n = 2p + 1\) for some integer \(p=2k^2 + 2k\)<br />
+Therefore we can conclude that \(n^2\) is odd.</p>
+</blockquote>
+
+<p>Let’s exercise a little more.</p>
+
+<p>I think all of us know the basic facts about divisibility: a number is divisible by 2 if its last digit is divisible by 2 (i.e. even), likewise for 5, and more interestingly, a number is divisible by 3 if the sum of its digits is divisible by 3. It is quite straightforward to convince ourselves of the correctness of the first two facts, but why should the third hold? All of us know <em>that</em> it holds, but only some of us might know <em>why</em> it holds. Knowing that some fact holds can be very useful, in engineering, finance, medical practice, sports, and so on. But in science and mathematics, <em>knowing that</em> is secondary to <em>knowing why</em>.</p>
+
+<p>Give yourself some time to think about why the divisibility rule for 3 holds.</p>
+
+<p>Some of us will see it, perhaps, right away, some will need more time, some will progress only up to a certain point, and some will not even find that initial <em>handle</em> to grasp so that they can start reasoning. The biggest mistake for those who are not happy with their performance (which means all levels except the first) is to put the blame on their mental powers, rather than on the inadequacy of their knowledge of the subject matter, or how math works, or both. Try not to fall into this trap, mathematics is not reserved for mentally privileged people.</p>
+
+<p>Let’s try to discover what we DON’T know that is preventing us from seeing the logic behind the divisibility rule for 3. First, do we really know the rule? The rule is actually not that “a number is divisible by 3 if the sum of its digits is divisible by 3”, but rather “a number is divisible by 3 if the sum of its digits in the decimal representation of it is divisible by 3”. There is no possibility of progress without, explicitly or implicitly, being aware of this nuance. Rule is stated to hold for decimal representation, so the reason why it holds must have something to do with the decimal representation. Do we know, then, what does decimal representation, or even representation, mean for numbers?</p>
+
+<blockquote class="mathbox theorem" id="thm:base-representation">
+  <p><strong>Theorem</strong> (base representation) <br /><br />
+Given any integer \(n &gt; 0\) and any base \(b \geq 2\), there exist unique integers \(d_0, d_1, \ldots, d_k\) all non-negative and less than \(b\) with \(d_k&gt;0\) such that <br /><br /> \(n = d_k b^k + d_{k-1} b^{k-1} + \ldots + d_1 b^1 + d_0 b^0\).</p>
+</blockquote>
+
+<p>For example, \(5097= 5\cdot10^3 + 0\cdot 10^2 + 9\cdot 10^1 + 7\cdot 10^0\), where the base is 10, and the digits are 5,0,9, and 7.</p>
+
+<p>Let’s go back to divisibility by 3. When we write a number in this form, we immediately see that the base terms \(10^i\) except when \(i=0\) are irrelevant for divisibility by 3, you can just ignore them. Why?</p>
+
+<p>Let’s go on trying to discover the gaps in our knowledge and understanding. What is divisibility by 3? If \(3 \mid n\), then there exists an integer \(k\) such that \(n = 3k\). Is there an alternative expression of this state of affairs that would be more useful to us? What about \(n\bmod 3 = 0\). When we are invited to check whether \(3\mid 5097\), we are actually checking whether \(5097 \bmod 3 = 0\). Can we express ‘\(5097 \bmod 3\)’ in terms of 5097’s digits?</p>
+
+<p>For a moment forget about digits. Assume we are asked to find whether 7 is divisible by 3. What do we do? We compute \(7 \bmod 3\) and discover that it is not zero, and answer ‘No’ to the question. What about 3 dividing 17? You would start computing \(17 \bmod 3\) right away, but you can also use the result of an earlier computation? (Imagine yourself in a situation where you are asked ‘\(7873298475 \bmod 42\)’ and you know the result for ‘\(7873298400 \bmod 42\)’, wouldn’t it be nice to get away by computing only ‘\(75 \bmod 42\)’ and recycle your earlier result?) Why not, for example, say that \(7\bmod 3=1\) and \(10 \bmod 3= 1\), so \(17\bmod 3\) must be their sum 2, which indeed is \(17\bmod 3\). Can I generalize this? Can I say that given two positive integers \(a\) and \(b\), \((a + b) \bmod 3 = a \bmod 3 + b \bmod 3\)? This doesn’t work, because if both \(a \bmod 3\) and \(b \bmod 3\) equal 2, their sum is 4, which is not a valid value for \(\bmod 3\) – for instance \((8 + 11)\bmod 3\neq (8\bmod 3) + (11\bmod 3)\). But observe that applying \(\bmod 3\) to the result, 4 in this case, will give you the right result. In other words, our specific example obeys the following template \((a + b) \bmod 3 = ((a \bmod 3) + (b \bmod 3)) \bmod 3\)? Does this hold generally? For all \(m&gt;0\)? Yes, it does. Let us state this as a theorem<sup id="fnref:modadd" role="doc-noteref"><a href="#fn:modadd" class="footnote" rel="footnote">2</a></sup> and prove it.</p>
+
+<blockquote class="mathbox theorem" id="thm:modular-addition">
+  <p><strong>Theorem</strong> (modular addition) <br /><br />
+For any integers \(a,b\) and any positive integer \(m\), \((a + b) \bmod m = ( (a \bmod m) + (b \bmod m) ) \bmod m\).</p>
+</blockquote>
+
+<blockquote class="mathbox proof" id="proof:modular-addition">
+  <p><strong>Proof</strong> (modular addition)<br /><br />
+Let \(a,b \in \mathbb{Z}\) and \(m \in \mathbb{Z}^+\).<br />
+By the Division Algorithm \((a + b) \bmod m = r_1 = a + b - pm\), for some \(p\).<br /> 
+Likewise \(((a \bmod m) + (b \bmod m) ) \bmod m = r_2 = (a - qm) + (b - sm) - tm\), for some \(q,s,t\).<sup id="fnref:rda" role="doc-noteref"><a href="#fn:rda" class="footnote" rel="footnote">3</a></sup><br />
+We need to show that \(r_1 = r_2\).<br />
+By rearrangment, \(r_2 = a + b - m(q + s + t)\)
+Then \(r_1 - r_2 = m(p - q - s - t)\)<br />
+We know that \(r_1,r_2&lt; m\), by the definition of the remainder in the Division Algorithm.<br />
+Therefore, \(r_1-r_2\) cannot be equal to or greater than \(m\) and cannot be less than or equal to \(-m\), or  \(-m &lt; r_1 - r_2 &lt; m\).<br />
+The only way this condition holds is when \(p-g-s-t\), an integer, is equal to 0, which means \(r_1 = r_2\).<br /></p>
+</blockquote>
+
+<p>The same logic holds for multiplication as well:</p>
+
+<blockquote class="mathbox theorem" id="thm:modular-multiplication">
+  <p><strong>Theorem</strong> (modular multiplication) <br /><br />
+For any integers \(a,b\) and any positive integer \(m\), \((ab) \bmod m = ( (a \bmod m)(b \bmod m) ) \bmod m\).</p>
+</blockquote>
+
+<p>The proof, which is similar to the above, is left as an exercise.</p>
+
+<p>Where are we now on divisibility by 3? We now know that whenever we are asked about ‘\(10n\bmod 3\)’ we can answer that it is ‘\(n\bmod 3\)’, because we know that:</p>
+
+\[\begin{align*}
+10n\bmod 3 &amp;=&amp; ((10 \bmod 3)(n\bmod 3)) \bmod 3 \\
+&amp;=&amp;(n\bmod 3) \bmod 3\\
+&amp;=&amp;n\bmod 3
+\end{align*}\]
+
+<p>By the iterated application of this logic, you can have in general:</p>
+
+<blockquote class="mathbox lemma" id="lemma:powers-of-10-mod-3">
+  <p><strong>Lemma</strong> (powers of 10 mod 3) <br /><br />
+For any non-negative integer \(k\) and any integer \(n\), \(10^k n \bmod 3 = n \bmod 3\), by <a href="#thm:modular-multiplication">Theorem (modular multiplication)</a>.<br /></p>
+</blockquote>
+
+<p>We are all set in terms of building blocks. Let’s combine them all:</p>
+
+<blockquote class="mathbox lemma" id="lemma:sum-of-digits-mod-3">
+  <p><strong>Lemma</strong> (sum of digits mod 3) <br /><br />
+Given any positive integer \(n\) with the decimal representation<br />
+\(n = d_k10^k + d_{k-1}10^{k-1} + \ldots + d_110^1 + d_010^0\),<br />
+\(n \bmod 3 = (d_k10^k + d_{k-1}10^{k-1} \ldots d_110^1 + d_010^0) \bmod 3\)<br />
+which, by <a href="#thm:modular-addition">Theorem (modular addition)</a>, is,<br />
+\(((d_k10^k \bmod 3) + (d_{k-1}10^{k-1}\bmod 3) + \ldots +\) <br />
+\(\quad\quad\quad\quad(d_110^1\bmod 3) + (d_010^0 \bmod 3)) \bmod 3\)<br />
+which, by <a href="#lemma:powers-of-10-mod-3">Lemma (powers of 10 mod 3)</a>, is,<br />
+\(((d_k \bmod 3) + (d_{k-1}\bmod 3) + \ldots +\)<br />\(\quad\quad\quad\quad(d_1\bmod 3) + (d_0 \bmod 3)) \bmod 3\)<br />
+which, once again by <a href="#thm:modular-addition">Theorem (modular addition)</a>, is,<br />
+\((d_k + d_{k-1} + \ldots + d_1 + d_0) \bmod 3\), <br />
+establishing, <br /> \(n \bmod 3 =(d_k + d_{k-1} + \ldots + d_1 + d_0) \bmod 3\)<br />
+Which is to say that a positive integer \(n\) is divisible by 3 iff the sum of the digits in its decimal representation is divisible by 3.</p>
+</blockquote>
+
+<p>It’s been a long day, I know. But one final example. One that, like the above, trades on some property of number 3. Here is a claim about prime numbers that we need to check:</p>
+
+<blockquote class="mathbox claim" id="claim:3-primes">
+  <p><strong>Claim</strong> (3 consecutive primes) <br /><br />
+3, 5, and 7 are three consecutive prime numbers, in the sense that there is no odd composite number intervening. There is no other triple of consecutive prime numbers.</p>
+</blockquote>
+
+<p>There are the following strategies to approach these types of statements.</p>
+<ol>
+  <li>You find an instance that contradicts the claim. In this case a triple of consecutive primes other than 3,5,7.</li>
+  <li>You assume that there exists such a triple other than 3,5,7, and then show that this assumption leads to a contradiction.</li>
+  <li>You pick an arbitrary triple of consecutive primes, where all you are entitled to know that (i) they are primes, (ii) they are consecutive in the Claim’s sense, and (ii) the first of them is not 3. You convince the reader that the triple you picked cannot be all primes, which amounts to showing that  <em>any</em>  triple other than 3,5,7 is guaranteed NOT to be all prime, proving the claim.</li>
+</ol>
+
+<p>This particular claim gives itself to the third strategy.</p>
+
+<p>Think and try before I give you a clue.</p>
+
+<p>Clue 1: The claim states that there cannot be any integer \(p\neq 3\) such that \(p, p+2, p+4\) are all prime.</p>
+
+<p>Think and try before I give you another clue.</p>
+
+<p>Clue 2: You can show any such triple must include a number divisible by 3.</p>
+
+<p>Think and try before I give you the final clue.</p>
+
+<p>Clue 3: Concentrate on \(p \bmod 3\).</p>
+
+<p>Think and try before you look at the proof.</p>
+
+<p>Here is the proof, which concludes this post:</p>
+
+<blockquote class="mathbox proof" id="proof:3-primes">
+  <p><strong>Proof</strong> (Claim 3 consecutive primes)<br /><br />
+Let \(p, p+2, p+4\) be any three consecutive odd numbers with \(p \geq 5\).<br />
+Either \(3\mid p\) or \(3\nmid p\).<br />
+If \(3\mid p\), then \(p\) is composite, the triple cannot be all primes.<br />
+else if \(3\nmid p\) then either \(p \bmod 3=1\) or \(p\bmod 3 = 2\). <br />
+If \(p\bmod 3=1\), then \((p+2) \bmod 3 = 0\), which means \(3\mid (p+2)\), and therefore \(p+2\) is composite.<br />
+If \(p\bmod 3=2\), then \((p+4) \bmod 3 = 0\), which means \(3\mid (p+4)\), and therefore \(p+4\) is composite.<br />
+Simply there is no way that a triple other than 3,5,7 can be all primes.</p>
+</blockquote>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:divisors" role="doc-endnote">
+      <p>There is subtle difference between the sense we use “divisor” in this context and the sense we used it in the Division Algorithm. When talking about the divisors of a number \(n\) in the current context, when we say \(k\) is a divisor of \(n\),  we mean  \(k\) divides \(n\) without leaving a remainder. In the division algorithm, the divisor is a number that divides another number, but may leave a remainder. <a href="#fnref:divisors" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:modadd" role="doc-endnote">
+      <p>This actually is corollary of a more major theorem about <strong>congruences</strong>, which we leave out of scope for now. <a href="#fnref:modadd" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:rda" role="doc-endnote">
+      <p>We  used the Division Algorithm three times, once for each term connected by ‘+’, and once for the overall \(\bmod\). <a href="#fnref:rda" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>First Lastname</name></author><category term="Blog" /><category term="cogs501" /><category term="discrete" /><summary type="html"><![CDATA[This is a healthy minimum dose of number theory to make you feel comfortable with the concepts we will be using in this course.]]></summary></entry><entry><title type="html">Higher order functions</title><link href="http://localhost:4000/cogs501/blog/2025/11/21/higher-order-functions.html" rel="alternate" type="text/html" title="Higher order functions" /><published>2025-11-21T00:00:00+03:00</published><updated>2025-11-21T00:00:00+03:00</updated><id>http://localhost:4000/cogs501/blog/2025/11/21/higher-order-functions</id><content type="html" xml:base="http://localhost:4000/cogs501/blog/2025/11/21/higher-order-functions.html"><![CDATA[<p>Remember our <a href="/cogs501/blog/2025/11/13/iteration-by-while.html">earlier</a> discussion of Collatz function and sequences. Here is our task:</p>
 
 <p class="notice--info"><strong>Task:</strong> Given a positive integer \(n\), find the largest integer in the Collatz sequence seeded by \(n\).<sup id="fnref:wonder" role="doc-noteref"><a href="#fn:wonder" class="footnote" rel="footnote">1</a></sup></p>
 

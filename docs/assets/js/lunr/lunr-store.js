@@ -11,6 +11,18 @@ var store = [{
         "url": "/cogs501/blog/2025/11/21/higher-order-functions.html",
         "teaser": null
       },{
+        "title": "Euclid's Algorithm",
+        "excerpt":"Check: Make sure you are fine with very basic number theory. Definition (greatest common divisor) Given two integers \\(a\\) and \\(b\\), the greatest common divisor (GCD) of \\(a\\) and \\(b\\), denoted by \\(\\gcd(a,b)\\), is the largest integer that divides both \\(a\\) and \\(b\\). Euclid’s algorithm (300 BC) which computes the...","categories": ["Blog"],
+        "tags": ["algorithms","iteration","proof","cogs501"],
+        "url": "/cogs501/blog/2025/11/24/euclids-algorithm.html",
+        "teaser": null
+      },{
+        "title": "A tiny bite of Number Theory",
+        "excerpt":"This is a healthy minimum dose of number theory to make you feel comfortable with the concepts we will be using in this course. We do not start from the absolute beginning. We take for granted integers and arithmetic operations. We start by some terminology. The set of integers, denoted...","categories": ["Blog"],
+        "tags": ["cogs501","discrete"],
+        "url": "/cogs501/blog/2025/11/24/intro-number-theory.html",
+        "teaser": null
+      },{
     "title": "Page Not Found",
     "excerpt":"Sorry, but the page you were trying to view does not exist.  ","url": "http://localhost:4000/cogs501/404.html"
   },{
@@ -24,10 +36,10 @@ var store = [{
     "excerpt":"Define a function apply_twice that takes a function f and a value x, and returns the result of applying f to x two times. def sqr(x): return x * x def apply_twice(f, x): \"\"\"apply f to x twice. &gt;&gt;&gt; apply_twice(sqr, 3) 81 \"\"\" Define a function applier that applies a...","url": "http://localhost:4000/cogs501/exercises/higher-order-functions/"
   },{
     "title": "Programming exercises on iteration",
-    "excerpt":"Permalink: /exercises/iteration/ The factorial function is defined over the non-negative integers as:1 \\[n! = \\begin{cases} 1, &amp; \\text{if } n = 0;\\\\ n \\times (n - 1)!, &amp; \\text{if } n &gt; 0. \\end{cases}\\] Define a function that computes the factorial of a given non-negative integer \\(n\\) using iteration by...","url": "http://localhost:4000/cogs501/exercises/iteration/"
+    "excerpt":"The factorial function is defined over the non-negative integers as:1 \\[n! = \\begin{cases} 1, &amp; \\text{if } n = 0;\\\\ n \\times (n - 1)!, &amp; \\text{if } n &gt; 0. \\end{cases}\\] Define a function that computes the factorial of a given non-negative integer \\(n\\) using iteration by while. def...","url": "http://localhost:4000/cogs501/exercises/iteration/"
   },{
     "title": "Exercises on Number Theory",
-    "excerpt":"List all the divisors, proper divisors, and prime divisors of 28. Provide a definition of a composite number using the concept of proper divisors. Here is a definition: Definition 1 (trivial divisors) Given an integer \\(n\\), we say that 1,-1,\\(n\\), and \\(-n\\) are the trivial divisors of \\(n\\). Define prime...","url": "http://localhost:4000/cogs501/exercises/numbers/"
+    "excerpt":"Prove the following: Theorem (Some properties of divisibility) Let \\(a,b,c \\in \\mathbb{Z}\\) and \\(a \\neq 0\\). Then: i. if \\(a \\mid b\\) and \\(a \\mid c\\), then \\(a \\mid (b+c)\\); ii. if \\(a \\mid b\\), then \\(a \\mid kb\\) for any integer \\(k\\); iii. if \\(a \\mid b\\) and \\(b...","url": "http://localhost:4000/cogs501/exercises/numbers/"
   },{
     "title": "COGS 501 Quiz",
     "excerpt":"[2pts*] Translate the following into first order logic: i. Every student in this class has submitted at least one assignment. - S(x): “x is a student in this class” - A(x, y): “x has submitted assignment y” \\[\\forall x (S(x) \\to \\exists y A(x,y))\\] ii. There is a professor who...","url": "http://localhost:4000/cogs501/q06s/"

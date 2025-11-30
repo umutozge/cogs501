@@ -151,7 +151,25 @@
           COGS 501
           <span class="site-subtitle">Algorithmic Structures in Cognition</span>
         </a>
-        <ul class="visible-links"></ul>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/cogs501/posts/"
+                
+                
+              >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cogs501/categories/"
+                
+                
+              >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cogs501/tags/"
+                
+                
+              >Tags</a>
+            </li></ul>
         
         <button class="search__toggle" type="button">
           <span class="visually-hidden">Toggle search</span>
@@ -418,32 +436,12 @@ The set of integers \(\mathbb{Z}\) is closed under addition, multiplication and 
 For any integer \(n\), \(n\) is odd iff there exists an integer \(k\) such that \(n = 2k + 1\).</p>
 </blockquote>
 
-<p>When we are given an odd number \(n\), what do we know about it? All we know is that \(2\nmid n\). How do we leap from this knowledge to the conclusion that \(n = 2k + 1\) for some integer \(k\)? The statement we want to prove says that any odd number must be of the form \(2k + 1\) for some integer \(k\). Does the \(2k\) bit look familiar from somewhere? Yes, \(2k\) is an even number. At first sight, we are inclined to read the theorem as “Given any odd number there is some \(k\) such that…”. But you can read it as “Given any odd number \(n\), there is some even number (namely, \(2k\)) such that \(n\) is one plus that even number”. If we can prove this statement that would complete the proof. Think a little on how to proceed.</p>
-
-<p>If we can show that any even number plus 1 results in an odd number, then we are done. Why? Because given any odd number \(n\), we can let \(m = n - 1\). Since \(n\) is odd, \(m\) must be even (because if \(m\) were odd, then adding 1 to it would yield an even number, contradicting the fact that \(n\) is odd). Here is our auxiliary proof for this theorem:</p>
-
-<blockquote class="mathbox theorem" id="thm:even-plus-one">
-  <p><strong>Theorem 4</strong>  (even plus one)<br /><br />
-Given any even number \(m\), \(m + 1\) is odd.</p>
-</blockquote>
-
-<blockquote class="mathbox proof" id="proof:even-plus-one">
-  <p><strong>Proof</strong> (even plus one)<br /><br />
-Let \(m\) be even. Then \(2\mid m\), which means there exists an integer \(t\) such that \(m = 2t\).<br />
-Then, \(m + 1 = 2t + 1\).<br />
-\(2\nmid 2t +1\), because if it did, then there would exist an integer \(s\) such that \(2t +1 = 2s\).<br />
-No such \(s\) can exist, because that would imply \(s = t + \frac{1}{2}\) to be an integer, which it is not.<br />
-Therefore, given any even number \(m\), \(m + 1\) is odd.</p>
-</blockquote>
-
-<p>Now we can prove Theorem 3:</p>
-
 <blockquote class="mathbox proof" id="proof:odd-square">
   <p><strong>Proof:</strong> (Theorem 3)<br /><br />
 Let \(n\) be odd.<br />
-Then \(n-1\) is even by Theorem 4.<br />
-Which implies that \(n -1 = 2k\) for some integer \(k\).<br />
-If so, then \(n = 2k + 1\) for some integer \(k\).<br /></p>
+By the division algorithm, there exist integers \(q\) and \(r\) such that \(n = 2q + r\) and \(0 \leq r &lt; 2\).<br />
+\(r\) can either be 0 or 1. If \(r\) is 0, then \(n = 2q\), which means \(2 \mid n\), contradicting the assumption that \(n\) is odd.<br />
+Therefore, \(r=1\), and \(n = 2q + 1\).<br /></p>
 </blockquote>
 
 <p>With Theorem 3 proved, we can now complete the proof of Theorem 1:</p>
@@ -613,7 +611,11 @@ Simply there is no way that a triple other than 3,5,7 can be all primes.</p>
     
       <a href="/cogs501/tags/#cogs501" class="page__taxonomy-item p-category" rel="tag">cogs501</a><span class="sep">, </span>
     
-      <a href="/cogs501/tags/#discrete" class="page__taxonomy-item p-category" rel="tag">discrete</a>
+      <a href="/cogs501/tags/#discrete" class="page__taxonomy-item p-category" rel="tag">discrete</a><span class="sep">, </span>
+    
+      <a href="/cogs501/tags/#number-theory" class="page__taxonomy-item p-category" rel="tag">number theory</a><span class="sep">, </span>
+    
+      <a href="/cogs501/tags/#proof" class="page__taxonomy-item p-category" rel="tag">proof</a>
     
     </span>
   </p>

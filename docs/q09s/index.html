@@ -10,7 +10,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Posts by Year - COGS 501</title>
+<!-- begin _includes/seo.html --><title>COGS 501 Quiz</title>
 <meta name="description" content="Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.">
 
 
@@ -21,8 +21,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="COGS 501">
-<meta property="og:title" content="Posts by Year">
-<meta property="og:url" content="http://localhost:4000/cogs501/posts/">
+<meta property="og:title" content="COGS 501 Quiz">
+<meta property="og:url" content="http://localhost:4000/cogs501/q09s/">
 
 
   <meta property="og:description" content="Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.">
@@ -38,7 +38,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/cogs501/posts/">
+<link rel="canonical" href="http://localhost:4000/cogs501/q09s/">
 
 
 
@@ -127,7 +127,7 @@
 
   </head>
 
-  <body class="layout--posts" dir="ltr">
+  <body class="layout--single" dir="ltr">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -185,6 +185,8 @@
 
     <div class="initial-content">
       
+
+
 
 
 
@@ -252,7 +254,7 @@
           
           <ul>
             
-              <li><a href="/cogs501/posts/" class="active">by Year</a></li>
+              <li><a href="/cogs501/posts/">by Year</a></li>
             
               <li><a href="/cogs501/categories/">by Category</a></li>
             
@@ -272,189 +274,101 @@
 
 
 
-  <div class="archive">
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="COGS 501 Quiz">
     
-      <h1 id="page-title" class="page__title">Posts by Year</h1>
     
     
 
-
-<ul class="taxonomy__index">
-  
-  
-    <li>
-      <a href="#2025">
-        <strong>2025</strong> <span class="taxonomy__count">4</span>
-      </a>
-    </li>
-  
-</ul>
-
-
-
-
-  <section id="2025" class="taxonomy__section">
-    <h2 class="archive__subtitle">2025</h2>
-    <div class="entries-list">
+    <div class="page__inner-wrap">
       
-        
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/cogs501/blog/2025/11/24/intro-number-theory.html" rel="permalink">A tiny bite of Number Theory
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="http://localhost:4000/cogs501/q09s/" itemprop="url">COGS 501 Quiz
 </a>
-      
-    </h2>
-    
+          </h1>
+          
+          
 
-  <p class="page__meta">
-    
+
+        </header>
       
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+
+      <section class="page__content" itemprop="text">
         
-        <time datetime="2025-11-24T00:00:00+03:00">2025-11-24</time>
-      </span>
-    
+        <ol>
+  <li>
+    <p>Define a function that takes a positive integer and returns the sum of its digits. Two mathematical operations that might be useful here are modulo and division. You get <strong>2pts</strong> bonus credit if you solve the problem using <code class="language-plaintext highlighter-rouge">proc_seq</code>.</p>
 
-    
+    <p>Save the definition of <code class="language-plaintext highlighter-rouge">proc_seq</code> from <a href="/cogs501/blog/2025/11/21/higher-order-functions.html">here</a> in a file named <code class="language-plaintext highlighter-rouge">repo.py</code> in the same directory as the code you write for solving the problem. Now, you can have <code class="language-plaintext highlighter-rouge">proc_seq</code> available for use by importing it from <code class="language-plaintext highlighter-rouge">repo</code>, by <code class="language-plaintext highlighter-rouge">from repo import proc_seq</code>. Here is the solution with <code class="language-plaintext highlighter-rouge">proc_seq</code>:</p>
 
-    
-  </p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">from</span> <span class="nn">repo</span> <span class="kn">import</span> <span class="n">proc_seq</span>
 
+ <span class="k">def</span> <span class="nf">sum_digits</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+     <span class="s">"""Return the sum of the digits of n in decimal representation.
 
-    <p class="archive__item-excerpt" itemprop="description">This is a healthy minimum dose of number theory to make you feel comfortable with the concepts we will be using in this course.
+     &gt;&gt;&gt; sum_digits(0)
+     0
+     &gt;&gt;&gt; sum_digits(123)
+     6
+     &gt;&gt;&gt; sum_digits(4096)
+     19
+     """</span>
+     <span class="k">def</span> <span class="nf">sequencer</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">10</span>
+     <span class="k">def</span> <span class="nf">alive</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span>
+     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="n">state</span> <span class="o">+</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span>
+     <span class="k">return</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sequencer</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>[<strong>3pts</strong>]  You are asked to define a function to compute the sum of all the even numbers in the Collatz sequence seeded by $n$. You are asked to use <code class="language-plaintext highlighter-rouge">proc_seq</code>. Assume you have the <code class="language-plaintext highlighter-rouge">collatz</code> function defined. Write the update function you would pass to <code class="language-plaintext highlighter-rouge">proc_seq</code> as parameter.</p>
 
-</p>
-  </article>
-</div>
+    <p>Add the collatz function to your <code class="language-plaintext highlighter-rouge">repo.py</code>.</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">from</span> <span class="nn">repo</span> <span class="kn">import</span> <span class="n">proc_seq</span><span class="p">,</span> <span class="n">collatz</span>
 
-      
+ <span class="k">def</span> <span class="nf">sum_even_collatz</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+     <span class="s">"""Return the sum of the even numbers in the Collatz sequence seeded by n.
+
+     &gt;&gt;&gt; sum_even_collatz(8)
+     14
+     &gt;&gt;&gt; sum_even_collatz(3)
+     40
+     """</span>
+     <span class="k">def</span> <span class="nf">sequencer</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="n">collatz</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+     <span class="k">def</span> <span class="nf">alive</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span>
+     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+         <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+             <span class="k">return</span> <span class="n">state</span> <span class="o">+</span> <span class="n">n</span>
+         <span class="k">else</span><span class="p">:</span>
+             <span class="k">return</span> <span class="n">state</span>
+     <span class="k">return</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sequencer</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
         
+      </section>
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/cogs501/blog/2025/11/24/euclids-algorithm.html" rel="permalink">Euclid’s Algorithm
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+      <footer class="page__meta">
         
-        <time datetime="2025-11-24T00:00:00+03:00">2025-11-24</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Check: Make sure you are fine with very basic number theory.
-
-</p>
-  </article>
-</div>
-
-      
-        
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/cogs501/blog/2025/11/21/higher-order-functions.html" rel="permalink">Higher order functions
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2025-11-21T00:00:00+03:00">2025-11-21</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Remember our earlier discussion of Collatz function and sequences. Here is our task:
-
-</p>
-  </article>
-</div>
-
-      
         
 
 
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/cogs501/blog/2025/11/13/iteration-by-while.html" rel="permalink">Iteration by <code class="language-plaintext highlighter-rouge">while</code>
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2025-11-13T00:00:00+03:00">2025-11-13</time>
-      </span>
-    
 
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Let’s start with a simple function defined over integers called the Collatz function \(C\).
-
-</p>
-  </article>
-</div>
+      </footer>
 
       
+
+      
+
     </div>
-    <a href="#page-title" class="back-to-top">Back to Top &uarr;</a>
-  </section>
 
+    
+  </article>
 
-  </div>
+  
+  
 </div>
 
       

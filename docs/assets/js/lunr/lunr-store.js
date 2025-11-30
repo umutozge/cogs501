@@ -13,13 +13,13 @@ var store = [{
       },{
         "title": "Euclid's Algorithm",
         "excerpt":"Check: Make sure you are fine with very basic number theory. Definition (greatest common divisor) Given two integers \\(a\\) and \\(b\\), the greatest common divisor (GCD) of \\(a\\) and \\(b\\), denoted by \\(\\gcd(a,b)\\), is the largest integer that divides both \\(a\\) and \\(b\\). Euclid’s algorithm (300 BC) which computes the...","categories": ["Blog"],
-        "tags": ["algorithms","iteration","proof","cogs501"],
+        "tags": ["algorithms","iteration","proof","discrete","cogs501","number theory"],
         "url": "/cogs501/blog/2025/11/24/euclids-algorithm.html",
         "teaser": null
       },{
         "title": "A tiny bite of Number Theory",
         "excerpt":"This is a healthy minimum dose of number theory to make you feel comfortable with the concepts we will be using in this course. We do not start from the absolute beginning. We take for granted integers and arithmetic operations. We start by some terminology. The set of integers, denoted...","categories": ["Blog"],
-        "tags": ["cogs501","discrete"],
+        "tags": ["cogs501","discrete","proof","number theory"],
         "url": "/cogs501/blog/2025/11/24/intro-number-theory.html",
         "teaser": null
       },{
@@ -39,10 +39,13 @@ var store = [{
     "excerpt":"The factorial function is defined over the non-negative integers as:1 \\[n! = \\begin{cases} 1, &amp; \\text{if } n = 0;\\\\ n \\times (n - 1)!, &amp; \\text{if } n &gt; 0. \\end{cases}\\] Define a function that computes the factorial of a given non-negative integer \\(n\\) using iteration by while. def...","url": "http://localhost:4000/cogs501/exercises/iteration/"
   },{
     "title": "Exercises on Number Theory",
-    "excerpt":"Prove the following: Theorem (Some properties of divisibility) Let \\(a,b,c \\in \\mathbb{Z}\\) and \\(a \\neq 0\\). Then: i. if \\(a \\mid b\\) and \\(a \\mid c\\), then \\(a \\mid (b+c)\\); ii. if \\(a \\mid b\\), then \\(a \\mid kb\\) for any integer \\(k\\); iii. if \\(a \\mid b\\) and \\(b...","url": "http://localhost:4000/cogs501/exercises/numbers/"
+    "excerpt":"permalink: http://localhost:4000 Prove the following: Theorem (Some properties of divisibility) Let \\(a,b,c \\in \\mathbb{Z}\\) and \\(a \\neq 0\\). Then: i. if \\(a \\mid b\\) and \\(a \\mid c\\), then \\(a \\mid (b+c)\\); ii. if \\(a \\mid b\\), then \\(a \\mid kb\\) for any integer \\(k\\); iii. if \\(a \\mid b\\)...","url": "http://localhost:4000/cogs501/exercises/numbers/"
   },{
     "title": "COGS 501 Quiz",
     "excerpt":"[2pts*] Translate the following into first order logic: i. Every student in this class has submitted at least one assignment. - S(x): “x is a student in this class” - A(x, y): “x has submitted assignment y” \\[\\forall x (S(x) \\to \\exists y A(x,y))\\] ii. There is a professor who...","url": "http://localhost:4000/cogs501/q06s/"
+  },{
+    "title": "COGS 501 Quiz",
+    "excerpt":"Define a function that takes a positive integer and returns the sum of its digits. Two mathematical operations that might be useful here are modulo and division. You get 2pts bonus credit if you solve the problem using proc_seq. Save the definition of proc_seq from here in a file named...","url": "http://localhost:4000/cogs501/q09s/"
   },{
     "title": "Schedule",
     "excerpt":"Week Reading Exercises Posts Quiz :calendar:2/10         :calendar:9/10         :calendar:23/10         :calendar:30/10         :calendar:6/11       quiz :calendar:13/11 CP 1.5, Epp 3, sections on Prolog can be omitted. 1-5 of Iteration Iteration by while no need for...","url": "http://localhost:4000/cogs501/schedule/"

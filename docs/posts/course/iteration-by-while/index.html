@@ -24,7 +24,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="COGS 501">
 <meta property="og:title" content="Iteration by while">
-<meta property="og:url" content="http://localhost:4000/cogs501/blog/2025/11/13/iteration-by-while.html">
+<meta property="og:url" content="http://localhost:4000/cogs501/posts/course/iteration-by-while/">
 
 
   <meta property="og:description" content="Let’s start with a simple function defined over integers called the Collatz function \(C\).">
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/cogs501/blog/2025/11/13/iteration-by-while.html">
+<link rel="canonical" href="http://localhost:4000/cogs501/posts/course/iteration-by-while/">
 
 
 
@@ -120,6 +120,36 @@
   color: #888;
   margin-left: 0.5em;
 }
+
+.code-meta {
+  margin-top: 0.15rem;      // less gap under the title/link
+  margin-bottom: 0.15rem;   // less gap above the excerpt
+  font-style: bold;
+  font-size: 0.5em;         // smaller than the default body text
+  line-height: 1.2;
+  color: #111;
+}
+
+.browser-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.browser-filters label {
+  font-size: 0.8rem;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.browser-filters select {
+  font-size: 0.8rem;
+  padding: 0.15rem 0.4rem;
+}
+
+
 </style>
 
 
@@ -216,7 +246,7 @@
       
         <li>
           
-            <span class="nav__sub-title">Logistics</span>
+            <span class="nav__sub-title">COGS 501</span>
           
 
           
@@ -226,25 +256,9 @@
             
               <li><a href="/cogs501/schedule/">Schedule</a></li>
             
-              <li><a href="https://odtuclass2025f.metu.edu.tr/course/view.php?id=4450">Odtuclass</a></li>
+              <li><a href="/cogs501/exercise/browser/">Exercises</a></li>
             
-          </ul>
-          
-        </li>
-      
-        <li>
-          
-            <span class="nav__sub-title">Exercises</span>
-          
-
-          
-          <ul>
-            
-              <li><a href="/cogs501/exercises/iteration/">Iteration</a></li>
-            
-              <li><a href="/cogs501/exercises/higher-order-functions/">Higher order functions</a></li>
-            
-              <li><a href="/cogs501/exercises/numbers/">Number Theory</a></li>
+              <li><a href="/cogs501/code/browser/">Code</a></li>
             
           </ul>
           
@@ -288,7 +302,7 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="http://localhost:4000/cogs501/blog/2025/11/13/iteration-by-while.html" itemprop="url">Iteration by <code class="language-plaintext highlighter-rouge">while</code>
+            <a href="http://localhost:4000/cogs501/posts/course/iteration-by-while/" itemprop="url">Iteration by <code class="language-plaintext highlighter-rouge">while</code>
 </a>
           </h1>
           
@@ -523,7 +537,7 @@ The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the s
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/cogs501/categories/#blog" class="page__taxonomy-item p-category" rel="tag">Blog</a>
+      <a href="/cogs501/categories/#course" class="page__taxonomy-item p-category" rel="tag">course</a>
     
     </span>
   </p>
@@ -543,7 +557,7 @@ The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the s
       <a href="#" class="pagination--pager disabled">Previous</a>
     
     
-      <a href="/cogs501/blog/2025/11/21/higher-order-functions.html" class="pagination--pager" title="Higher order functions">Next</a>
+      <a href="/cogs501/posts/course/higher-order-functions/" class="pagination--pager" title="Higher order functions">Next</a>
     
   </nav>
 
@@ -566,12 +580,15 @@ The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the s
 
 
 
-<div class="grid__item">
+<div class="grid__item"
+     
+     
+    >
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/cogs501/blog/2025/11/24/intro-number-theory.html" rel="permalink">A tiny bite of Number Theory
+        <a href="/cogs501/posts/course/intro-number-theory/" rel="permalink">A tiny bite of Number Theory
 </a>
       
     </h2>
@@ -592,6 +609,8 @@ The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the s
     
   </p>
 
+
+    
 
     <p class="archive__item-excerpt" itemprop="description">This is a healthy minimum dose of number theory to make you feel comfortable with the concepts we will be using in this course.
 
@@ -605,12 +624,15 @@ The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the s
 
 
 
-<div class="grid__item">
+<div class="grid__item"
+     
+     
+    >
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/cogs501/blog/2025/11/24/euclids-algorithm.html" rel="permalink">Euclid’s Algorithm
+        <a href="/cogs501/posts/course/euclids-algorithm/" rel="permalink">Euclid’s Algorithm
 </a>
       
     </h2>
@@ -632,6 +654,8 @@ The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the s
   </p>
 
 
+    
+
     <p class="archive__item-excerpt" itemprop="description">Check: Make sure you are fine with very basic number theory.
 
 </p>
@@ -644,12 +668,15 @@ The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the s
 
 
 
-<div class="grid__item">
+<div class="grid__item"
+     
+     
+    >
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/cogs501/blog/2025/11/21/higher-order-functions.html" rel="permalink">Higher order functions
+        <a href="/cogs501/posts/course/higher-order-functions/" rel="permalink">Higher order functions
 </a>
       
     </h2>
@@ -670,6 +697,8 @@ The <strong>Collatz sequence</strong> of a given positive integer \(n\) is the s
     
   </p>
 
+
+    
 
     <p class="archive__item-excerpt" itemprop="description">Remember our earlier discussion of Collatz function and sequences. Here is our task:
 

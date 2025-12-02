@@ -10,28 +10,32 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Programming exercises on iteration - COGS 501</title>
-<meta name="description" content="Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.">
+<!-- begin _includes/seo.html --><title>Iteration - COGS 501</title>
+<meta name="description" content="A set of programming exercises to practice iteration using while loops.">
 
 
   <meta name="author" content="First Lastname">
   
+  <meta property="article:author" content="First Lastname">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="COGS 501">
-<meta property="og:title" content="Programming exercises on iteration">
+<meta property="og:title" content="Iteration">
 <meta property="og:url" content="http://localhost:4000/cogs501/exercises/iteration/">
 
 
-  <meta property="og:description" content="Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.">
+  <meta property="og:description" content="A set of programming exercises to practice iteration using while loops.">
 
 
 
 
 
 
+
+  <meta property="article:published_time" content="2025-12-02T17:39:01+03:00">
 
 
 
@@ -116,6 +120,36 @@
   color: #888;
   margin-left: 0.5em;
 }
+
+.code-meta {
+  margin-top: 0.15rem;      // less gap under the title/link
+  margin-bottom: 0.15rem;   // less gap above the excerpt
+  font-style: bold;
+  font-size: 0.5em;         // smaller than the default body text
+  line-height: 1.2;
+  color: #111;
+}
+
+.browser-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.browser-filters label {
+  font-size: 0.8rem;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.browser-filters select {
+  font-size: 0.8rem;
+  padding: 0.15rem 0.4rem;
+}
+
+
 </style>
 
 
@@ -127,7 +161,7 @@
 
   </head>
 
-  <body class="layout--single" dir="ltr">
+  <body class="layout--archive wide" dir="ltr">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -188,8 +222,6 @@
 
 
 
-
-
 <div id="main" role="main">
   
   <div class="sidebar sticky">
@@ -212,7 +244,7 @@
       
         <li>
           
-            <span class="nav__sub-title">Logistics</span>
+            <span class="nav__sub-title">COGS 501</span>
           
 
           
@@ -222,25 +254,9 @@
             
               <li><a href="/cogs501/schedule/">Schedule</a></li>
             
-              <li><a href="https://odtuclass2025f.metu.edu.tr/course/view.php?id=4450">Odtuclass</a></li>
+              <li><a href="/cogs501/exercise/browser/">Exercises</a></li>
             
-          </ul>
-          
-        </li>
-      
-        <li>
-          
-            <span class="nav__sub-title">Exercises</span>
-          
-
-          
-          <ul>
-            
-              <li><a href="/cogs501/exercises/iteration/" class="active">Iteration</a></li>
-            
-              <li><a href="/cogs501/exercises/higher-order-functions/">Higher order functions</a></li>
-            
-              <li><a href="/cogs501/exercises/numbers/">Number Theory</a></li>
+              <li><a href="/cogs501/code/browser/">Code</a></li>
             
           </ul>
           
@@ -274,29 +290,11 @@
 
 
 
-  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Programming exercises on iteration">
+  <div class="archive">
     
+      <h1 id="page-title" class="page__title">Iteration</h1>
     
-    
-
-    <div class="page__inner-wrap">
-      
-        <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="http://localhost:4000/cogs501/exercises/iteration/" itemprop="url">Programming exercises on iteration
-</a>
-          </h1>
-          
-          
-
-
-        </header>
-      
-
-      <section class="page__content" itemprop="text">
-        
-        <ol>
+    <ol>
   <li>
     <p>The factorial function is defined over the non-negative integers as:<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup></p>
 
@@ -411,7 +409,7 @@
      return curr
  ``` -->
   </li>
-  <li>You have a message source that emits random integers in the range 1–100 (check <a href="/cogs501/blog/2025/11/13/iteration-by-while.html">this</a> for how to implement such a source). Define a function that listens to this source and returns the first three consecutive integers \(m\), \(n\) and \(p\) such that \(m\leq n \leq p\). You can assume that such a triplet will eventually be emitted by the source. When returning the result you can put comma between the variables (e.g. <code class="language-plaintext highlighter-rouge">return m, n, p</code>).
+  <li>You have a message source that emits random integers in the range 1–100 (check <a href="/cogs501/blog/iteration-by-while/">this</a> for how to implement such a source). Define a function that listens to this source and returns the first three consecutive integers \(m\), \(n\) and \(p\) such that \(m\leq n \leq p\). You can assume that such a triplet will eventually be emitted by the source. When returning the result you can put comma between the variables (e.g. <code class="language-plaintext highlighter-rouge">return m, n, p</code>).
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">first_non_decreasing_triplet</span><span class="p">():</span>
      <span class="s">"""Return the first non-decreasing triplet of random integers between 1 and 100.
 
@@ -471,8 +469,8 @@
      return total
  ``` -->
   </li>
-  <li>Write a Python function <code class="language-plaintext highlighter-rouge">gcd</code> that implements <a href="/cogs501/blog/2025/11/24/euclids-algorithm.html">Euclid’s algorithm</a>. The function should return the greatest common divisor of the two input integers \(a\) and \(b\).</li>
-  <li>An aliquot sequence is a sequence seeded by a positive integer and each number in the sequence, except the seed, is equal to the sum of the <a href="/cogs501/blog/2025/11/24/intro-number-theory.html">proper divisors</a> of the number immediately preceding it. Write a function that maps a given positive integer into the next item in its aliquot sequence.</li>
+  <li>Write a Python function <code class="language-plaintext highlighter-rouge">gcd</code> that implements <a href="/cogs501/blog/euclids-algorithm/">Euclid’s algorithm</a>. The function should return the greatest common divisor of the two input integers \(a\) and \(b\).</li>
+  <li>An aliquot sequence is a sequence seeded by a positive integer and each number in the sequence, except the seed, is equal to the sum of the <a href="/cogs501/blog/intro-number-theory">proper divisors</a> of the number immediately preceding it. Write a function that maps a given positive integer into the next item in its aliquot sequence.</li>
 </ol>
 
 <div class="footnotes" role="doc-endnotes">
@@ -483,29 +481,7 @@
   </ol>
 </div>
 
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-
-
-        
-
-      </footer>
-
-      
-
-      
-
-    </div>
-
-    
-  </article>
-
-  
-  
+  </div>
 </div>
 
       

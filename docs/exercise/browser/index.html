@@ -10,8 +10,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Page Not Found - COGS 501</title>
-<meta name="description" content="Page not found. Your pixels are in another canvas.">
+<!-- begin _includes/seo.html --><title>Exercises - COGS 501</title>
+<meta name="description" content="Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.">
 
 
   <meta name="author" content="First Lastname">
@@ -21,14 +21,11 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="COGS 501">
-<meta property="og:title" content="Page Not Found">
-<meta property="og:url" content="http://localhost:4000/cogs501/404.html">
+<meta property="og:title" content="Exercises">
+<meta property="og:url" content="http://localhost:4000/cogs501/exercise/browser/">
 
 
-  <meta property="og:description" content="Page not found. Your pixels are in another canvas.">
-
-
-
+  <meta property="og:description" content="Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.">
 
 
 
@@ -38,7 +35,10 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/cogs501/404.html">
+
+
+
+<link rel="canonical" href="http://localhost:4000/cogs501/exercise/browser/">
 
 
 
@@ -157,7 +157,7 @@
 
   </head>
 
-  <body class="layout--single" dir="ltr">
+  <body class="layout--archive wide" dir="ltr">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -218,8 +218,6 @@
 
 
 
-
-
 <div id="main" role="main">
   
   <div class="sidebar sticky">
@@ -252,7 +250,7 @@
             
               <li><a href="/cogs501/schedule/">Schedule</a></li>
             
-              <li><a href="/cogs501/exercise/browser/">Exercises</a></li>
+              <li><a href="/cogs501/exercise/browser/" class="active">Exercises</a></li>
             
               <li><a href="/cogs501/code/browser/">Code</a></li>
             
@@ -288,53 +286,139 @@
 
 
 
-  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Page Not Found">
-    <meta itemprop="description" content="Page not found. Your pixels are in another canvas.">
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">Exercises</h1>
+    
+    <form id="exercise-filters" class="browser-filters">
+  <label><input type="checkbox" name="tag" value="python" /> python</label>
+  <label><input type="checkbox" name="tag" value="iteration" /> iteration</label>
+  <label><input type="checkbox" name="tag" value="func-prog" /> func-prog</label>
+  <label><input type="checkbox" name="tag" value="while" /> while</label>
+  <label><input type="checkbox" name="tag" value="math" /> math</label>
+  <label><input type="checkbox" name="tag" value="discrete" /> discrete</label>
+  <label><input type="checkbox" name="tag" value="proof" /> proof</label>
+</form>
+
+<div id="exercise-grid" class="archive__items grid__wrapper">
+  
     
     
 
-    <div class="page__inner-wrap">
+
+
+<div class="grid__item exercise-card" data-tags="func-prog,python">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="http://localhost:4000/cogs501/404.html" itemprop="url">Page Not Found
+        <a href="/cogs501/exercises/higher-order-functions/" rel="permalink">Higher-order functions
 </a>
-          </h1>
-          
-          
-
-
-        </header>
       
+    </h2>
+    
 
-      <section class="page__content" itemprop="text">
-        
-        <p>Sorry, but the page you were trying to view does not exist.</p>
-
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-
-
-        
-
-      </footer>
-
-      
-
-      
-
-    </div>
 
     
+
+    <p class="archive__item-excerpt" itemprop="description">A set of programming exercises to practice higher-order functions.
+</p>
   </article>
+</div>
 
   
+    
+    
+
+
+
+<div class="grid__item exercise-card" data-tags="python,iteration,while,programming">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cogs501/exercises/iteration/" rel="permalink">Iteration
+</a>
+      
+    </h2>
+    
+
+
+    
+
+    <p class="archive__item-excerpt" itemprop="description">A set of programming exercises to practice iteration using while loops.
+</p>
+  </article>
+</div>
+
   
+    
+    
+
+
+
+<div class="grid__item exercise-card" data-tags="math,discrete,proof,number thoery">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cogs501/exercises/numbers/" rel="permalink">Basic number theory
+</a>
+      
+    </h2>
+    
+
+
+    
+
+    <p class="archive__item-excerpt" itemprop="description">Mainly proof questions based on basic number theory.
+</p>
+  </article>
+</div>
+
+  
+</div>
+
+<script>
+  (function() {
+    var form = document.getElementById('exercise-filters');
+    var cards = Array.prototype.slice.call(
+      document.querySelectorAll('.exercise-card')
+    );
+
+    function getSelectedTags() {
+      var checked = form.querySelectorAll('input[name="tag"]:checked');
+      return Array.prototype.map.call(checked, function(input) {
+        return input.value.toLowerCase();
+      });
+    }
+
+    function applyExerciseFilters() {
+      var selected = getSelectedTags();
+      console.log('selected tags:', selected);
+
+      cards.forEach(function(card) {
+        var tagsAttr = (card.getAttribute('data-tags') || '').toLowerCase();
+        var tags = tagsAttr.split(',').map(function(t) { return t.trim(); }).filter(Boolean);
+        console.log('card tags:', tagsAttr, tags);
+
+        // if no tags selected, show everything
+        var match = selected.length === 0 || selected.every(function(t) {
+          return tags.indexOf(t) !== -1;
+        });
+
+        console.log('match?', match, card);
+        card.style.display = match ? '' : 'none';
+      });
+    }
+
+    form.addEventListener('change', applyExerciseFilters);
+    applyExerciseFilters();
+  })();
+</script>
+
+
+  </div>
 </div>
 
       

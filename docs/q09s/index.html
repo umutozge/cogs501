@@ -116,6 +116,36 @@
   color: #888;
   margin-left: 0.5em;
 }
+
+.code-meta {
+  margin-top: 0.15rem;      // less gap under the title/link
+  margin-bottom: 0.15rem;   // less gap above the excerpt
+  font-style: bold;
+  font-size: 0.5em;         // smaller than the default body text
+  line-height: 1.2;
+  color: #111;
+}
+
+.browser-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.browser-filters label {
+  font-size: 0.8rem;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.browser-filters select {
+  font-size: 0.8rem;
+  padding: 0.15rem 0.4rem;
+}
+
+
 </style>
 
 
@@ -212,7 +242,7 @@
       
         <li>
           
-            <span class="nav__sub-title">Logistics</span>
+            <span class="nav__sub-title">COGS 501</span>
           
 
           
@@ -222,25 +252,9 @@
             
               <li><a href="/cogs501/schedule/">Schedule</a></li>
             
-              <li><a href="https://odtuclass2025f.metu.edu.tr/course/view.php?id=4450">Odtuclass</a></li>
+              <li><a href="/cogs501/exercise/browser/">Exercises</a></li>
             
-          </ul>
-          
-        </li>
-      
-        <li>
-          
-            <span class="nav__sub-title">Exercises</span>
-          
-
-          
-          <ul>
-            
-              <li><a href="/cogs501/exercises/iteration/">Iteration</a></li>
-            
-              <li><a href="/cogs501/exercises/higher-order-functions/">Higher order functions</a></li>
-            
-              <li><a href="/cogs501/exercises/numbers/">Number Theory</a></li>
+              <li><a href="/cogs501/code/browser/">Code</a></li>
             
           </ul>
           
@@ -300,7 +314,7 @@
   <li>
     <p>Define a function that takes a positive integer and returns the sum of its digits. Two mathematical operations that might be useful here are modulo and division. You get <strong>2pts</strong> bonus credit if you solve the problem using <code class="language-plaintext highlighter-rouge">proc_seq</code>.</p>
 
-    <p>Save the definition of <code class="language-plaintext highlighter-rouge">proc_seq</code> from <a href="/cogs501/blog/2025/11/21/higher-order-functions.html">here</a> in a file named <code class="language-plaintext highlighter-rouge">repo.py</code> in the same directory as the code you write for solving the problem. Now, you can have <code class="language-plaintext highlighter-rouge">proc_seq</code> available for use by importing it from <code class="language-plaintext highlighter-rouge">repo</code>, by <code class="language-plaintext highlighter-rouge">from repo import proc_seq</code>. Here is the solution with <code class="language-plaintext highlighter-rouge">proc_seq</code>:</p>
+    <p>Save the definition of <code class="language-plaintext highlighter-rouge">proc_seq</code> from <a href="/cogs501/blog/higher-order-functions/">here</a> in a file named <code class="language-plaintext highlighter-rouge">repo.py</code> in the same directory as the code you write for solving the problem. Now, you can have <code class="language-plaintext highlighter-rouge">proc_seq</code> available for use by importing it from <code class="language-plaintext highlighter-rouge">repo</code>, by <code class="language-plaintext highlighter-rouge">from repo import proc_seq</code>. Here is the solution with <code class="language-plaintext highlighter-rouge">proc_seq</code>:</p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">from</span> <span class="nn">repo</span> <span class="kn">import</span> <span class="n">proc_seq</span>
 

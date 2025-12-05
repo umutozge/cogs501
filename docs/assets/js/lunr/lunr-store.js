@@ -1,8 +1,14 @@
 var store = [{
-        "title": "utils.py",
-        "excerpt":"View / copy raw utils.py 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 def proc_seq(n, sequencer, alive, update, init): \"\"\"Process a sequence of items. sequencer: function that produces the next item in the sequence alive: function that tests whether...","categories": [],
+        "title": "`collatz`",
+        "excerpt":"View / copy raw utils.py 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 from funcutils import proc_seq def collatz(n): \"\"\"The...","categories": [],
         "tags": [],
-        "url": "/cogs501/code/python/modules/utils/",
+        "url": "/cogs501/code/python/modules/collatz/",
+        "teaser": null
+      },{
+        "title": "`funcutils`",
+        "excerpt":"View / copy raw utils.py 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 def proc_seq(n, seq, alive, update, init): \"\"\"Process a sequence of items. n: seed seq: function that produces the next item in the sequence alive: function...","categories": [],
+        "tags": [],
+        "url": "/cogs501/code/python/modules/funcutils/",
         "teaser": null
       },{
         "title": "A sequence processor",
@@ -47,7 +53,7 @@ var store = [{
         "url": "/cogs501/posts/course/euclids-algorithm/",
         "teaser": null
       },{
-        "title": "A tiny bite of Number Theory",
+        "title": "Very basic number theory",
         "excerpt":"This is a healthy minimum dose of number theory to make you feel comfortable with the concepts we will be using in this course. We do not start from the absolute beginning. We take for granted integers and arithmetic operations. We start by some terminology. The set of integers, denoted...","categories": ["course"],
         "tags": ["cogs501","discrete","proof","number theory"],
         "url": "/cogs501/posts/course/intro-number-theory/",
@@ -63,7 +69,7 @@ var store = [{
     "excerpt":" ","url": "http://localhost:4000/cogs501/categories/"
   },{
     "title": "Code browser",
-    "excerpt":"        Language:            Any       Python       Racket       Haskell                        Kind:            Any       Module       Snippet                                                      utils.py                                      python        · module            A utility module with common functions and abstractions.                                                   A sequence processor                                      python        · snippet            A generic function to process sequences based on user-defined behavior.                  ","url": "http://localhost:4000/cogs501/code/browser/"
+    "excerpt":"        Language:            Any       Python       Racket       Haskell                        Kind:            Any       Module       Snippet                                                      collatz                                      python        · module            Various goodies related to Collatz conjecture.                                                   funcutils                                      python        · module            A utility module for functional abstractions.                                                   A sequence processor                                      python        · snippet            A generic function to process sequences based on user-defined behavior.                  ","url": "http://localhost:4000/cogs501/code/browser/"
   },{
     "title": "Code",
     "excerpt":" ","url": "http://localhost:4000/cogs501/code/"
@@ -75,7 +81,7 @@ var store = [{
     "excerpt":" ","url": "http://localhost:4000/cogs501/exercises/"
   },{
     "title": "Modules",
-    "excerpt":"                         utils.py                                   A utility module with common functions and abstractions.                            ","url": "http://localhost:4000/cogs501/code/python/modules/"
+    "excerpt":"                         `collatz`                                   Various goodies related to Collatz conjecture.                                              `funcutils`                                   A utility module for functional abstractions.                            ","url": "http://localhost:4000/cogs501/code/python/modules/"
   },{
     "title": "Snippets",
     "excerpt":"                         A sequence processor                                   A generic function to process sequences based on user-defined behavior.                           ","url": "http://localhost:4000/cogs501/code/python/snippets/"
@@ -85,6 +91,9 @@ var store = [{
   },{
     "title": "COGS 501 Quiz",
     "excerpt":"Define a function that takes a positive integer and returns the sum of its digits. Two mathematical operations that might be useful here are modulo and division. You get 2pts bonus credit if you solve the problem using proc_seq. Save the definition of proc_seq from here in a file named...","url": "http://localhost:4000/cogs501/q09s/"
+  },{
+    "title": "COGS 501 Quiz",
+    "excerpt":"[1pt] Prove that the product of an even integer with an odd integer is even. Let \\(m\\) be an even integer and \\(n\\) be an odd integer. By definition of even numbers, there exists an integer \\(k\\) such that \\(m = 2k\\). By definition of odd numbers, there exists an...","url": "http://localhost:4000/cogs501/q10s/"
   },{
     "title": "Schedule",
     "excerpt":"Week Reading Exercises Posts Quiz :calendar:2/10         :calendar:9/10         :calendar:23/10         :calendar:30/10         :calendar:6/11       quiz :calendar:13/11 CP 1.5, Epp 3, sections on Prolog can be omitted. 1-5 of Iteration Iteration by while no need for...","url": "http://localhost:4000/cogs501/schedule/"

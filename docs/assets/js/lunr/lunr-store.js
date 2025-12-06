@@ -59,6 +59,12 @@ var store = [{
         "url": "/cogs501/posts/course/intro-number-theory/",
         "teaser": null
       },{
+        "title": "The power of the state",
+        "excerpt":"Computation can be thought of as a sequence of states, where there is a meaningful relation between the initial and the final state. Think of summing the first \\(n\\) positive integers. One strategy is to start with an empty store (or accumulator), and (i) either adding \\(n\\), then \\(n-1\\), and...","categories": ["course"],
+        "tags": ["programming","tuple"],
+        "url": "/cogs501/posts/course/state-power/",
+        "teaser": null
+      },{
     "title": "Page Not Found",
     "excerpt":"Sorry, but the page you were trying to view does not exist.  ","url": "http://localhost:4000/cogs501/404.html"
   },{

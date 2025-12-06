@@ -250,8 +250,66 @@ def sum_even_collatz(n):
 
 
 
+
+
 from collatz import collatz
 from funcutils import proc_seq
+
+# def collatz_direction_changes(n):
+#     """Return the number of direction changes in the Collatz sequence seeded by n.
+# 
+#     >>> collatz_direction_changes(8)
+#     0
+#     >>> collatz_direction_changes(7)
+#     9
+#     """
+#     def alive(n): return n > 1
+#     def update(store, new):
+#         if ((store[1] < store[2] and store[2] > new)
+#             or
+#             (store[1] > store[2] and store[2] < new)):
+#             return (store[0] + 1, store[2], new)
+#         else:
+#             return (store[0], store[2], new)
+#     initial_store = (0, n, n)
+#     final_store = proc_seq(n, collatz, alive, update, initial_store)
+#     return final_store[0]
+
+def turning_point(x,y,z):
+    """Retrurn True if y is a turning_point from increasing to decreasing
+       or vice versa.
+
+    >>> turning_point(1,2,3)
+    False
+    >>> turning_point(3,2,1)
+    False
+    >>> turning_point(1,3,2)
+    True
+    >>> turning_point(3,1,2)
+    True
+    >>> turning_point(2,2,3)
+    False
+    """
+    return (z - y) * (y - x) < 0
+
+# def collatz_direction_changes(n):
+#     """Return the number of direction changes in the Collatz sequence seeded by n.
+# 
+#     >>> collatz_direction_changes(8)
+#     0
+#     >>> collatz_direction_changes(7)
+#     9
+#     """
+#     def alive(n): return n > 1
+#     def update(store, new):
+#         count, two_back, one_back = store
+#         if turning_point(two_back, one_back, new):
+#             return (count + 1, one_back, new)
+#         else:
+#             return (count, one_back, new)
+#     initial_store = (0, n, n)
+#     final_store = proc_seq(n, collatz, alive, update, initial_store)
+#     return final_store[0]
 
 def collatz_direction_changes(n):
     """Return the number of direction changes in the Collatz sequence seeded by n.
@@ -261,34 +319,13 @@ def collatz_direction_changes(n):
     >>> collatz_direction_changes(7)
     9
     """
-    def alive(n): return n > 1
-    def update(store, new):
-        if ((store[1] < store[2] and store[2] > new)
-            or
-            (store[1] > store[2] and store[2] < new)):
-            return (store[0] + 1, store[2], new)
-        else:
-            return (store[0], store[2], new)
-    initial_store = (0, n, n)
-    final_store = proc_seq(n, collatz, alive, update, initial_store)
-    return final_store[0]
-
-# def monotone(x,y,z):
-#     """Retrurn True if x, y, z are monotone (strictly increasing or decreasing).
-# 
-#     >>> monotone(1,2,3)
-#     True
-#     >>> monotone(3,2,1)
-#     True
-#     >>> monotone(1,3,2)
-#     False
-#     >>> monotone(3,1,2)
-#     False
-#     >>> monotone(2,2,3)
-#     False
-#     """
-#     return x <= y == y <= z
-# 
+    return proc_seq(n,
+                    collatz,
+                    lambda n: n > 1,
+                    lambda store, new: (store[0] + int(turning_point(store[1], store[2], new)),
+                                        store[2],
+                                        new),
+                    (0, n, n))[0]
 
 # def mod(a, b):
 #    """Compute a mod b for a>=0.

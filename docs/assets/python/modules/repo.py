@@ -418,3 +418,40 @@ def mod(a,b):
                     init = 0)
 
 
+
+def argmax(f,start,end,step=1):
+    """Return the argument between start and end that maximizes f.
+
+    >>> argmax(lambda x: -1*(x-3)**2 + 5, 0, 6, 1)
+    3
+    >>> argmax(lambda x: x*(x-5), 0, 5, 1)
+    5
+    """
+    def sequencer(x): return x + step
+    def alive(x): return x <= end
+    def update(store, x):
+        current_arg, current_max = store
+        fx = f(x)
+        if fx > current_max:
+            return (x, fx)
+        else:
+            return store
+    initial_store = (start, f(start))
+    final_store = proc_seq(start, sequencer, alive, update, initial_store)
+    return final_store[0]
+
+
+def sum_cubes(n):
+    """Return the sum of the cubes of the first n natural numbers.
+
+    >>> sum_cubes(0)
+    0
+    >>> sum_cubes(3)
+    36
+    >>> sum_cubes(5)
+    225
+    """
+    def sequencer(k): return k + 1
+    def alive(k): return k <= n
+    def update(state, k): return state + k * k * k
+    return proc_seq(1, sequencer, alive, update, 0)

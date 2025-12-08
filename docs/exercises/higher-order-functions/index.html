@@ -35,7 +35,7 @@
 
 
 
-  <meta property="article:published_time" content="2025-12-06T11:04:45+03:00">
+  <meta property="article:published_time" content="2025-12-08T12:54:05+03:00">
 
 
 
@@ -149,6 +149,24 @@
   padding: 0.15rem 0.4rem;
 }
 
+hr.topic-separator {
+  border: 0;
+  border-top: 2px solid #ccc;
+  margin: 3rem auto;
+  width: 60%;
+}
+
+hr.topic-symbol {
+  border: none;
+  margin: 3rem auto;
+  text-align: center;
+}
+hr.topic-symbol::before {
+  content: "· · ·";
+  letter-spacing: 0.4em;
+  color: #888;
+  font-size: 1.2rem;
+}
 
 </style>
 
@@ -295,7 +313,7 @@
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Higher-order functions">
     <meta itemprop="description" content="A set of programming exercises to practice higher-order functions.">
-    
+    <meta itemprop="datePublished" content="2025-12-08T12:54:05+03:00">
     
 
     <div class="page__inner-wrap">
@@ -357,6 +375,7 @@
   <li>Given an integer \(k&gt;1\), compute the largest positive integer \(n\) smaller than \(k\) s.t. there is no other integer between 1 and \(k\) with a larger Collatz length. Use <code class="language-plaintext highlighter-rouge">proc_seq</code> from <a href="/cogs501/blog/higher-order-functions/">here</a>.
  Define two versions, one with <code class="language-plaintext highlighter-rouge">while</code> the other with <code class="language-plaintext highlighter-rouge">proc_seq</code> from <a href="/cogs501/blog/higher-order-functions/">here</a>.</li>
   <li>Given an integer \(k&gt;1\), compute the largest positive integer \(n\) smaller than \(k\) s.t. there is no other integer between 1 and \(k\) with a larger Collatz length. Use <code class="language-plaintext highlighter-rouge">proc_seq</code> from <a href="/cogs501/blog/higher-order-functions/">here</a>.</li>
+  <li>Define a function <code class="language-plaintext highlighter-rouge">argmax(f,start,end,step=1)</code> that returns the smallest argument that maximizes <code class="language-plaintext highlighter-rouge">f</code> in the range <code class="language-plaintext highlighter-rouge">[start,end]</code> incremented in <code class="language-plaintext highlighter-rouge">step</code>s.</li>
 </ol>
 
         
@@ -385,6 +404,8 @@
 
 
         
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-12-08T12:54:05+03:00">2025-12-08</time></p>
 
       </footer>
 

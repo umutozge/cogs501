@@ -1,3 +1,6 @@
+from funcutils import proc
+from random import randint
+
 def fibonacci(n):
     """Compute the nth Fibonacci number, for n >= 2."""
     pred, curr = 0, 1
@@ -252,6 +255,7 @@ def sum_even_collatz(n):
 
 
 
+
 from collatz import collatz
 from funcutils import proc_seq
 
@@ -419,7 +423,7 @@ def mod(a,b):
 
 
 
-def argmax(f,start,end,step=1):
+def argmax(f, start, end, step=1):
     """Return the argument between start and end that maximizes f.
 
     >>> argmax(lambda x: -1*(x-3)**2 + 5, 0, 6, 1)
@@ -427,18 +431,18 @@ def argmax(f,start,end,step=1):
     >>> argmax(lambda x: x*(x-5), 0, 5, 1)
     5
     """
-    def sequencer(x): return x + step
-    def alive(x): return x <= end
     def update(store, x):
-        current_arg, current_max = store
+        max_arg, max_val = store
         fx = f(x)
-        if fx > current_max:
+        if fx >= max_val:
             return (x, fx)
         else:
             return store
-    initial_store = (start, f(start))
-    final_store = proc_seq(start, sequencer, alive, update, initial_store)
-    return final_store[0]
+    return proc_seq(start,
+                    lambda x: x + step,
+                    lambda x: x <= end,
+                    update,
+                    (start, f(start)))[0]
 
 
 def sum_cubes(n):
@@ -457,8 +461,6 @@ def sum_cubes(n):
     return proc_seq(1, sequencer, alive, update, 0)
 
 
-from funcutils import proc
-from random import randint
 n_uniq_random = lambda n, start, end: proc(
                                            ([], 0),  # (list of unique numbers, count)
                                            lambda s: s[1] < n,
@@ -489,8 +491,10 @@ n_uniq_random = lambda n, start, end: proc(
 def n_uniq_random_dict(n, start, end):
     """Return a list of n unique random numbers between start and end.
 
+    >>> import random
+    >>> random.seed(48)
     >>> n_uniq_random_dict(5, 1, 10)
-    [3, 7, 1, 9, 2]
+    [9, 6, 3, 5, 4]
     """
     from random import randint
     from funcutils import proc
@@ -506,3 +510,65 @@ def n_uniq_random_dict(n, start, end):
                 alive=lambda s: s['count'] < n,
                 update=update
                 )['uniq_nums']
+
+def gcd_proc(a,b):
+    """Return the greatest common divisor of a and b.
+
+    >>> gcd_proc(48,18)
+    6
+    >>> gcd_proc(101,10)
+    1
+    >>> gcd_proc(56,98)
+    14
+    """
+     
+    return proc((a,b),
+                lambda s: s[1] != 0,
+                lambda s: (s[1],s[0] % s[1]))[0]
+
+def gcd_while(a,b):
+    """Return the greatest common divisor of a and b.
+
+    >>> gcd_while(48,18)
+    6
+    >>> gcd_while(101,10)
+    1
+    >>> gcd_while(56,98)
+    14
+    """
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+# def gcd_proc_seq(a,b):
+#     """Return the greatest common divisor of a and b.
+# 
+#     >>> gcd_proc_seq(48,18)
+#     6
+#     >>> gcd_proc_seq(101,10)
+#     1
+#     >>> gcd_proc_seq(56,98)
+#     14
+#     """
+#     return proc_seq((a,b),
+#                     lambda x: (x[1], x[0] % x[1]),
+#                     lambda x: x[1] != 0,
+#                     lambda store, x: x,
+#                     0)[0]
+
+def gcd_proc_seq(a,b):
+    """Return the greatest common divisor of a and b.
+
+    >>> gcd_proc_seq(48,18)
+    6
+    >>> gcd_proc_seq(101,10)
+    1
+    >>> gcd_proc_seq(56,98)
+    14
+    """
+    return proc_seq((a,b),
+                    lambda x: (x[1], x[0] % x[1]),
+                    lambda x: x[1] != 0,
+                    lambda store, x: x,
+                    0,
+                   debug=False)[1]

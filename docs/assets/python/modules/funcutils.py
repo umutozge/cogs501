@@ -15,7 +15,7 @@ def proc_seq(n, seq, alive, update, init, debug=False):
             print(store,n)
     return store
 
-def proc(state, alive, update):
+def proc(state, alive, update, debug=False, display=lambda x: print(x) or x):
     """Process as succession of states.
 
     state: initial state
@@ -23,7 +23,7 @@ def proc(state, alive, update):
     update: function that updates the state
     """
     while alive(state):
-        state = update(state)
+        state = update(state) if not debug else display(update(state))
     return state 
 
 def make_generator(seq, init):

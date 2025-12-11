@@ -455,3 +455,54 @@ def sum_cubes(n):
     def alive(k): return k <= n
     def update(state, k): return state + k * k * k
     return proc_seq(1, sequencer, alive, update, 0)
+
+
+from funcutils import proc
+from random import randint
+n_uniq_random = lambda n, start, end: proc(
+                                           ([], 0),  # (list of unique numbers, count)
+                                           lambda s: s[1] < n,
+                                           lambda s: (s[0] + [x], s[1] + 1) if (x := randint(start, end)) not in s[0] else s)[0]
+
+
+# def n_uniq_random_dict(n, start, end):
+#     """Return a list of n unique random numbers between start and end.
+# 
+#     >>> n_uniq_random_dict(5, 1, 10)
+#     [3, 7, 1, 9, 2]
+#     """
+#     from random import randint
+#     from funcutils import proc
+# 
+#     def update(s):
+#         x = randint(start, end)
+#         return  (s | {'uniq_nums': s['uniq_nums'] + [x], 'count': s['count'] + 1} 
+#                 if x not in s['uniq_nums']
+#                 else s)
+# 
+#     return proc(state={'uniq_nums': [], 'count': 0},
+#                 alive=lambda s: s['count'] < n,
+#                 update=update
+#                 )['uniq_nums']
+
+
+def n_uniq_random_dict(n, start, end):
+    """Return a list of n unique random numbers between start and end.
+
+    >>> n_uniq_random_dict(5, 1, 10)
+    [3, 7, 1, 9, 2]
+    """
+    from random import randint
+    from funcutils import proc
+
+    def update(s):
+        x = randint(start, end)
+        if x not in s['uniq_nums']:
+            s['uniq_nums'] = s['uniq_nums'] + [x]
+            s['count'] = s['count'] + 1
+        return s
+
+    return proc(state={'uniq_nums': [], 'count': 0},
+                alive=lambda s: s['count'] < n,
+                update=update
+                )['uniq_nums']

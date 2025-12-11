@@ -17,6 +17,12 @@ var store = [{
         "url": "/cogs501/code/python/snippets/proc_seq/",
         "teaser": null
       },{
+        "title": "Basic data structures",
+        "excerpt":"Define a function myinsert(lst,index,item) that inserts item at position index of the list lst and returns the new list. def myinsert(lst, index, item): \"\"\"Insert item at index of lst. &gt;&gt;&gt; myinsert([1, 2, 3], 1, 4) [1, 4, 2, 3] &gt;&gt;&gt; myinsert([1, 2, 3], 5, 4) [1, 2, 3] &gt;&gt;&gt; myinsert([True,...","categories": [],
+        "tags": ["python","data-structures"],
+        "url": "/cogs501/exercises/basic-data-structures/",
+        "teaser": null
+      },{
         "title": "Higher-order functions",
         "excerpt":"Define a function apply_twice that takes a function f and a value x, and returns the result of applying f to x two times. def sqr(x): return x * x def apply_twice(f, x): \"\"\"apply f to x twice. &gt;&gt;&gt; apply_twice(sqr, 3) 81 \"\"\" Define a function applier that applies a...","categories": [],
         "tags": ["func-prog","python"],
@@ -81,7 +87,7 @@ var store = [{
     "excerpt":" ","url": "http://localhost:4000/cogs501/code/"
   },{
     "title": "Exercises",
-    "excerpt":"    python    iteration    func-prog    while    math    discrete    proof                                                 Higher-order functions                                A set of programming exercises to practice higher-order functions.                                                     Iteration                                A set of programming exercises to practice iteration using while loops.                                                     Basic number theory                                Mainly proof questions based on basic number theory.               ","url": "http://localhost:4000/cogs501/exercise/browser/"
+    "excerpt":"python iteration func-prog while math discrete proof Basic data structures Exercises on basic tuple, list, dictionary tasks. Higher-order functions A set of programming exercises to practice higher-order functions. Iteration A set of programming exercises to practice iteration using while loops. Basic number theory Mainly proof questions based on basic number...","url": "http://localhost:4000/cogs501/exercise/browser/"
   },{
     "title": "Exercises",
     "excerpt":" ","url": "http://localhost:4000/cogs501/exercises/"

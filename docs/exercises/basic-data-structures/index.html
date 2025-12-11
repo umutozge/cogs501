@@ -10,25 +10,24 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Exercises - COGS 501</title>
-<meta name="description" content="Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.">
+<!-- begin _includes/seo.html --><title>Basic data structures - COGS 501</title>
+<meta name="description" content="Exercises on basic tuple, list, dictionary tasks.">
 
 
   <meta name="author" content="First Lastname">
   
+  <meta property="article:author" content="First Lastname">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="COGS 501">
-<meta property="og:title" content="Exercises">
-<meta property="og:url" content="http://localhost:4000/cogs501/exercises/">
+<meta property="og:title" content="Basic data structures">
+<meta property="og:url" content="http://localhost:4000/cogs501/exercises/basic-data-structures/">
 
 
-  <meta property="og:description" content="Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.">
-
-
-
+  <meta property="og:description" content="Exercises on basic tuple, list, dictionary tasks.">
 
 
 
@@ -36,9 +35,14 @@
 
 
 
+  <meta property="article:published_time" content="2025-12-11T10:34:42+03:00">
 
 
-<link rel="canonical" href="http://localhost:4000/cogs501/exercises/">
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/cogs501/exercises/basic-data-structures/">
 
 
 
@@ -175,7 +179,7 @@ hr.topic-symbol::before {
 
   </head>
 
-  <body class="layout--collection wide" dir="ltr">
+  <body class="layout--single wide" dir="ltr">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -233,6 +237,8 @@ hr.topic-symbol::before {
 
     <div class="initial-content">
       
+
+
 
 
 
@@ -304,123 +310,104 @@ hr.topic-symbol::before {
 
 
 
-  <div class="archive">
-    
-      <h1 id="page-title" class="page__title">Exercises</h1>
-    
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Basic data structures">
+    <meta itemprop="description" content="Exercises on basic tuple, list, dictionary tasks.">
+    <meta itemprop="datePublished" content="2025-12-11T10:34:42+03:00">
     
 
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="http://localhost:4000/cogs501/exercises/basic-data-structures/" itemprop="url">Basic data structures
+</a>
+          </h1>
+          
+          
 
 
-<div class="entries-grid">
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <ol>
+  <li>
+    <p>Define a function <code class="language-plaintext highlighter-rouge">myinsert(lst,index,item)</code> that inserts <code class="language-plaintext highlighter-rouge">item</code> at position <code class="language-plaintext highlighter-rouge">index</code> of the list <code class="language-plaintext highlighter-rouge">lst</code> and returns the new list.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">myinsert</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+          <span class="s">"""Insert item at index of lst.
+
+          &gt;&gt;&gt; myinsert([1, 2, 3], 1, 4)
+          [1, 4, 2, 3]
+          &gt;&gt;&gt; myinsert([1, 2, 3], 5, 4)
+          [1, 2, 3]
+          &gt;&gt;&gt; myinsert([True, False], 2, None)
+          [True, False, None]
+          &gt;&gt;&gt; myinsert([],0,1)
+          [1]
+          &gt;&gt;&gt; myinsert([1,4],1,[2,3])
+          [1, [2, 3], 4]
+          """</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Define a function <code class="language-plaintext highlighter-rouge">myreverse</code> that reverses a given list. Write 3 versions: using <code class="language-plaintext highlighter-rouge">while</code>,<code class="language-plaintext highlighter-rouge">for</code>, and  <code class="language-plaintext highlighter-rouge">proc</code> from <a href="/cogs501/code/python/modules/funcutils/">funcutils</a>.</p>
+  </li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
   
 
 
+  
 
-
-
-
-
-<div class="grid__item"
-     
-     
-    >
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
     
-    <h2 class="archive__item-title no_toc" itemprop="headline">
+      <a href="/cogs501/tags/#data-structures" class="page__taxonomy-item p-category" rel="tag">data-structures</a><span class="sep">, </span>
+    
+      <a href="/cogs501/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-12-11T10:34:42+03:00">2025-12-11</time></p>
+
+      </footer>
+
       
-        <a href="/cogs501/exercises/basic-data-structures/" rel="permalink">Basic data structures
-</a>
+
       
-    </h2>
+  <nav class="pagination">
     
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="/cogs501/exercises/higher-order-functions/" class="pagination--pager" title="Higher-order functions">Next</a>
+    
+  </nav>
 
+
+    </div>
 
     
-
-    <p class="archive__item-excerpt" itemprop="description">Exercises on basic tuple, list, dictionary tasks.
-</p>
   </article>
-</div>
 
-
-
-
-<div class="grid__item"
-     
-     
-    >
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/cogs501/exercises/higher-order-functions/" rel="permalink">Higher-order functions
-</a>
-      
-    </h2>
-    
-
-
-    
-
-    <p class="archive__item-excerpt" itemprop="description">A set of programming exercises to practice higher-order functions.
-</p>
-  </article>
-</div>
-
-
-
-
-<div class="grid__item"
-     
-     
-    >
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/cogs501/exercises/iteration/" rel="permalink">Iteration
-</a>
-      
-    </h2>
-    
-
-
-    
-
-    <p class="archive__item-excerpt" itemprop="description">A set of programming exercises to practice iteration using while loops.
-</p>
-  </article>
-</div>
-
-
-
-
-<div class="grid__item"
-     
-     
-    >
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/cogs501/exercises/numbers/" rel="permalink">Basic number theory
-</a>
-      
-    </h2>
-    
-
-
-    
-
-    <p class="archive__item-excerpt" itemprop="description">Mainly proof questions based on basic number theory.
-</p>
-  </article>
-</div>
-
-</div>
-
-  </div>
+  
+  
 </div>
 
       

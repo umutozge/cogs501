@@ -6,12 +6,6 @@ def proc_seq(n, seq, alive, update, init, debug=False):
     alive: function that tests whether to continue processing
     update: function that updates the state
     init: initial state
-
-    >>> def next(n): return n - 1
-    >>> def alive(n): return n > 0
-    >>> def update(state, n): return state + n
-    >>> proc_seq(5, next, alive, update, 0)
-    15
     """
     store = init
     while alive(n):
@@ -19,4 +13,28 @@ def proc_seq(n, seq, alive, update, init, debug=False):
         n = seq(n)
         if debug:
             print(store,n)
-    return store 
+    return store
+
+def proc(state, alive, update):
+    """Process as succession of states.
+
+    state: initial state
+    alive: one-place function that tests whether state is alive
+    update: function that updates the state
+    """
+    while alive(state):
+        state = update(state)
+    return state 
+
+def make_generator(seq, init):
+    """Create a generator from a sequence function.
+
+    seq: function that produces the next item in the sequence
+    init: initial state
+    """
+
+    def f():
+        nonlocal init 
+        init = seq((result := init))
+        return result 
+    return f

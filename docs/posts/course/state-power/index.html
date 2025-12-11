@@ -362,22 +362,25 @@ hr.topic-symbol::before {
 <p>This brings us to the point where you need a more powerful state. Power in this context means a more sophisticated memory. We will expand our power by introducing the data structure <code class="language-plaintext highlighter-rouge">tuple</code>. Tuples are formed by the comma operator, and tuple components are accessed by indexing which starts from 0. Here is how:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># A tuple with two components
-</span><span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="mi">3</span>
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># Tuple concatenation
+</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="c1"># A 4-tuple created without parentheses
-</span><span class="o">&gt;&gt;&gt;</span> <span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="mi">3</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">k</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="c1"># IndexError: tuple index out of range
 </span></code></pre></div></div>
 
-<p>With tuples, we can now solve the Fibonacci problem using <code class="language-plaintext highlighter-rouge">proc_seq</code>.</p>
+<p>Equipped with  tuples, we can now solve the Fibonacci problem using <code class="language-plaintext highlighter-rouge">proc_seq</code>.</p>
 
 <p>Try before proceeding.</p>
 
 <p>Here is the solution:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="s">"""Return the n-th Fibonacci number (n&gt;=1).
 
     &gt;&gt;&gt; fibonacci(1)
@@ -390,8 +393,7 @@ hr.topic-symbol::before {
     <span class="kn">from</span> <span class="nn">funcutils</span> <span class="kn">import</span> <span class="n">proc_seq</span>
     <span class="k">def</span> <span class="nf">increment</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="k">def</span> <span class="nf">alive</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">n</span>
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">store</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">store</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">store</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="p">(</span><span class="n">store</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">store</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">store</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">proc_seq</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">increment</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span>  
 </code></pre></div></div>
 
@@ -402,19 +404,18 @@ hr.topic-symbol::before {
   <li>In the end, we return the <em>second</em> component of the store which holds the \(n\)th Fibonacci number.</li>
 </ol>
 
-<p>Let’s get back to <a href="/cogs501/posts/course/iteration-by-while">collatz business</a> for some more fun. When we were asked to find the largest integer visited in the sequence seeded by <code class="language-plaintext highlighter-rouge">n</code> we could solve this problem by:</p>
+<hr class="topic-separator" />
+
+<p>Let’s get back to <a href="/cogs501/posts/course/iteration-by-while">collatz business</a> for some more fun. First let’s fix some imports for ourselves:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collatz</span> <span class="kn">import</span> <span class="n">collatz</span>
 <span class="kn">from</span> <span class="nn">funcutils</span> <span class="kn">import</span> <span class="n">proc_seq</span>
+</code></pre></div></div>
 
-<span class="k">def</span> <span class="nf">largest_in_collatz_sequence</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="s">"""Return the largest integer in the Collatz sequence seeded by n.
+<p>When we were asked to find the largest integer visited in the sequence seeded by <code class="language-plaintext highlighter-rouge">n</code> we could solve this problem by:</p>
 
-    &gt;&gt;&gt; largest_in_collatz_sequence(11)
-    52
-    &gt;&gt;&gt; largest_in_collatz_sequence(27)
-    9232
-    """</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">largest_in_collatz_sequence</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s">"""Return the largest integer in the Collatz sequence seeded by n. """</span>
     <span class="k">def</span> <span class="nf">alive</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">collatz</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
@@ -435,21 +436,20 @@ hr.topic-symbol::before {
             <span class="k">return</span> <span class="p">(</span><span class="n">store</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">store</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">new</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">store</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">store</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">new</span><span class="p">)</span>
-    <span class="n">initial_store</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-    <span class="n">final_store</span> <span class="o">=</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">collatz</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">initial_store</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">final_store</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span>
+                    <span class="n">collatz</span><span class="p">,</span>
+                    <span class="n">alive</span><span class="p">,</span>
+                    <span class="n">update</span><span class="p">,</span>
+                    <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="c1"># ensure no direction change before the third number
+</span>                    <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>but we mustn’t. This is too hard to read, it takes to be a genius to understand what the <code class="language-plaintext highlighter-rouge">update</code> is doing, so do not even attempt to understand it, unless you are one.</p>
 
 <p>Let’s try to bring some order into this chaos by naming the components of the store in the definition of <code class="language-plaintext highlighter-rouge">update</code>:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collatz</span> <span class="kn">import</span> <span class="n">collatz</span>
-<span class="kn">from</span> <span class="nn">funcutils</span> <span class="kn">import</span> <span class="n">proc_seq</span>
-
-<span class="k">def</span> <span class="nf">collatz_direction_changes</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="s">"""Return the number of direction changes in the Collatz sequence seeded by n.
-    """</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">collatz_direction_changes</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s">"""Return the number of direction changes in the Collatz sequence seeded by n. """</span>
     <span class="k">def</span> <span class="nf">alive</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
         <span class="n">count</span><span class="p">,</span> <span class="n">two_back</span><span class="p">,</span> <span class="n">one_back</span> <span class="o">=</span> <span class="n">store</span> <span class="c1"># yes, you can unpack a tuple like this
@@ -457,19 +457,13 @@ hr.topic-symbol::before {
             <span class="k">return</span> <span class="p">(</span><span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">one_back</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">one_back</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
-    <span class="n">initial_store</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-    <span class="n">final_store</span> <span class="o">=</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">collatz</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">initial_store</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">final_store</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">collatz</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>This looks better, I think. But I find it very hard to read long lines. Let’s break the <code class="language-plaintext highlighter-rouge">if</code> condition into multiple lines. The best way to brake such long lines is to wrap the entire condition expression in parentheses, and when this is done, you can break it anywhere inside the parentheses:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collatz</span> <span class="kn">import</span> <span class="n">collatz</span>
-<span class="kn">from</span> <span class="nn">funcutils</span> <span class="kn">import</span> <span class="n">proc_seq</span>
-
-<span class="k">def</span> <span class="nf">collatz_direction_changes</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="s">"""Return the number of direction changes in the Collatz sequence seeded by n.
-    """</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">collatz_direction_changes</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s">"""Return the number of direction changes in the Collatz sequence seeded by n. """</span>
     <span class="k">def</span> <span class="nf">alive</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
         <span class="n">count</span><span class="p">,</span> <span class="n">two_back</span><span class="p">,</span> <span class="n">one_back</span> <span class="o">=</span> <span class="n">store</span>
@@ -479,15 +473,13 @@ hr.topic-symbol::before {
             <span class="k">return</span> <span class="p">(</span><span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">one_back</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">one_back</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
-    <span class="n">initial_store</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-    <span class="n">final_store</span> <span class="o">=</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">collatz</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">initial_store</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">final_store</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">collatz</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></div>
 
-<p>This “parenthesize and divide” strategy works for expressions in general.</p>
+<p>Note that this “parenthesize and divide” strategy works for expressions in general.</p>
 
 <p>This is much better. Now, I can read and understand what is going on in the <code class="language-plaintext highlighter-rouge">update</code> function without too much effort.
-But still, this logic of direction change looks a little obtruding (either check the dictionary for “obtruding”, or assume I said “ugly”). The reason is that it violates the principle of “doing one thing at a time” in a function. Let’s outsource this logic to a separate function. Let’s also make it somewhat more clever, or, perhaps, more beautiful. Doing many logical operations do not look nice, do they? Given three numbers, is there an arithmetic way to decide whether there is a directional change or not?</p>
+But still, this logic of direction change looks a little obtruding (either check the dictionary for “obtruding”, or assume I said “ugly”). The reason is that it violates the principle of “doing one thing at a time” in a function. Let’s outsource this logic to a separate function. Let’s also make it somewhat more clever, or, perhaps, more beautiful. Doing many logical operations does not look nice, does it? Given three numbers, is there an arithmetic way to decide whether there is a directional change or not?</p>
 
 <p>Try before proceeding.</p>
 
@@ -514,13 +506,7 @@ But still, this logic of direction change looks a little obtruding (either check
 <p>With this function, we can simplify the <code class="language-plaintext highlighter-rouge">update</code> function in <code class="language-plaintext highlighter-rouge">collatz_direction_changes</code>:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">collatz_direction_changes</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="s">"""Return the number of direction changes in the Collatz sequence seeded by n.
-
-    &gt;&gt;&gt; collatz_direction_changes(8)
-    0
-    &gt;&gt;&gt; collatz_direction_changes(7)
-    9
-    """</span>
+    <span class="s">"""Return the number of direction changes in the Collatz sequence seeded by n. """</span>
     <span class="k">def</span> <span class="nf">alive</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
         <span class="n">count</span><span class="p">,</span> <span class="n">two_back</span><span class="p">,</span> <span class="n">one_back</span> <span class="o">=</span> <span class="n">store</span>
@@ -528,31 +514,25 @@ But still, this logic of direction change looks a little obtruding (either check
             <span class="k">return</span> <span class="p">(</span><span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">one_back</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">one_back</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
-    <span class="n">initial_store</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-    <span class="n">final_store</span> <span class="o">=</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">collatz</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">initial_store</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">final_store</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">collatz</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>Well, you guessed it right, we are not done yet.</p>
 
-<p>Let me tell you something useful. You can <strong>type-cast</strong> booleans to integers by applying the built-in <code class="language-plaintext highlighter-rouge">int</code> to any boolean expression. <code class="language-plaintext highlighter-rouge">True</code> becomes 1 and <code class="language-plaintext highlighter-rouge">False</code> becomes 0.<sup id="fnref:bool" role="doc-noteref"><a href="#fn:bool" class="footnote" rel="footnote">1</a></sup>  Therefore, in incrementing the count according whether you observed a turning point or not, you do not even need an <code class="language-plaintext highlighter-rouge">if</code> statement. You can write:</p>
+<p>Let me tell you something useful. You can <strong>type-cast</strong> booleans to integers by applying the built-in <code class="language-plaintext highlighter-rouge">int</code> to any boolean expression. <code class="language-plaintext highlighter-rouge">True</code>, <code class="language-plaintext highlighter-rouge">2&gt;1</code>, etc., becomes 1 and <code class="language-plaintext highlighter-rouge">False</code>, <code class="language-plaintext highlighter-rouge">2&lt;1</code>, etc., becomes 0.<sup id="fnref:bool" role="doc-noteref"><a href="#fn:bool" class="footnote" rel="footnote">1</a></sup> Therefore, in incrementing the count according whether you observed a turning point or not, you do not even need an <code class="language-plaintext highlighter-rouge">if</code> statement. You can write:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">collatz_direction_changes</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="s">"""Return the number of direction changes in the Collatz sequence seeded by n.
-
-    &gt;&gt;&gt; collatz_direction_changes(8)
-    0
-    &gt;&gt;&gt; collatz_direction_changes(7)
-    9
-    """</span>
+    <span class="s">"""Return the number of direction changes in the Collatz sequence seeded by n."""</span>
     <span class="k">def</span> <span class="nf">alive</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
         <span class="n">count</span><span class="p">,</span> <span class="n">two_back</span><span class="p">,</span> <span class="n">one_back</span> <span class="o">=</span> <span class="n">store</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">count</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">turning_point</span><span class="p">(</span><span class="n">two_back</span><span class="p">,</span> <span class="n">one_back</span><span class="p">,</span> <span class="n">new</span><span class="p">)),</span> <span class="n">one_back</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
-    <span class="n">initial_store</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-    <span class="n">final_store</span> <span class="o">=</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">collatz</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">initial_store</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">final_store</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">collatz</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></div>
+
+<p>That’s the beauty of working with expressions. If the issue is adding 1 to a variable if a certain condition holds and adding 0 if it does not, then simply put an expression that would evaluate to 1 or 0 according to the condition after the <code class="language-plaintext highlighter-rouge">+</code> operator. At this point it is enough that you understand why this works. Later on, as more and more practice, you will start seeing such opportunities by yourself.</p>
+
+<hr class="topic-separator" />
 
 <p>We have a small computer which we called <code class="language-plaintext highlighter-rouge">proc_seq</code>. We were happily (??) solving various problems with it until we realized that its store component can hold only a single number. By enhancing the memory of the store to hold tuples, we were able to solve more complex problems,
 as we were able to keep track of multiple pieces of information in each cycle of our computations. We used this technology to solve more complex problems like computing Fibonacci numbers and counting direction changes in Collatz sequences. There still remains a limitation in our notion of state which cannot be overcome by increasing the memory of the store component. You will find what it is in another post.</p>

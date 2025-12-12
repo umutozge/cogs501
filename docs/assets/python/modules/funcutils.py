@@ -22,6 +22,8 @@ def proc(state, alive, update, debug=False, display=lambda x: print(x) or x):
     alive: one-place function that tests whether state is alive
     update: function that updates the state
     """
+    if debug:
+        print("Starting process with:", state )
     while alive(state):
         state = update(state) if not debug else display(update(state))
     return state 

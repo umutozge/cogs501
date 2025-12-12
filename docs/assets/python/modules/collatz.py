@@ -1,4 +1,4 @@
-from funcutils import proc_seq
+from funcutils import proc_seq, proc
 
 def collatz(n):
     """The Collatz function

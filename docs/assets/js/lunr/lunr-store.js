@@ -17,12 +17,6 @@ var store = [{
         "url": "/cogs501/code/python/snippets/proc_seq/",
         "teaser": null
       },{
-        "title": "Basic data structures",
-        "excerpt":"Define a function myinsert(lst,index,item) that inserts item at position index of the list lst and returns the new list. def myinsert(lst, index, item): \"\"\"Insert item at index of lst. &gt;&gt;&gt; myinsert([1, 2, 3], 1, 4) [1, 4, 2, 3] &gt;&gt;&gt; myinsert([1, 2, 3], 5, 4) [1, 2, 3] &gt;&gt;&gt; myinsert([True,...","categories": [],
-        "tags": ["python","data-structures"],
-        "url": "/cogs501/exercises/basic-data-structures/",
-        "teaser": null
-      },{
         "title": "Higher-order functions",
         "excerpt":"Define a function apply_twice that takes a function f and a value x, and returns the result of applying f to x two times. def sqr(x): return x * x def apply_twice(f, x): \"\"\"apply f to x twice. &gt;&gt;&gt; apply_twice(sqr, 3) 81 \"\"\" Define a function applier that applies a...","categories": [],
         "tags": ["func-prog","python"],
@@ -39,6 +33,12 @@ var store = [{
         "excerpt":"Prove the following: Theorem (Some properties of divisibility) Let \\(a,b,c \\in \\mathbb{Z}\\) and \\(a \\neq 0\\). Then: i. if \\(a \\mid b\\) and \\(a \\mid c\\), then \\(a \\mid (b+c)\\); ii. if \\(a \\mid b\\), then \\(a \\mid kb\\) for any integer \\(k\\); iii. if \\(a \\mid b\\) and \\(b...","categories": [],
         "tags": ["math","discrete","proof","number thoery"],
         "url": "/cogs501/exercises/numbers/",
+        "teaser": null
+      },{
+        "title": "Sequence operations",
+        "excerpt":"In the following exercises, you can treat sequences as lists or tuples, unless explicitly stated otherwise. Define a function mysum(seq) that returns the sum of all numbers in the list seq. def mysum(seq): \"\"\"Return the sum of all numbers in seq. &gt;&gt;&gt; mysum([1, 2, 3]) 6 &gt;&gt;&gt; mysum([-1, 1, -1,...","categories": [],
+        "tags": ["python","sequence","list","tuple"],
+        "url": "/cogs501/exercises/sequence-operations/",
         "teaser": null
       },{
         "title": "Iteration by `while`",
@@ -71,6 +71,12 @@ var store = [{
         "url": "/cogs501/posts/course/state-power/",
         "teaser": null
       },{
+        "title": "The way of lambda",
+        "excerpt":"When I say “Call a plumber”, you need to know the meaning of “plumber” and “call”, and enough English syntax to be able to execute the command. In case you know what “call” means but not “plumber”, you consult a dictionary before you are ready to execute the command. I...","categories": ["course"],
+        "tags": ["functional programming","programming","cogs501","lambda","if expression"],
+        "url": "/cogs501/posts/course/way-of-lambda/",
+        "teaser": null
+      },{
     "title": "Page Not Found",
     "excerpt":"Sorry, but the page you were trying to view does not exist.  ","url": "http://localhost:4000/cogs501/404.html"
   },{
@@ -87,7 +93,7 @@ var store = [{
     "excerpt":" ","url": "http://localhost:4000/cogs501/code/"
   },{
     "title": "Exercises",
-    "excerpt":"python iteration func-prog while math discrete proof Basic data structures Exercises on basic tuple, list, dictionary tasks. Higher-order functions A set of programming exercises to practice higher-order functions. Iteration A set of programming exercises to practice iteration using while loops. Basic number theory Mainly proof questions based on basic number...","url": "http://localhost:4000/cogs501/exercise/browser/"
+    "excerpt":"    python    iteration    func-prog    while    math    discrete    proof                                                 Higher-order functions                                A set of programming exercises to practice higher-order functions.                                                     Iteration                                A set of programming exercises to practice iteration using while loops.                                                     Basic number theory                                Mainly proof questions based on basic number theory.                                                     Sequence operations                                Exercises on sequence manipulation.               ","url": "http://localhost:4000/cogs501/exercise/browser/"
   },{
     "title": "Exercises",
     "excerpt":" ","url": "http://localhost:4000/cogs501/exercises/"

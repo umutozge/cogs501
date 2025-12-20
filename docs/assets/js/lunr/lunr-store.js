@@ -17,12 +17,6 @@ var store = [{
         "url": "/cogs501/code/python/snippets/proc_seq/",
         "teaser": null
       },{
-        "title": "Sequence operations",
-        "excerpt":"In the following exercises, you can treat sequences as lists or tuples, unless explicitly stated otherwise. Define a function mysum(seq) that returns the sum of all numbers in the list seq. def mysum(seq): \"\"\"Return the sum of all numbers in seq. &gt;&gt;&gt; mysum([1, 2, 3]) 6 &gt;&gt;&gt; mysum([-1, 1, -1,...","categories": [],
-        "tags": ["python","data-structures"],
-        "url": "/cogs501/exercises/basic-data-structures/",
-        "teaser": null
-      },{
         "title": "Higher-order functions",
         "excerpt":"Define a function apply_twice that takes a function f and a value x, and returns the result of applying f to x two times. def sqr(x): return x * x def apply_twice(f, x): \"\"\"apply f to x twice. &gt;&gt;&gt; apply_twice(sqr, 3) 81 \"\"\" Define a function applier that applies a...","categories": [],
         "tags": ["func-prog","python"],
@@ -105,7 +99,7 @@ var store = [{
     "excerpt":" ","url": "http://localhost:4000/cogs501/code/"
   },{
     "title": "Exercises",
-    "excerpt":"python iteration func-prog while math discrete proof Sequence operations Exercises sequence manipulation. Higher-order functions A set of programming exercises to practice higher-order functions. Iteration A set of programming exercises to practice iteration using while loops. Basic number theory Mainly proof questions based on basic number theory. Sequence operations Exercises on...","url": "http://localhost:4000/cogs501/exercise/browser/"
+    "excerpt":"    python    iteration    func-prog    while    math    discrete    proof                                                 Higher-order functions                                A set of programming exercises to practice higher-order functions.                                                     Iteration                                A set of programming exercises to practice iteration using while loops.                                                     Basic number theory                                Mainly proof questions based on basic number theory.                                                     Sequence operations                                Exercises on sequence manipulation.               ","url": "http://localhost:4000/cogs501/exercise/browser/"
   },{
     "title": "Exercises",
     "excerpt":" ","url": "http://localhost:4000/cogs501/exercises/"

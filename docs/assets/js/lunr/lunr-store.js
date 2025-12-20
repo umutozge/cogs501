@@ -41,12 +41,6 @@ var store = [{
         "url": "/cogs501/exercises/numbers/",
         "teaser": null
       },{
-        "title": "Basic probability",
-        "excerpt":"Define flip(p) that returns True with probability p and False with probability (1-p). Criteria and notes The only built-in you can use is radoom.random: &gt;&gt;&gt; import random &gt;&gt;&gt; random.random() # returns a number in [0,1) 0.4013560344771465 Define a function geometric(p) that flips with probability p until it succeeds and returns...","categories": [],
-        "tags": ["probability"],
-        "url": "/cogs501/exercises/probability/",
-        "teaser": null
-      },{
         "title": "Sequence operations",
         "excerpt":"In the following exercises, you can treat sequences as lists or tuples, unless explicitly stated otherwise. Define a function mysum(seq) that returns the sum of all numbers in the list seq. def mysum(seq): \"\"\"Return the sum of all numbers in seq. &gt;&gt;&gt; mysum([1, 2, 3]) 6 &gt;&gt;&gt; mysum([-1, 1, -1,...","categories": [],
         "tags": ["python","sequence","list","tuple"],
@@ -111,7 +105,7 @@ var store = [{
     "excerpt":" ","url": "http://localhost:4000/cogs501/code/"
   },{
     "title": "Exercises",
-    "excerpt":"python iteration func-prog while math discrete proof Sequence operations Exercises sequence manipulation. Higher-order functions A set of programming exercises to practice higher-order functions. Iteration A set of programming exercises to practice iteration using while loops. Basic number theory Mainly proof questions based on basic number theory. Basic probability Probability and...","url": "http://localhost:4000/cogs501/exercise/browser/"
+    "excerpt":"python iteration func-prog while math discrete proof Sequence operations Exercises sequence manipulation. Higher-order functions A set of programming exercises to practice higher-order functions. Iteration A set of programming exercises to practice iteration using while loops. Basic number theory Mainly proof questions based on basic number theory. Sequence operations Exercises on...","url": "http://localhost:4000/cogs501/exercise/browser/"
   },{
     "title": "Exercises",
     "excerpt":" ","url": "http://localhost:4000/cogs501/exercises/"

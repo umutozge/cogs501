@@ -136,6 +136,7 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1rem;
+  width: 130%;
 }
 
 .browser-filters label {
@@ -420,7 +421,7 @@ hr.topic-symbol::before {
     <span class="k">return</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">collatz</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Now, assume we are interested in the number of times we change “direction” in a Collatz sequence seeded by \(n\). That is, how many triples of consecutive numbers \((a,b,c)\) are there in the sequence such that \((a &gt; b \land b &lt; c) \lor (a &lt; b \land b &gt;c)\)? Let’s think. What do we have to keep the record of in each iteration to be able to count the direction changes? In each cycle I receive a new number; to be able to tell whether this causes a change in direction, I need to know the previous two numbers. Therefore, my store must hold three numbers: the previous two numbers and the current count of direction changes. Let us first agree on an order. Let the first component of the store be the count, the second two-back, and the third one-back. Now we can write the code:</p>
+<p id="ref:turning_point">Now, assume we are interested in the number of times we change “direction” in a Collatz sequence seeded by \(n\). That is, how many triples of consecutive numbers \((a,b,c)\) are there in the sequence such that \((a &gt; b \land b &lt; c) \lor (a &lt; b \land b &gt;c)\)? Let’s think. What do we have to keep the record of in each iteration to be able to count the direction changes? In each cycle I receive a new number; to be able to tell whether this causes a change in direction, I need to know the previous two numbers. Therefore, my store must hold three numbers: the previous two numbers and the current count of direction changes. Let us first agree on an order. Let the first component of the store be the count, the second two-back, and the third one-back. Now we can write the code:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">collatz_direction_changes</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="s">"""Return the number of direction changes in the Collatz sequence seeded by n.
@@ -632,6 +633,50 @@ as we were able to keep track of multiple pieces of information in each cycle of
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/cogs501/posts/course/more-state-power/" rel="permalink">More state power
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2025-12-20T00:00:00+03:00">2025-12-20</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    
+
+    <p class="archive__item-excerpt" itemprop="description">Prerequisites: The power of the state and The way of lambda
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item"
+     
+     
+    >
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/cogs501/posts/course/way-of-lambda/" rel="permalink">The way of lambda
 </a>
       
@@ -743,49 +788,6 @@ as we were able to keep track of multiple pieces of information in each cycle of
     
 
     <p class="archive__item-excerpt" itemprop="description">Euclid’s algorithm for finding the greatest common divisor of two integers and its partial proof.
-</p>
-  </article>
-</div>
-
-    
-      
-      
-
-
-
-<div class="grid__item"
-     
-     
-    >
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/cogs501/posts/course/higher-order-functions/" rel="permalink">Higher order functions
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2025-11-21T00:00:00+03:00">2025-11-21</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    
-
-    <p class="archive__item-excerpt" itemprop="description">An introduction to higher-order functions in programming.
 </p>
   </article>
 </div>

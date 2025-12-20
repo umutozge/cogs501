@@ -331,6 +331,42 @@ def collatz_direction_changes(n):
                                         new),
                     (0, n, n))[0]
 
+
+
+def collatz_turning_points(n):
+    """Return the number of turning points in the Collatz sequence seeded by n.
+
+    >>> collatz_turning_points(8)
+    0
+    >>> collatz_turning_points(7)
+    9
+    """
+    def update(state):
+        count, two_back, one_back, current = state
+        return (count + int(turning_point(two_back, one_back, current)), one_back, current, collatz(current))
+
+    return proc(state=(0,n,n,n),
+                alive=lambda s: s[3] != 1,
+                update=update)[0]
+
+def collatz_turning_points(n):
+    """Return the number of turning points in the Collatz sequence seeded by n.
+
+    >>> collatz_turning_points(8)
+    0
+    >>> collatz_turning_points(7)
+    9
+    """
+    return proc(state={"count": 0, "two_back": n, "one_back": n, "current": n},
+                alive=lambda s: s["current"] != 1,
+                update=lambda s: {"count": s["count"] + 
+                                           int(turning_point(s["two_back"], s["one_back"], s["current"])),
+                                   "two_back": s["one_back"],
+                                   "one_back": s["current"],
+                                   "current": collatz(s["current"])})["count"]
+
+
+
 # def mod(a, b):
 #    """Compute a mod b for a>=0.
 # 
@@ -487,13 +523,12 @@ n_uniq_random = lambda n, start, end: proc(
 #                 update=update
 #                 )['uniq_nums']
 
-
-def n_uniq_random_dict(n, start, end):
+def n_uniq_random(n, start, end):
     """Return a list of n unique random numbers between start and end.
 
     >>> import random
     >>> random.seed(48)
-    >>> n_uniq_random_dict(5, 1, 10)
+    >>> n_uniq_random(5, 1, 10)
     [9, 6, 3, 5, 4]
     """
     from random import randint
@@ -501,15 +536,35 @@ def n_uniq_random_dict(n, start, end):
 
     def update(s):
         x = randint(start, end)
-        if x not in s['uniq_nums']:
-            s['uniq_nums'] = s['uniq_nums'] + [x]
-            s['count'] = s['count'] + 1
-        return s
+        return s + [x] if x not in s else s
 
-    return proc(state={'uniq_nums': [], 'count': 0},
-                alive=lambda s: s['count'] < n,
+    return proc(state= [],
+                alive=lambda s: len(s) < n,
                 update=update
-                )['uniq_nums']
+                )
+
+# def n_uniq_random_dict(n, start, end):
+#     """Return a list of n unique random numbers between start and end.
+# 
+#     >>> import random
+#     >>> random.seed(48)
+#     >>> n_uniq_random_dict(5, 1, 10)
+#     [9, 6, 3, 5, 4]
+#     """
+#     from random import randint
+#     from funcutils import proc
+# 
+#     def update(s):
+#         x = randint(start, end)
+#         if x not in s['uniq_nums']:
+#             s['uniq_nums'] = s['uniq_nums'] + [x]
+#             s['count'] = s['count'] + 1
+#         return s
+# 
+#     return proc(state={'uniq_nums': [], 'count': 0},
+#                 alive=lambda s: s['count'] < n,
+#                 update=update
+#                 )['uniq_nums']
 
 def gcd_proc(a,b):
     """Return the greatest common divisor of a and b.
@@ -572,3 +627,42 @@ def gcd_proc_seq(a,b):
                     lambda store, x: x,
                     0,
                    debug=False)[1]
+
+
+def digit_count(n, base=10):
+    """The digit count of n represented in base base.
+
+    >>> digit_count(0)
+    1
+    >>> digit_count(8)
+    1
+    >>> digit_count(999)
+    3
+    >>> digit_count(1000)
+    4
+    """
+    from math import log, floor
+    return (1
+            if n == 0 else
+            floor(int(log(n+1e-12, base))) + 1
+           )
+            
+def dec2bin(n, acc=0, digit=0):
+    """convert n from dec to bin, displaying the result as
+       a binary looking decimal
+
+    >>> dec2bin(0)
+    0
+    >>> dec2bin(4)
+    100
+    >>> dec2bin(7)
+    111
+    """
+    if n == 0:
+        return acc 
+    else:
+        return dec2bin(n//2,
+                       n%2*10**digit  + acc,
+                       digit + 1)
+
+

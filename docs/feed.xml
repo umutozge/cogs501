@@ -1,4 +1,227 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/cogs501/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/cogs501/" rel="alternate" type="text/html" /><updated>2025-12-12T10:00:53+03:00</updated><id>http://localhost:4000/cogs501/feed.xml</id><title type="html">COGS 501</title><subtitle>Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.</subtitle><author><name>First Lastname</name></author><entry><title type="html">The way of lambda</title><link href="http://localhost:4000/cogs501/posts/course/way-of-lambda/" rel="alternate" type="text/html" title="The way of lambda" /><published>2025-12-12T00:00:00+03:00</published><updated>2025-12-12T00:00:00+03:00</updated><id>http://localhost:4000/cogs501/posts/course/way-of-lambda</id><content type="html" xml:base="http://localhost:4000/cogs501/posts/course/way-of-lambda/"><![CDATA[<p>When I say “Call a plumber”, you need to know the meaning of “plumber” and “call”, and enough English syntax to be able to execute the command. In case you know what “call” means but not “plumber”, you consult a dictionary before you are ready to execute the command. I could have also said “Call someone who installs, repairs, and maintains piping, fittings, and fixtures involved in the distribution and use of water in a building”, substituting the Merriam-Webster definition of “plumber” for the word itself. This would save you the dictionary lookup.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/cogs501/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/cogs501/" rel="alternate" type="text/html" /><updated>2025-12-20T11:10:02+03:00</updated><id>http://localhost:4000/cogs501/feed.xml</id><title type="html">COGS 501</title><subtitle>Course website for COGS 501 Algorithmic Structures in Cognition at Graduate School of Informatics, Middle East Technical University.</subtitle><author><name>First Lastname</name></author><entry><title type="html">More state power</title><link href="http://localhost:4000/cogs501/posts/course/more-state-power/" rel="alternate" type="text/html" title="More state power" /><published>2025-12-20T00:00:00+03:00</published><updated>2025-12-20T00:00:00+03:00</updated><id>http://localhost:4000/cogs501/posts/course/more-state-power</id><content type="html" xml:base="http://localhost:4000/cogs501/posts/course/more-state-power/"><![CDATA[<p class="notice--warning"><strong>Prerequisites:</strong> <a href="/cogs501/posts/course/state-power/">The power of the state</a> and <a href="/cogs501/posts/course/way-of-lambda/">The way of lambda</a></p>
+
+<p>We fortified our <code class="language-plaintext highlighter-rouge">proc_seq</code> with tuples to keep track of multiple state variables.  We scan through a sequence of numbers that proceeds according to a given rule, keeping track of various properties of the sequence, like what is the largest number seen so far according to a given criterion, or what is the sum of all numbers seen so far. We are able to scan through the sequence in pairs, triples, or more, and can keep record of multiple properties of the sequence. We can add as many state variables as we want, but these variables can hold only single values.</p>
+
+<p>We are still unable to handle the task of mapping a positive integer to the Collatz sequence it seeds. To do that, we need a state variable that can hold a sequence of numbers, not just a single number. Lists exist for this purpose. Here is a brief interlude on lists.</p>
+
+<hr class="topic-separator" />
+
+<p>Construction and indexing of lists is similar to tuples:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># first element
+</span><span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>	<span class="c1"># fourth element
+</span><span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># last element
+</span><span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># all but the first element
+</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Lists are <strong>mutable</strong>, meaning that we can change them <strong>in place</strong>. Here is how:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>  <span class="c1"># insert 6 at index 2
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>  <span class="c1"># extend by another list
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Operations like <code class="language-plaintext highlighter-rouge">.insert</code>, <code class="language-plaintext highlighter-rouge">.extend</code>, <code class="language-plaintext highlighter-rouge">.append</code>, and so on, are not expressions. They do now have any return value, but have side-effects that modify the list in place. Operations like these cause too much pain in programs, causing errors usually very hard to detect. We are not fond of side-effects, we like expressions that return values. Here are the expression equivalents of the above operations:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="p">[</span><span class="mi">7</span><span class="p">]</span>  <span class="c1"># concatenation
+</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>  <span class="c1"># insert 6 at index 2
+</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>  <span class="c1"># extend by another list
+</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>As you see, the list <code class="language-plaintext highlighter-rouge">x</code> remains unchanged after these operations. To actually change <code class="language-plaintext highlighter-rouge">x</code>, you need to assign the result back to <code class="language-plaintext highlighter-rouge">x</code>; unless you do that the original list remains unchanged.</p>
+
+<p>Finally, here are some useful  functions on lists:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># length of the list
+</span><span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="ow">in</span> <span class="n">x</span>  <span class="c1"># membership test
+</span><span class="bp">True</span>
+</code></pre></div></div>
+
+<hr class="topic-separator" />
+
+<p>Back to Collatz sequences. Here is how we can use lists to construct the sequence seeded by a positive integer \(n\):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">collatz_sequence</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s">"""Return the Collatz sequence seeded by positive integer n.
+
+    &gt;&gt;&gt; collatz_sequence(6)
+    [6, 3, 10, 5, 16, 8, 4, 2, 1]
+    &gt;&gt;&gt; collatz_sequence(11)
+    [11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1]
+    """</span>
+    <span class="kn">from</span> <span class="nn">collatz</span> <span class="kn">import</span> <span class="n">collatz</span>
+    <span class="k">return</span> <span class="n">proc_seq</span><span class="p">(</span>
+        <span class="n">n</span><span class="p">,</span>
+        <span class="n">seq</span><span class="o">=</span><span class="n">collatz</span><span class="p">,</span>
+        <span class="n">alive</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">update</span><span class="o">=</span> <span class="k">lambda</span> <span class="n">store</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">store</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">],</span>
+        <span class="n">init</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="p">)</span>
+</code></pre></div></div>
+
+<hr class="topic-separator" />
+
+<p>The post <a href="/cogs501/posts/course/state-power/">The power of the state</a> closed:</p>
+
+<blockquote>
+  <p>There still remains a limitation in our notion of state which cannot be overcome by increasing the memory of the store component. You will find  what it is in another post.</p>
+</blockquote>
+
+<p>Now is time to make good on our promise.</p>
+
+<p>Our sequence processor <code class="language-plaintext highlighter-rouge">proc_seq</code> keeps the sequence variable <code class="language-plaintext highlighter-rouge">n</code> and the store variable <code class="language-plaintext highlighter-rouge">store</code> separate. This separation does no harm under the assumption that the next item in the sequence depends only on the current item through a function of the users’ choice, passed to <code class="language-plaintext highlighter-rouge">proc_seq</code> via the <code class="language-plaintext highlighter-rouge">seq</code> parameter. But what if the next item in the sequence depends, perhaps among other things, on some information kept in the <code class="language-plaintext highlighter-rouge">store</code> parameter?</p>
+
+<p>For an instance, take the task of generating 10 random numbers between 1 and 100, such that no number appears twice in the generated sequence.
+The update task should not be hard to come by:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lambda store, x: store + [x] if x not in store else store
+</code></pre></div></div>
+
+<p>But how will you know that you have generated 10 unique numbers, so that it is time to stop? All you can check with <code class="language-plaintext highlighter-rouge">alive</code> is the index parameter <code class="language-plaintext highlighter-rouge">n</code>. The problem is that <code class="language-plaintext highlighter-rouge">alive</code> and <code class="language-plaintext highlighter-rouge">update</code> cannot communicate. You might think this would work:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">unique_random_numbers</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s">"""Return a list of n unique random numbers between 1 and 100.
+
+    &gt;&gt;&gt; unique_random_numbers(10)
+    [23, 5, 67, 89, 12, 34, 45, 78, 90, 11]
+    """</span>
+    <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+    <span class="k">return</span> <span class="n">proc_seq</span><span class="p">(</span>
+        <span class="bp">None</span><span class="p">,</span>
+        <span class="n">seq</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+        <span class="n">alive</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">store</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">,</span>
+        <span class="n">update</span><span class="o">=</span><span class="k">lambda</span> <span class="n">store</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">store</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">store</span> <span class="k">else</span> <span class="n">store</span><span class="p">,</span>
+        <span class="n">init</span><span class="o">=</span><span class="p">[]</span>
+    <span class="p">)</span>
+</code></pre></div></div>
+
+<p>but this will give an unbound variable error, because <code class="language-plaintext highlighter-rouge">store</code> is not defined in the scope of <code class="language-plaintext highlighter-rouge">alive</code>. <code class="language-plaintext highlighter-rouge">alive</code> is a parameter of <code class="language-plaintext highlighter-rouge">proc_seq</code>, and parameters cannot refer to variables in the body of the function, it works just the other way round.</p>
+
+<p>There is only one way out of this impasse.<sup id="fnref:ditch" role="doc-noteref"><a href="#fn:ditch" class="footnote" rel="footnote">1</a></sup> You need a more powerful state, but this time the extra power does not come from memory capacity but the structure of the state. A more general state architecture opens the way to more flexible communication between state parameters.</p>
+
+<p>We had very hard time to get used to <code class="language-plaintext highlighter-rouge">proc_seq</code>, and I guess, or hope, some of us has even started to like it, a bit. But it is time to say “good bye” to <code class="language-plaintext highlighter-rouge">proc_seq</code>. From here on we will have <code class="language-plaintext highlighter-rouge">proc</code>, which makes use of a single state variable that can be structured and manipulated in full flexibility:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">proc</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="n">update</span><span class="p">):</span>
+    <span class="s">"""Process as succession of states.
+
+    state: initial state
+    alive: one-place function that tests whether state is alive
+    update: function that updates the state
+    """</span>
+    <span class="k">while</span> <span class="n">alive</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">update</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">state</span> 
+</code></pre></div></div>
+
+<p>Let’s have an example.</p>
+
+<p>Return a list of <code class="language-plaintext highlighter-rouge">n</code> unique random numbers each between <code class="language-plaintext highlighter-rouge">start</code> and <code class="language-plaintext highlighter-rouge">end</code>. To tackle the problem, we need to design our state and how to update it. The design is fairly simple when we operate with a single state that serves as argument to both <code class="language-plaintext highlighter-rouge">alive</code> and <code class="language-plaintext highlighter-rouge">update</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">n_uniq_random</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+    <span class="s">"""Return a list of n unique random numbers between start and end.
+
+    &gt;&gt;&gt; import random
+    &gt;&gt;&gt; random.seed(48)
+    &gt;&gt;&gt; n_uniq_random_dict(5, 1, 10)
+    [9, 6, 3, 5, 4]
+    """</span>
+    <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+    <span class="kn">from</span> <span class="nn">funcutils</span> <span class="kn">import</span> <span class="n">proc</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span> <span class="k">else</span> <span class="n">s</span>
+
+    <span class="k">return</span> <span class="n">proc</span><span class="p">(</span><span class="n">state</span><span class="o">=</span> <span class="p">[],</span>
+                <span class="n">alive</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">,</span>
+                <span class="n">update</span><span class="o">=</span><span class="n">update</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr class="topic-separator" />
+
+<p>Let’s get back to the <a href="/cogs501/posts/course/state-power/#ref:turning_point">problem</a> of counting the turning points in the Collatz sequence seeded by \(n\), and re-write it with <code class="language-plaintext highlighter-rouge">proc</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">collatz_turning_points</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s">"""Return the number of turning points in the Collatz sequence seeded by n."""</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+        <span class="n">count</span><span class="p">,</span> <span class="n">two_back</span><span class="p">,</span> <span class="n">one_back</span><span class="p">,</span> <span class="n">current</span> <span class="o">=</span> <span class="n">state</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">count</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">turning_point</span><span class="p">(</span><span class="n">two_back</span><span class="p">,</span> <span class="n">one_back</span><span class="p">,</span> <span class="n">current</span><span class="p">)),</span>
+                <span class="n">one_back</span><span class="p">,</span>
+                <span class="n">current</span><span class="p">,</span>
+                <span class="n">collatz</span><span class="p">(</span><span class="n">current</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">proc</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">),</span>
+                <span class="n">alive</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="n">update</span><span class="o">=</span><span class="n">update</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Our state has 4 parameters in total and the meaning of each parameter depends on the position of the parameter in the 4-tuple. Even with 4 parameters, dealing with positions is error-prone. We are not good at remembering numbers. But we have no problem in understanding words. We will now see how to explicitly name our state parameters, through a brief interlude on dictionaries.</p>
+
+<p>Dictionaries are mappings from <strong>keys</strong> to <strong>values</strong>. When we say mapping, we mean that each key is associated with one and only one value. Keys are usually strings, which can be formed by double or single quotes. Here is how to create and use dictionaries:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="p">{</span><span class="s">'a'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s">'a'</span><span class="p">]</span>  <span class="c1"># value associated with key 'a'
+</span><span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s">'b'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># change value associated with key 'b'
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="p">{</span><span class="s">'a'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p>This much dictionary knowledge is enough for now.</p>
+
+<hr class="topic-separator" />
+
+<p>We can now re-write <code class="language-plaintext highlighter-rouge">collatz_turning_points</code> using a dictionary state:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">collatz_turning_points</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s">"""Return the number of turning points in the Collatz sequence seeded by n."""</span>
+    <span class="k">return</span> <span class="n">proc</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="p">{</span><span class="s">"count"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">"two_back"</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s">"one_back"</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span> <span class="s">"current"</span><span class="p">:</span> <span class="n">n</span><span class="p">},</span>
+                <span class="n">alive</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="s">"current"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="n">update</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="p">{</span><span class="s">"count"</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="s">"count"</span><span class="p">]</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">turning_point</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s">"two_back"</span><span class="p">],</span>
+                                                                            <span class="n">s</span><span class="p">[</span><span class="s">"one_back"</span><span class="p">],</span>
+                                                                            <span class="n">s</span><span class="p">[</span><span class="s">"current"</span><span class="p">])),</span>
+                                   <span class="s">"two_back"</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="s">"one_back"</span><span class="p">],</span>
+                                   <span class="s">"one_back"</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="s">"current"</span><span class="p">],</span>
+                                   <span class="s">"current"</span><span class="p">:</span> <span class="n">collatz</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s">"current"</span><span class="p">])})[</span><span class="s">"count"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>You may find this too wordy in comparison to the tuple based solution. In the tuple version it is more likely that the indices get jammed. More importantly that sort of errors are hard to detect, as they might not cause an error during execution. Making errors in dictionary keys will be more likely to be detected by the interpreter, as “key not found” errors. But in the end, all this depends on the complexity of the problem/solution at hand. In sum, if wordiness pays back, be wordy, if it does not, go with the more concise tuple strategy.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:ditch" role="doc-endnote">
+      <p>Two actually; you can also ditch <code class="language-plaintext highlighter-rouge">proc_seq</code> and shift to a <code class="language-plaintext highlighter-rouge">while</code> loop solution, but not in this course, sorry. <a href="#fnref:ditch" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>First Lastname</name></author><category term="course" /><category term="programming" /><category term="dictionary" /><category term="cogs501" /><category term="list" /><summary type="html"><![CDATA[Prerequisites: The power of the state and The way of lambda]]></summary></entry><entry><title type="html">The way of lambda</title><link href="http://localhost:4000/cogs501/posts/course/way-of-lambda/" rel="alternate" type="text/html" title="The way of lambda" /><published>2025-12-12T00:00:00+03:00</published><updated>2025-12-12T00:00:00+03:00</updated><id>http://localhost:4000/cogs501/posts/course/way-of-lambda</id><content type="html" xml:base="http://localhost:4000/cogs501/posts/course/way-of-lambda/"><![CDATA[<p>When I say “Call a plumber”, you need to know the meaning of “plumber” and “call”, and enough English syntax to be able to execute the command. In case you know what “call” means but not “plumber”, you consult a dictionary before you are ready to execute the command. I could have also said “Call someone who installs, repairs, and maintains piping, fittings, and fixtures involved in the distribution and use of water in a building”, substituting the Merriam-Webster definition of “plumber” for the word itself. This would save you the dictionary lookup.</p>
 
 <p>Let’s define a function <code class="language-plaintext highlighter-rouge">fmax(x,y,f)</code> which picks <code class="language-plaintext highlighter-rouge">x</code> or <code class="language-plaintext highlighter-rouge">y</code> according for which <code class="language-plaintext highlighter-rouge">f</code> returns the larger value:</p>
 
@@ -170,7 +393,7 @@ Statements are toxic to your programs, you need to learn to avoid them as much a
     <span class="k">return</span> <span class="n">proc_seq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">collatz</span><span class="p">,</span> <span class="n">alive</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Now, assume we are interested in the number of times we change “direction” in a Collatz sequence seeded by \(n\). That is, how many triples of consecutive numbers \((a,b,c)\) are there in the sequence such that \((a &gt; b \land b &lt; c) \lor (a &lt; b \land b &gt;c)\)? Let’s think. What do we have to keep the record of in each iteration to be able to count the direction changes? In each cycle I receive a new number; to be able to tell whether this causes a change in direction, I need to know the previous two numbers. Therefore, my store must hold three numbers: the previous two numbers and the current count of direction changes. Let us first agree on an order. Let the first component of the store be the count, the second two-back, and the third one-back. Now we can write the code:</p>
+<p id="ref:turning_point">Now, assume we are interested in the number of times we change “direction” in a Collatz sequence seeded by \(n\). That is, how many triples of consecutive numbers \((a,b,c)\) are there in the sequence such that \((a &gt; b \land b &lt; c) \lor (a &lt; b \land b &gt;c)\)? Let’s think. What do we have to keep the record of in each iteration to be able to count the direction changes? In each cycle I receive a new number; to be able to tell whether this causes a change in direction, I need to know the previous two numbers. Therefore, my store must hold three numbers: the previous two numbers and the current count of direction changes. Let us first agree on an order. Let the first component of the store be the count, the second two-back, and the third one-back. Now we can write the code:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">collatz_direction_changes</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="s">"""Return the number of direction changes in the Collatz sequence seeded by n.

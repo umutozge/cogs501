@@ -10,8 +10,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Basic number theory - COGS 501</title>
-<meta name="description" content="Mainly proof questions based on basic number theory.">
+<!-- begin _includes/seo.html --><title>Sequence operations - COGS 501</title>
+<meta name="description" content="Exercises sequence manipulation.">
 
 
   <meta name="author" content="First Lastname">
@@ -23,11 +23,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="COGS 501">
-<meta property="og:title" content="Basic number theory">
-<meta property="og:url" content="http://localhost:4000/cogs501/exercises/numbers/">
+<meta property="og:title" content="Sequence operations">
+<meta property="og:url" content="http://localhost:4000/cogs501/exercises/basic-data-structures/">
 
 
-  <meta property="og:description" content="Mainly proof questions based on basic number theory.">
+  <meta property="og:description" content="Exercises sequence manipulation.">
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/cogs501/exercises/numbers/">
+<link rel="canonical" href="http://localhost:4000/cogs501/exercises/basic-data-structures/">
 
 
 
@@ -312,8 +312,8 @@ hr.topic-symbol::before {
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Basic number theory">
-    <meta itemprop="description" content="Mainly proof questions based on basic number theory.">
+    <meta itemprop="headline" content="Sequence operations">
+    <meta itemprop="description" content="Exercises sequence manipulation.">
     
     
 
@@ -321,7 +321,7 @@ hr.topic-symbol::before {
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="http://localhost:4000/cogs501/exercises/numbers/" itemprop="url">Basic number theory
+            <a href="http://localhost:4000/cogs501/exercises/basic-data-structures/" itemprop="url">Sequence operations
 </a>
           </h1>
           
@@ -333,61 +333,62 @@ hr.topic-symbol::before {
 
       <section class="page__content" itemprop="text">
         
-        <ol>
+        <p>In the following exercises, you can treat sequences as lists or tuples, unless explicitly stated otherwise.</p>
+
+<ol>
   <li>
-    <p>Prove the following:</p>
+    <p>Define a function <code class="language-plaintext highlighter-rouge">mysum(seq)</code> that returns the sum of all numbers in the list <code class="language-plaintext highlighter-rouge">seq</code>.</p>
 
-    <blockquote class="mathbox theorem" id="thm:divis-prop">
-      <p><strong>Theorem</strong> (Some properties of divisibility) <br /><br />
-Let \(a,b,c \in \mathbb{Z}\) and \(a \neq 0\). Then:<br />
-i. if \(a \mid b\) and \(a \mid c\), then \(a \mid (b+c)\);<br />
-ii. if \(a \mid b\), then \(a \mid kb\) for any integer \(k\);<br />
-iii. if \(a \mid b\) and \(b \mid c\), then \(a \mid c\).</p>
-    </blockquote>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">mysum</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+          <span class="s">"""Return the sum of all numbers in seq.
+
+          &gt;&gt;&gt; mysum([1, 2, 3])
+          6
+          &gt;&gt;&gt; mysum([-1, 1, -1, 1])
+          0
+          &gt;&gt;&gt; mysum([])
+          0
+          &gt;&gt;&gt; mysum([0.5, 1.5, 2.5])
+          4.5
+          """</span>
+</code></pre></div>    </div>
   </li>
-  <li>List all the divisors, proper divisors, and prime divisors of 28.</li>
-  <li>Let \(n,d\in\mathbb{Z}^+\), how many integers less than \(n\) are divisible by \(d\)?</li>
-  <li>If someone claims that given integers \(a,b,c\in \mathbb{Z}^+\), if \(a\mid bc\), then either \(a\mid b\) or \(a\mid c\). What do you say?</li>
-  <li>Provide a definition of a composite number using the concept of proper divisors.</li>
   <li>
-    <p>Here is a definition:</p>
+    <p>Define a function <code class="language-plaintext highlighter-rouge">myinsert(seq,index,item)</code> that inserts <code class="language-plaintext highlighter-rouge">item</code> at position <code class="language-plaintext highlighter-rouge">index</code> of the list <code class="language-plaintext highlighter-rouge">seq</code> and returns the new list.</p>
 
-    <blockquote class="mathbox definition" id="def:trivial">
-      <p><strong>Definition 1</strong> (trivial divisors) <br /><br />
-Given an integer \(n\), we say that 1,-1,\(n\), and \(-n\)  are the <strong>trivial divisors</strong> of \(n\).</p>
-    </blockquote>
-    <p>Define prime and composite numbers using the concept of trivial divisors.</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">myinsert</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+          <span class="s">"""Insert item at index of seq.
+
+          &gt;&gt;&gt; myinsert([1, 2, 3], 1, 4)
+          [1, 4, 2, 3]
+          &gt;&gt;&gt; myinsert([1, 2, 3], 5, 4)
+          [1, 2, 3]
+          &gt;&gt;&gt; myinsert([True, False], 2, None)
+          [True, False, None]
+          &gt;&gt;&gt; myinsert([],0,1)
+          [1]
+          &gt;&gt;&gt; myinsert([1,4],1,[2,3])
+          [1, [2, 3], 4]
+          """</span>
+</code></pre></div>    </div>
   </li>
-  <li>Prove that for any integer \(n\), if \(n\) is even, then \(n^2\) is even. Use the definitions of even numbers and divisibility in your proof.</li>
-  <li>Prove that the product of an even integer with an odd integer is even.</li>
-  <li>Prove that for any composite integer \(n\), \(n = ab\) for some \(a,b \in \mathbb{Z}\) where \(1 &lt; a &lt; n\) and  \(1 &lt; b &lt; n\).</li>
-  <li>Prove that if \(a\) and \(b\) are integers with \(a\mid b\), then \(a\) is odd or  \(b\) is even.</li>
-  <li>Prove that if \(a\) and \(b\) are nonzero integers, \(a\mid b\) and \(a+b\) is odd, then \(a\) is odd.</li>
-  <li>Prove that if \(a\) is an integer that is not divisible by 3, then \((a +1)(a +2)\) is divisible by 3.</li>
-  <li>Prove that if \(a\) is a positive integer, then 4 does not divide \(a^2 +2\).</li>
+  <li>Define a function <code class="language-plaintext highlighter-rouge">myreverse</code> that reverses a given list. Write 3 versions: using <code class="language-plaintext highlighter-rouge">while</code>,<code class="language-plaintext highlighter-rouge">for</code>, and  <code class="language-plaintext highlighter-rouge">proc</code> from <a href="/cogs501/code/python/modules/funcutils/">funcutils</a>.</li>
   <li>
-    <p>Define <code class="language-plaintext highlighter-rouge">digit_count(n, base=10)</code> that returns the number of digits of <code class="language-plaintext highlighter-rouge">n</code> in base <code class="language-plaintext highlighter-rouge">base</code>.</p>
+    <p>Define a function <code class="language-plaintext highlighter-rouge">myaggregate(seq, func, initial)</code> that aggregates the elements of the list <code class="language-plaintext highlighter-rouge">seq</code> using the binary function <code class="language-plaintext highlighter-rouge">func</code>, starting with the value <code class="language-plaintext highlighter-rouge">initial</code>.</p>
 
-    <details>
-      <summary>Criteria and notes</summary>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">myaggregate</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">initial</span><span class="p">):</span>
+          <span class="s">"""Aggregate elements of seq using func starting with initial.
 
-      <ul>
-        <li>Everything needs to stay as number, no conversion to string or any other sequence.</li>
-        <li>You can use <code class="language-plaintext highlighter-rouge">math</code> modules <code class="language-plaintext highlighter-rouge">log(n, base)</code>, but be careful about rounding errors; the workaround is to call <code class="language-plaintext highlighter-rouge">log</code> with a very small amount added to <code class="language-plaintext highlighter-rouge">n</code>, say <code class="language-plaintext highlighter-rouge">1e-12</code>; and don’t forget to convert what you get from <code class="language-plaintext highlighter-rouge">log</code> to <code class="language-plaintext highlighter-rouge">int</code>.</li>
-      </ul>
-    </details>
-  </li>
-  <li>Define <code class="language-plaintext highlighter-rouge">bconvert(n, fr=10, to=2)</code> that converts a given number from base <code class="language-plaintext highlighter-rouge">fr</code> to base <code class="language-plaintext highlighter-rouge">to</code>.
-    <details>
-      <summary>Criteria and notes</summary>
-
-      <ul>
-        <li>Assume the base will always be less than or equal to 10.</li>
-        <li>First generate string or sequence output, this is simpler to find.</li>
-        <li>Do not look at solutions on the web until you burn your fuses.</li>
-        <li>Once the string/sequence solution is at hand, solve the problem by returning a <em>number</em> that mimics the result. For instance this version must return the <em>decimal</em> number <code class="language-plaintext highlighter-rouge">101</code> to the call <code class="language-plaintext highlighter-rouge">bconvert(5,10,2)</code>.</li>
-      </ul>
-    </details>
+          &gt;&gt;&gt; myaggregate([1, 2, 3], lambda x, y: x + y, 0)
+          6
+          &gt;&gt;&gt; myaggregate([1, 2, 3, 4], lambda x, y: x * y, 1)
+          24
+          &gt;&gt;&gt; myaggregate([], lambda x, y: x + y, 10)
+          10
+          &gt;&gt;&gt; myaggregate([2, 3, 4], lambda x, y: x - y, 20)
+          11
+          """</span>
+</code></pre></div>    </div>
   </li>
 </ol>
 
@@ -406,13 +407,9 @@ Given an integer \(n\), we say that 1,-1,\(n\), and \(-n\)  are the <strong>triv
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
-      <a href="/cogs501/tags/#discrete" class="page__taxonomy-item p-category" rel="tag">discrete</a><span class="sep">, </span>
+      <a href="/cogs501/tags/#data-structures" class="page__taxonomy-item p-category" rel="tag">data-structures</a><span class="sep">, </span>
     
-      <a href="/cogs501/tags/#math" class="page__taxonomy-item p-category" rel="tag">math</a><span class="sep">, </span>
-    
-      <a href="/cogs501/tags/#number-thoery" class="page__taxonomy-item p-category" rel="tag">number thoery</a><span class="sep">, </span>
-    
-      <a href="/cogs501/tags/#proof" class="page__taxonomy-item p-category" rel="tag">proof</a>
+      <a href="/cogs501/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a>
     
     </span>
   </p>
@@ -429,10 +426,10 @@ Given an integer \(n\), we say that 1,-1,\(n\), and \(-n\)  are the <strong>triv
       
   <nav class="pagination">
     
-      <a href="/cogs501/exercises/iteration/" class="pagination--pager" title="Iteration">Previous</a>
+      <a href="#" class="pagination--pager disabled">Previous</a>
     
     
-      <a href="/cogs501/exercises/probability/" class="pagination--pager" title="Basic probability">Next</a>
+      <a href="/cogs501/exercises/higher-order-functions/" class="pagination--pager" title="Higher-order functions">Next</a>
     
   </nav>
 

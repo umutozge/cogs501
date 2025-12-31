@@ -47,3 +47,13 @@ def largest_in_collatz_sequence(n):
     """
     def alive(n): return n > 1
     return proc_seq(n, collatz, alive, max, 0)
+
+def collatz_generator(n):
+    """Return an iterator for the Collatz sequence seeded by n."""
+
+    def f():
+        nonlocal n
+        n = collatz(n) if n > 1 else 1
+        return n
+    return f
+

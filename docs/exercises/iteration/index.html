@@ -11,7 +11,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Iteration - COGS 501</title>
-<meta name="description" content="A set of programming exercises to practice iteration using while loops.">
+<meta name="description" content="A set of programming exercises to practice iteration.">
 
 
   <meta name="author" content="First Lastname">
@@ -27,7 +27,7 @@
 <meta property="og:url" content="http://localhost:4000/cogs501/exercises/iteration/">
 
 
-  <meta property="og:description" content="A set of programming exercises to practice iteration using while loops.">
+  <meta property="og:description" content="A set of programming exercises to practice iteration.">
 
 
 
@@ -35,7 +35,7 @@
 
 
 
-  <meta property="article:published_time" content="2025-12-20T11:19:16+03:00">
+  <meta property="article:published_time" content="2025-12-31T12:19:26+03:00">
 
 
 
@@ -313,8 +313,8 @@ hr.topic-symbol::before {
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Iteration">
-    <meta itemprop="description" content="A set of programming exercises to practice iteration using while loops.">
-    
+    <meta itemprop="description" content="A set of programming exercises to practice iteration.">
+    <meta itemprop="datePublished" content="2025-12-31T12:19:26+03:00">
     
 
     <div class="page__inner-wrap">
@@ -510,7 +510,39 @@ hr.topic-symbol::before {
   </li>
   <li>Write a Python function <code class="language-plaintext highlighter-rouge">gcd</code> that implements <a href="/cogs501/posts/course/euclids-algorithm/">Euclid’s algorithm</a>. The function should return the greatest common divisor of the two input integers \(a\) and \(b\).</li>
   <li>An aliquot sequence is a sequence seeded by a positive integer and each number in the sequence, except the seed, is equal to the sum of the <a href="/cogs501/posts/course/intro-number-theory">proper divisors</a> of the number immediately preceding it. Write a function that maps a given positive integer into the next item in its aliquot sequence.</li>
-  <li>An integer is <strong>happy</strong> if it divides the sum of the numbers in its collatz sequence. The <strong>pride</strong> of an integer is the total number of happy integers in its collatz sequence, excluding itself if it is happy. Define a function that computes the largest and most proud integer less than a given positive integer \(k\).</li>
+  <li>An integer is <strong>happy</strong> if it divides the sum of the numbers in its collatz sequence. The <strong>pride</strong> of an integer is the total number of happy integers in its collatz sequence, excluding itself if it is happy. Define a function that computes the largest and most proud integer less than a given positive integer \(k\).
+    <details>
+      <summary>Criteria</summary>
+
+      <p>Those who solved <a href="/cogs501/exercises/sequence-operations/#ref:sum">this</a> can use Python’s built-in <code class="language-plaintext highlighter-rouge">sum</code>.
+ You can use <code class="language-plaintext highlighter-rouge">collatz_sequence</code> from <a href="/cogs501/code/python/modules/collatz/"><code class="language-plaintext highlighter-rouge">collatz</code> module</a> is also usable.</p>
+    </details>
+
+    <details>
+      <summary>Solution</summary>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="kn">from</span> <span class="nn">collatz</span> <span class="kn">import</span> <span class="o">*</span>
+
+ <span class="k">def</span> <span class="nf">happy</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+     <span class="s">"""n&gt;1 is happy if it can divide the sum of its Collatz sequence"""</span>
+     <span class="kn">from</span> <span class="nn">collatz</span> <span class="kn">import</span> <span class="n">collatz_sequence</span>
+     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">collatz_sequence</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">%</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span>
+
+ <span class="k">def</span> <span class="nf">pride</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+     <span class="s">"""The number of happy integers in n's Collatz sequence"""</span>
+     <span class="k">return</span> <span class="nb">len</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">collatz_sequence</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">happy</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span>
+
+ <span class="k">def</span> <span class="nf">most_proud</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+     <span class="s">"""return the most proud largest integer less than k"""</span>
+     <span class="k">return</span> <span class="n">proc</span><span class="p">({</span><span class="s">'n'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s">'maxpride'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s">'maxn'</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span>
+                 <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="s">'n'</span><span class="p">]</span><span class="o">&lt;</span><span class="n">k</span><span class="p">,</span>
+                 <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="p">{</span><span class="s">'n'</span><span class="p">:</span> <span class="p">(</span><span class="n">newn</span> <span class="p">:</span><span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s">'n'</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)}</span><span class="o">|</span>
+                           <span class="p">({</span><span class="s">'maxpride'</span><span class="p">:</span> <span class="n">newpride</span><span class="p">,</span> <span class="s">'maxn'</span><span class="p">:</span> <span class="n">newn</span><span class="p">}</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="n">newpride</span> <span class="p">:</span><span class="o">=</span> <span class="n">pride</span><span class="p">(</span><span class="n">newn</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">s</span><span class="p">[</span><span class="s">'maxpride'</span><span class="p">]</span>
+                            <span class="k">else</span> <span class="n">s</span><span class="o">|</span><span class="p">{</span><span class="s">'n'</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="s">'n'</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">}))</span>
+</code></pre></div>      </div>
+    </details>
+  </li>
   <li>
     <p>Define a function <code class="language-plaintext highlighter-rouge">bonacci(n, k)</code> that computes the <code class="language-plaintext highlighter-rouge">n</code>th <code class="language-plaintext highlighter-rouge">k</code>-bonacci number. The <code class="language-plaintext highlighter-rouge">k</code>-bonacci numbers are defined as follows:</p>
 
@@ -535,7 +567,7 @@ hr.topic-symbol::before {
  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div>          </div>
         </li>
-        <li>Do NOT use built-in <code class="language-plaintext highlighter-rouge">sum</code>.</li>
+        <li>Do NOT use built-in <code class="language-plaintext highlighter-rouge">sum</code>, unless you solved <a href="/cogs501/exercises/sequence-operations/#ref:sum">this</a>.</li>
         <li>Use slicing and concatenation (<code class="language-plaintext highlighter-rouge">+</code>) to manipulate memory. Slicing:
           <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
  <span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># all but the first element
@@ -549,8 +581,68 @@ hr.topic-symbol::before {
       </ul>
     </details>
   </li>
-</ol>
+  <li>
+    <p>For integers \(n,m &gt; 1\) and \(m\neq n\), we say ‘\(n\) <strong>governs</strong> \(m\)’ iff \(m\) is in the Collatz sequence seeded by \(n\). Define a function <code class="language-plaintext highlighter-rouge">governors</code> that maps <code class="language-plaintext highlighter-rouge">n</code> and <code class="language-plaintext highlighter-rouge">k</code> to the list of governors of \(n\) that are less than <code class="language-plaintext highlighter-rouge">k</code>.</p>
 
+    <details>
+      <summary>Solution</summary>
+
+      <p>I provide only the comprehension based solution here, which is almost plain English. I also wanted to show how to have docstrings for <code class="language-plaintext highlighter-rouge">lambda</code> expression. But note that it is not good style to use <code class="language-plaintext highlighter-rouge">lambda</code> to define named functions with docstrings. The only reason to use <code class="language-plaintext highlighter-rouge">lambda</code> for such functions is to make sure you are writing a expression-based function without statements.</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">governors</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">collatz_sequence</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+ <span class="n">governors</span><span class="p">.</span><span class="n">__doc__</span><span class="o">=</span> <span class="s">"""return list of m&lt;k s.t. n is in m's Collatz sequence"""</span>
+</code></pre></div>      </div>
+    </details>
+  </li>
+  <li>
+    <p>Define <code class="language-plaintext highlighter-rouge">mutual_government(k)</code> that returns all pairs of integers \((m,n)\) with \(m,n &lt; k\) such that \(m\) governs \(n\) and \(n\) governs \(m\).</p>
+
+    <details>
+      <summary>Solution</summary>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">mutual_government</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="p">[]</span>
+</code></pre></div>      </div>
+
+      <p>No need to bother for a program here, as mutual government is mathematically impossible. Why?</p>
+
+      <p>But taken as a programming exercise, mutual government can be computed by:</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">governs</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="n">m</span><span class="o">!=</span><span class="n">n</span>  <span class="ow">and</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">collatz_sequence</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+ <span class="n">mutual_government</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="p">[(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+                                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+                                <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+                                <span class="k">if</span>  <span class="n">governs</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="ow">and</span> <span class="n">governs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">)]</span>
+</code></pre></div>      </div>
+    </details>
+  </li>
+  <li>
+    <p>Given integers \(n,m\) with \(n,m &gt;1\) and \(n\neq m\), \(n\) is an <strong>observer</strong> for \(m\), iff \(n\) divides the sum of the numbers in the Collatz sequence seeded by \(m\). An <strong>observer</strong> \(n\) of \(m\) is an <strong>external observer</strong> if \(n\) is not in the Collatz sequence seeded by \(m\). An <strong>observer</strong> \(n\) of \(m\) is said to be <strong>proper</strong> if \(n &lt; m\).</p>
+
+    <p>Define a function <code class="language-plaintext highlighter-rouge">observers(n, external=False, proper=False, prime=False)</code> that returns the list of observers of \(n\) with the given properties. The parameters <code class="language-plaintext highlighter-rouge">external</code>, <code class="language-plaintext highlighter-rouge">proper</code>, and <code class="language-plaintext highlighter-rouge">prime</code> are boolean flags that indicate which type of observers the caller is interested in.</p>
+
+    <details>
+      <summary>Solutions</summary>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">observers</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">external</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">proper</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">prime</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+     <span class="s">"""Return the list of observers of n"""</span>
+     <span class="kn">from</span> <span class="nn">collatz</span> <span class="kn">import</span> <span class="n">collatz_sequence</span>
+     <span class="n">divides</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">:</span> <span class="n">b</span> <span class="o">%</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span>
+     <span class="n">colseq</span> <span class="o">=</span> <span class="n">collatz_sequence</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+     <span class="n">sumcolseq</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">colseq</span><span class="p">)</span>
+     <span class="k">return</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+             <span class="k">if</span> <span class="n">divides</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">sumcolseq</span><span class="p">)</span>
+                <span class="ow">and</span>
+                <span class="p">(</span><span class="ow">not</span> <span class="n">external</span> <span class="ow">or</span> <span class="n">m</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">colseq</span><span class="p">)</span>
+                <span class="ow">and</span>
+                <span class="p">(</span><span class="ow">not</span> <span class="n">proper</span> <span class="ow">or</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span>
+                <span class="ow">and</span>
+                <span class="p">(</span><span class="ow">not</span> <span class="n">prime</span> <span class="ow">or</span> <span class="n">isprime</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+            <span class="p">]</span>
+</code></pre></div>      </div>
+
+    </details>
+  </li>
+</ol>
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1" role="doc-endnote">
@@ -589,6 +681,8 @@ hr.topic-symbol::before {
 
 
         
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-12-31T12:19:26+03:00">2025-12-31</time></p>
 
       </footer>
 

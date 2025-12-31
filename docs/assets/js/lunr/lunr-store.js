@@ -17,6 +17,12 @@ var store = [{
         "url": "/cogs501/code/python/snippets/proc_seq/",
         "teaser": null
       },{
+        "title": "Randomization",
+        "excerpt":"There are two relevant modules. random is for basic general purpose randomization; numpy.random is for more advanced randomization for scientific computing, statistics, machine learning, etc. Generate random integer: random.randint(a,b) # Returns a random integer in the range [a,b], # including both end points. Basic random choice: random.choice(seq) # Choose a...","categories": [],
+        "tags": [],
+        "url": "/cogs501/code/python/snippets/randomization/",
+        "teaser": null
+      },{
         "title": "Higher-order functions",
         "excerpt":"Define a function apply_twice that takes a function f and a value x, and returns the result of applying f to x two times. def sqr(x): return x * x def apply_twice(f, x): \"\"\"apply f to x twice. &gt;&gt;&gt; apply_twice(sqr, 3) 81 \"\"\" Define a function applier that applies a...","categories": [],
         "tags": ["func-prog","python"],
@@ -93,13 +99,13 @@ var store = [{
     "excerpt":" ","url": "http://localhost:4000/cogs501/categories/"
   },{
     "title": "Code browser",
-    "excerpt":"        Language:            Any       Python       Racket       Haskell                        Kind:            Any       Module       Snippet                                                      collatz                                      python        · module            Various goodies related to Collatz conjecture.                                                   funcutils                                      python        · module            A utility module for functional abstractions.                                                   A sequence processor                                      python        · snippet            A generic function to process sequences based on user-defined behavior.                  ","url": "http://localhost:4000/cogs501/code/browser/"
+    "excerpt":"Language: Any Python Racket Haskell Kind: Any Module Snippet collatz python · module Various goodies related to Collatz conjecture. funcutils python · module A utility module for functional abstractions. A sequence processor python · snippet A generic function to process sequences based on user-defined behavior. Randomization python · snippet Random...","url": "http://localhost:4000/cogs501/code/browser/"
   },{
     "title": "Code",
     "excerpt":" ","url": "http://localhost:4000/cogs501/code/"
   },{
     "title": "Exercises",
-    "excerpt":"    python    iteration    func-prog    while    math    discrete    proof                                                 Higher-order functions                                A set of programming exercises to practice higher-order functions.                                                     Iteration                                A set of programming exercises to practice iteration using while loops.                                                     Basic number theory                                Mainly proof questions based on basic number theory.                                                     Sequence operations                                Exercises on sequence manipulation.               ","url": "http://localhost:4000/cogs501/exercise/browser/"
+    "excerpt":"    python    iteration    func-prog    while    math    discrete    proof                                                 Higher-order functions                                A set of programming exercises to practice higher-order functions.                                                     Iteration                                A set of programming exercises to practice iteration.                                                     Basic number theory                                Mainly proof questions based on basic number theory.                                                     Sequence operations                                Exercises on sequence manipulation.               ","url": "http://localhost:4000/cogs501/exercise/browser/"
   },{
     "title": "Exercises",
     "excerpt":" ","url": "http://localhost:4000/cogs501/exercises/"
@@ -108,7 +114,7 @@ var store = [{
     "excerpt":"                         `collatz`                                   Various goodies related to Collatz conjecture.                                              `funcutils`                                   A utility module for functional abstractions.                            ","url": "http://localhost:4000/cogs501/code/python/modules/"
   },{
     "title": "Snippets",
-    "excerpt":"                         A sequence processor                                   A generic function to process sequences based on user-defined behavior.                           ","url": "http://localhost:4000/cogs501/code/python/snippets/"
+    "excerpt":"                         A sequence processor                                   A generic function to process sequences based on user-defined behavior.                                              Randomization                                   Random number generation and random sampling.                           ","url": "http://localhost:4000/cogs501/code/python/snippets/"
   },{
     "title": "COGS 501 Quiz",
     "excerpt":"[2pts*] Translate the following into first order logic: i. Every student in this class has submitted at least one assignment. - S(x): “x is a student in this class” - A(x, y): “x has submitted assignment y” \\[\\forall x (S(x) \\to \\exists y A(x,y))\\] ii. There is a professor who...","url": "http://localhost:4000/cogs501/q06s/"
@@ -123,7 +129,7 @@ var store = [{
     "excerpt":"Week Reading Exercises Posts Quiz :calendar:2/10         :calendar:9/10         :calendar:23/10         :calendar:30/10         :calendar:6/11       quiz :calendar:13/11 CP 1.5, Epp 3, sections on Prolog can be omitted. 1-5 of Iteration Iteration by while no need for...","url": "http://localhost:4000/cogs501/schedule/"
   },{
     "title": "Snippets",
-    "excerpt":"                         A sequence processor                                   A generic function to process sequences based on user-defined behavior.                           ","url": "http://localhost:4000/cogs501/code/snippets/"
+    "excerpt":"                         A sequence processor                                   A generic function to process sequences based on user-defined behavior.                                              Randomization                                   Random number generation and random sampling.                           ","url": "http://localhost:4000/cogs501/code/snippets/"
   },{
     "title": "Syllabus",
     "excerpt":"Prerequisites The course is open, without any prerequisites, to any graduate student, with Cogsci first, Informatics second, and the rest third priority. Material Composing Programs Epp, Susanna S. (2018). Discrete Mathematics with Applications. 5th ed., Cengage Learning. Everything that is discussed in the class. Requirements Weekly quizzes Midterm exam Final...","url": "http://localhost:4000/cogs501/syllabus/"

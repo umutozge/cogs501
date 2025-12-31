@@ -35,7 +35,7 @@
 
 
 
-  <meta property="article:published_time" content="2025-12-20T11:19:16+03:00">
+  <meta property="article:published_time" content="2025-12-31T12:19:26+03:00">
 
 
 
@@ -314,7 +314,7 @@ hr.topic-symbol::before {
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Sequence operations">
     <meta itemprop="description" content="Exercises on sequence manipulation.">
-    
+    <meta itemprop="datePublished" content="2025-12-31T12:19:26+03:00">
     
 
     <div class="page__inner-wrap">
@@ -337,7 +337,7 @@ hr.topic-symbol::before {
 
 <ol>
   <li>
-    <p>Define a function <code class="language-plaintext highlighter-rouge">mysum(seq)</code> that returns the sum of all numbers in the list <code class="language-plaintext highlighter-rouge">seq</code>.</p>
+    <p id="ref:sum">Define a function <code class="language-plaintext highlighter-rouge">mysum(seq)</code> that returns the sum of all numbers in the list <code class="language-plaintext highlighter-rouge">seq</code>.</p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">mysum</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
           <span class="s">"""Return the sum of all numbers in seq.
@@ -352,6 +352,53 @@ hr.topic-symbol::before {
           4.5
           """</span>
 </code></pre></div>    </div>
+
+    <details>
+      <summary> Solutions </summary>
+      <p>With <code class="language-plaintext highlighter-rouge">while</code>:</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">mysum</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+ <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+ <span class="k">while</span> <span class="n">seq</span><span class="p">:</span>
+     <span class="n">total</span> <span class="o">+=</span> <span class="n">seq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+     <span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+ <span class="k">return</span> <span class="n">total</span>
+</code></pre></div>      </div>
+
+      <p>With <code class="language-plaintext highlighter-rouge">for</code></p>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">mysum</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">:</span>
+         <span class="n">total</span> <span class="o">+=</span> <span class="n">x</span>
+     <span class="k">return</span> <span class="n">total</span> 
+</code></pre></div>      </div>
+
+      <p>With <code class="language-plaintext highlighter-rouge">proc</code>:</p>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">from</span> <span class="nn">funcutils</span> <span class="kn">import</span> <span class="n">proc</span>
+ <span class="n">mysum</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">seq</span><span class="p">:</span> <span class="n">proc</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="n">seq</span><span class="p">),</span>
+                          <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                          <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:]))[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>      </div>
+      <p>or</p>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">mysum</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">seq</span><span class="p">:</span> <span class="n">proc</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">seq</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">+</span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:])[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>      </div>
+
+      <p>With <code class="language-plaintext highlighter-rouge">funcutils.reduce</code>, which is I think as short as you get:</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+ <span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">add</span>
+
+ <span class="n">mysum</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">seq</span><span class="p">:</span> <span class="nb">reduce</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">seq</span><span class="p">)</span>
+</code></pre></div>      </div>
+
+      <p>Another thing that the <code class="language-plaintext highlighter-rouge">reduce</code> solution is superior to the others, including Python’s built-in <code class="language-plaintext highlighter-rouge">sum</code>, is that it can project the generality of addition. You cannot find the “sum” of a list of lists with <code class="language-plaintext highlighter-rouge">sum</code>, but with <code class="language-plaintext highlighter-rouge">mysum</code> defined with <code class="language-plaintext highlighter-rouge">reduce</code> you can do it:</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;&gt;&gt;</span> <span class="n">mysum</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]])</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+</code></pre></div>      </div>
+
+      <p>One drawback is that <code class="language-plaintext highlighter-rouge">reduce</code>-based solution cannot handle empty sequences. For that, you need to specify 0 as a third argument for arithmetic addition and <code class="language-plaintext highlighter-rouge">[]</code> for list concatenation.</p>
+    </details>
   </li>
   <li>
     <p>Define a function <code class="language-plaintext highlighter-rouge">myinsert(seq,index,item)</code> that inserts <code class="language-plaintext highlighter-rouge">item</code> at position <code class="language-plaintext highlighter-rouge">index</code> of the list <code class="language-plaintext highlighter-rouge">seq</code> and returns the new list.</p>
@@ -390,6 +437,131 @@ hr.topic-symbol::before {
           """</span>
 </code></pre></div>    </div>
   </li>
+  <li>
+    <p>Define a function <code class="language-plaintext highlighter-rouge">takewhile(alive, seq)</code> that takes elements from the front of the sequence <code class="language-plaintext highlighter-rouge">seq</code> as long as the predicate function <code class="language-plaintext highlighter-rouge">alive</code> returns <code class="language-plaintext highlighter-rouge">True</code>. The function should return a new list containing the taken elements.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">takewhile</span><span class="p">(</span><span class="n">alive</span><span class="p">,</span> <span class="n">seq</span><span class="p">):</span>
+          <span class="s">"""Take elements from seq while alive returns True.
+
+          &gt;&gt;&gt; takewhile(lambda x: x &lt; 3, [1, 2, 3, 4, 1])
+          [1, 2]
+          &gt;&gt;&gt; takewhile(lambda x: x != 0, [1, 2, 3])
+          [1, 2, 3]
+          &gt;&gt;&gt; takewhile(lambda x: x &gt; 0, [-1, 2, 3])
+          []
+          &gt;&gt;&gt; takewhile(lambda x: True, [1, 2, 3])
+          [1, 2, 3]
+          """</span>
+</code></pre></div>    </div>
+
+    <details>
+      <summary> Solutions </summary>
+
+      <p>With <code class="language-plaintext highlighter-rouge">proc</code>:</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">takewhile</span><span class="p">(</span><span class="n">alive</span><span class="p">,</span> <span class="n">seq</span><span class="p">):</span>
+     <span class="k">return</span> <span class="n">proc</span><span class="p">(([],</span><span class="n">seq</span><span class="p">),</span>
+                 <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">alive</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span>
+                 <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:]))[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>      </div>
+    </details>
+  </li>
+  <li>Define a function <code class="language-plaintext highlighter-rouge">myfilter(test, seq)</code> that removes items in <code class="language-plaintext highlighter-rouge">seq</code> that return <code class="language-plaintext highlighter-rouge">False</code> for <code class="language-plaintext highlighter-rouge">test</code>.
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">myfilter</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">seq</span><span class="p">):</span>
+         <span class="s">"""Filter seq by test.
+
+         &gt;&gt;&gt; myfilter(lambda x: x % 2 == 0, [1, 2, 3, 4, 5, 6])
+         [2, 4, 6]
+         """</span>
+</code></pre></div>    </div>
+
+    <details>
+      <summary>Notes</summary>
+
+      <ul>
+        <li>Solve it with  <code class="language-plaintext highlighter-rouge">while</code> and also with <code class="language-plaintext highlighter-rouge">proc_seq</code> or <code class="language-plaintext highlighter-rouge">proc</code> from <a href="/cogs501/code/python/modules/funcutils/">funcutils</a>.</li>
+        <li>The sequence can be implemented as a <code class="language-plaintext highlighter-rouge">tuple</code> or a <code class="language-plaintext highlighter-rouge">list</code>.</li>
+        <li>If you use <code class="language-plaintext highlighter-rouge">tuple</code>s, you can only manipulate them using slicing and concatenation (<code class="language-plaintext highlighter-rouge">+</code>).</li>
+        <li>Lists allow for in-place manipulation.</li>
+        <li>You can try versions with in-place manipulation (for list based solutions), but make sure you can solve the problem wihhout in-place manipulation.</li>
+      </ul>
+    </details>
+  </li>
+  <li>
+    <p>Define a function <code class="language-plaintext highlighter-rouge">myzip(seq1, seq2)</code> that takes two sequences <code class="language-plaintext highlighter-rouge">seq1</code> and <code class="language-plaintext highlighter-rouge">seq2</code> and returns a list of tuples, where each tuple contains one element from <code class="language-plaintext highlighter-rouge">seq1</code> and the corresponding element from <code class="language-plaintext highlighter-rouge">seq2</code>. The length of the returned list should be equal to the length of the shorter input sequence.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">myzip</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">):</span>
+          <span class="s">"""Zip seq1 and seq2 into a list of tuples.
+
+          &gt;&gt;&gt; myzip([1, 2, 3], ['a', 'b', 'c'])
+          [(1, 'a'), (2, 'b'), (3, 'c')]
+          &gt;&gt;&gt; myzip([1, 2], ['a', 'b', 'c'])
+          [(1, 'a'), (2, 'b')]
+          &gt;&gt;&gt; myzip([], [1, 2, 3])
+          []
+          &gt;&gt;&gt; myzip([1, 2, 3], [])
+          []
+          """</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Define a function <code class="language-plaintext highlighter-rouge">shuffle(seq)</code> that returns a randomly shuffled version of the input sequence <code class="language-plaintext highlighter-rouge">seq</code> without modifying the original sequence. Use the <code class="language-plaintext highlighter-rouge">random</code> module.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">random</span>
+
+  <span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+          <span class="s">"""Return a randomly shuffled version of seq.
+
+          &gt;&gt;&gt; shuffle([1, 2, 3])
+          [2, 1, 3]  # example output; actual output will vary
+          &gt;&gt;&gt; shuffle(['a', 'b', 'c', 'd'])
+          ['c', 'a', 'd', 'b']  # example output; actual output will vary
+          """</span>
+</code></pre></div>    </div>
+
+    <details>
+      <summary>Notes and criteria</summary>
+
+      <ul>
+        <li>You cannot use any built-in randomization functions that directly shuffle or sample from sequences.</li>
+        <li>You are allowed to use the <code class="language-plaintext highlighter-rouge">random</code> module to generate random numbers.</li>
+        <li>All auxiliary functions, e.g. for removing an element from a sequence, must be implemented by yourself.</li>
+        <li>Solve it with  <code class="language-plaintext highlighter-rouge">while</code> and with <code class="language-plaintext highlighter-rouge">proc</code> from <a href="/cogs501/code/python/modules/funcutils/">funcutils</a>.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary> Solutions </summary>
+      <p>With <code class="language-plaintext highlighter-rouge">proc</code>:</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+     <span class="s">"""Non-mutating shuffle of seq"""</span>
+     <span class="kn">from</span> <span class="nn">funcutils</span> <span class="kn">import</span> <span class="n">proc</span>
+     <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+
+     <span class="k">return</span> <span class="n">proc</span><span class="p">(([],</span> <span class="n">seq</span><span class="p">),</span>
+                 <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                 <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span>
+                            <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">r</span><span class="p">]],</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">r</span><span class="p">]</span><span class="o">+</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">:]))</span>
+                            <span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">)))[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>      </div>
+
+      <p>The above code is cryptic on purpose. If you can work out how my update function works, you are getting well adapted to functional programming. With a separate <code class="language-plaintext highlighter-rouge">remove_at</code> function like:</p>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">remove_at</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">seq</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">seq</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">index</span><span class="p">]</span> <span class="o">+</span> <span class="n">seq</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+</code></pre></div>      </div>
+      <p>the update function becomes a little clearer:</p>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">r</span><span class="p">]],</span> <span class="n">remove_at</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">r</span><span class="p">)))</span>
+            <span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>      </div>
+      <p>But still the <code class="language-plaintext highlighter-rouge">lambda</code>-in-<code class="language-plaintext highlighter-rouge">lambda</code> may be perplexing. We will deal with this kind of constructs later. You can simply use <code class="language-plaintext highlighter-rouge">def</code>:</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+     <span class="n">r</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+     <span class="k">return</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">r</span><span class="p">]],</span> <span class="n">remove_at</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">r</span><span class="p">))</span>
+</code></pre></div>      </div>
+    </details>
+  </li>
 </ol>
 
         
@@ -422,6 +594,8 @@ hr.topic-symbol::before {
 
 
         
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-12-31T12:19:26+03:00">2025-12-31</time></p>
 
       </footer>
 

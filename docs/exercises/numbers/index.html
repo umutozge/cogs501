@@ -35,7 +35,7 @@
 
 
 
-  <meta property="article:published_time" content="2025-12-20T11:19:16+03:00">
+  <meta property="article:published_time" content="2025-12-31T12:19:26+03:00">
 
 
 
@@ -314,7 +314,7 @@ hr.topic-symbol::before {
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Basic number theory">
     <meta itemprop="description" content="Mainly proof questions based on basic number theory.">
-    
+    <meta itemprop="datePublished" content="2025-12-31T12:19:26+03:00">
     
 
     <div class="page__inner-wrap">
@@ -377,7 +377,9 @@ Given an integer \(n\), we say that 1,-1,\(n\), and \(-n\)  are the <strong>triv
       </ul>
     </details>
   </li>
-  <li>Define <code class="language-plaintext highlighter-rouge">bconvert(n, fr=10, to=2)</code> that converts a given number from base <code class="language-plaintext highlighter-rouge">fr</code> to base <code class="language-plaintext highlighter-rouge">to</code>.
+  <li>
+    <p>Define <code class="language-plaintext highlighter-rouge">bconvert(n, fr=10, to=2)</code> that converts a given number from base <code class="language-plaintext highlighter-rouge">fr</code> to base <code class="language-plaintext highlighter-rouge">to</code>.</p>
+
     <details>
       <summary>Criteria and notes</summary>
 
@@ -387,6 +389,62 @@ Given an integer \(n\), we say that 1,-1,\(n\), and \(-n\)  are the <strong>triv
         <li>Do not look at solutions on the web until you burn your fuses.</li>
         <li>Once the string/sequence solution is at hand, solve the problem by returning a <em>number</em> that mimics the result. For instance this version must return the <em>decimal</em> number <code class="language-plaintext highlighter-rouge">101</code> to the call <code class="language-plaintext highlighter-rouge">bconvert(5,10,2)</code>.</li>
       </ul>
+    </details>
+  </li>
+  <li>
+    <p>Define a function <code class="language-plaintext highlighter-rouge">isprime(n)</code>.</p>
+
+    <details>
+      <summary>Criteria and notes</summary>
+      <ul>
+        <li>Apply the naive iterative method of checking divisors from 2 upto to <code class="language-plaintext highlighter-rouge">n</code>.</li>
+        <li>To increase efficiency, consider the following facts:
+          <ul>
+            <li>If \(n\) is composite, \(n= ab\) with \(1&lt; a &lt; \sqrt{n}\) or \(1&lt; b &lt; \sqrt{n}\)</li>
+            <li>All primes greater than 3 can be written in the form \(6k \pm 1\) for some integer \(k\).</li>
+          </ul>
+        </li>
+      </ul>
+
+    </details>
+
+    <details>
+      <summary>Solutions</summary>
+
+      <p>With <code class="language-plaintext highlighter-rouge">while</code>:</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">isprime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+     <span class="s">"""Return True if n is prime."""</span>
+
+     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n</span><span class="o">%</span><span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+         <span class="k">return</span> <span class="bp">False</span>
+
+     <span class="n">divides</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">:</span> <span class="n">b</span> <span class="o">%</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span>
+     <span class="n">divisor</span> <span class="o">=</span> <span class="mi">5</span>
+     <span class="k">while</span> <span class="n">divisor</span> <span class="o">*</span> <span class="n">divisor</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+         <span class="k">if</span> <span class="n">divides</span><span class="p">(</span><span class="n">divisor</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="ow">or</span> <span class="n">divides</span><span class="p">(</span><span class="n">divisor</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+             <span class="k">return</span> <span class="bp">False</span>
+         <span class="n">divisor</span> <span class="o">+=</span> <span class="mi">6</span>
+     <span class="k">return</span> <span class="bp">True</span>
+</code></pre></div>      </div>
+
+      <p>With <code class="language-plaintext highlighter-rouge">proc</code>:</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">isprime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+     <span class="s">"""Return True if n is prime."""</span>
+
+     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n</span><span class="o">%</span><span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+         <span class="k">return</span> <span class="bp">False</span>
+
+     <span class="n">divides</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">:</span> <span class="n">b</span> <span class="o">%</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span>
+
+     <span class="k">return</span> <span class="n">proc</span><span class="p">((</span><span class="bp">True</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+                  <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                  <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="p">((</span><span class="ow">not</span>
+                               <span class="p">(</span><span class="n">divides</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">n</span><span class="p">)</span>
+                                <span class="ow">or</span> <span class="n">divides</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">)),</span>
+                                <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">6</span><span class="p">)))[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>      </div>
     </details>
   </li>
 </ol>
@@ -421,6 +479,8 @@ Given an integer \(n\), we say that 1,-1,\(n\), and \(-n\)  are the <strong>triv
 
 
         
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-12-31T12:19:26+03:00">2025-12-31</time></p>
 
       </footer>
 

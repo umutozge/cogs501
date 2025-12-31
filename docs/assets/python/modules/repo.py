@@ -367,6 +367,73 @@ def collatz_turning_points(n):
 
 
 
+
+def mysum(seq):
+    """Return the sum of all numbers in seq.
+
+    >>> mysum([1, 2, 3])
+    6
+    >>> mysum([-1, 1, -1, 1])
+    0
+    >>> mysum([])
+    0
+    >>> mysum([0.5, 1.5, 2.5])
+    4.5
+    """
+#     from funcutils import proc
+#     return proc((0,seq), lambda s: s[1], lambda s: (s[0]+s[1][0], s[1][1:]))[0] 
+#    return proc([0]+seq, lambda s: len(s)>1, lambda s: [s[0]+s[1]]+s[2:])[0]
+#     total = 0
+#     for x in seq:
+#         total += x
+#     return total 
+#     total = 0
+#     while seq:
+#         total += seq[0]
+#         seq = seq[1:]
+#     return total
+    from functools import reduce
+    from operator import add
+    return reduce(add, seq, 0)
+
+from collatz import *
+
+def happy(n):
+    """n>1 is happy if it can divide the sum of its Collatz sequence"""
+    from collatz import collatz_sequence
+    return sum(collatz_sequence(n)) % n == 0
+
+def pride(n):
+    """The number of happy integers in n's Collatz sequence"""
+    return len([x for x in collatz_sequence(n) if happy(x)])
+
+def most_proud(k):
+    """return the most proud largest integer less than k"""
+    return proc({'n':1,'maxpride':0, 'maxn':1},
+                lambda s: s['n']<k,
+                lambda s: {'n': (newn := s['n'] + 1)}|
+                          ({'maxpride': newpride, 'maxn': newn}
+                           if (newpride := pride(newn)) > s['maxpride']
+                           else s|{'n': s['n']+1}))
+
+
+
+def takewhile(alive, seq):
+    """Take elements from seq while alive returns True.
+
+    >>> takewhile(lambda x: x < 3, [1, 2, 3, 4, 1])
+    [1, 2]
+    >>> takewhile(lambda x: x != 0, [1, 2, 3])
+    [1, 2, 3]
+    >>> takewhile(lambda x: x > 0, [-1, 2, 3])
+    []
+    >>> takewhile(lambda x: True, [1, 2, 3])
+    [1, 2, 3]
+    """
+    return proc(([],seq),
+                lambda s: s[1] and alive(s[1][0]),
+                lambda s: (s[0] + [s[1][0]], s[1][1:]))[0]
+
 # def mod(a, b):
 #    """Compute a mod b for a>=0.
 # 
@@ -646,7 +713,7 @@ def digit_count(n, base=10):
             if n == 0 else
             floor(int(log(n+1e-12, base))) + 1
            )
-            
+
 def dec2bin(n, acc=0, digit=0):
     """convert n from dec to bin, displaying the result as
        a binary looking decimal
@@ -665,4 +732,109 @@ def dec2bin(n, acc=0, digit=0):
                        n%2*10**digit  + acc,
                        digit + 1)
 
+def shuffle(seq):
+    """Non-mutating shuffle of seq"""
+    from funcutils import proc
+    from random import randint
+
+    return proc(([], seq),
+                lambda s:s[1],
+                lambda s: (lambda r:
+                           (s[0]+[s[1][r]], s[1][0:r]+s[1][r+1:]))
+                           (randint(0, len(s[1])-1)))[0]
+
+
+from collatz import *
+governs = lambda m, n: m!=n  and n in collatz_sequence(m)
+governors = lambda n, k: [m for m in range(1,k) if governs(m,n)]
+governors.__doc__= """return list of m<k s.t. n is in m's Collatz sequence"""
+# def mutual_government(k):
+#     """Return a list of pairs (m,n) less than k such that m governs n and n governs m.
+# 
+#     >>> mutual_government(10)
+#     [(5, 6), (6, 5), (7, 9), (9, 7)]
+#     """
+#     return  [w for w in
+#              [(y[0],y[1],[z for z in y[2] if z in y[1]])
+#               for y in
+#               [(x, collatz_sequence(x), governors(x,k)) for x in range(1,k)]
+#              ] if w[2]]
+
+
+def mutual_government(k):
+    """Return a list of pairs (m,n) less than k such that m governs n and n governs m.
+
+    >>> mutual_government(10)
+    [(5, 6), (6, 5), (7, 9), (9, 7)]
+    """
+    return [(m,n)
+            for m in range(1,k)
+            for n in range(1,k)
+            if  governs(m,n) and governs(n,m)]
+
+
+def isprime(n):
+    """Return True if n is prime.
+
+    >>> isprime(1)
+    False
+    >>> isprime(2)
+    True
+    >>> isprime(15)
+    False
+    >>> isprime(17)
+    True
+    """
+    if n <= 1 or n % 2 == 0 or n%3 == 0:
+        return False
+
+    divides = lambda a,b: b % a == 0
+    divisor = 5
+    while divisor * divisor <= n:
+        if divides(divisor,n) or divides(divisor+2,n):
+            return False
+        divisor += 6
+    return True
+
+def isprime(n):
+    """Return True if n is prime.
+
+    >>> isprime(1)
+    False
+    >>> isprime(2)
+    True
+    >>> isprime(15)
+    False
+    >>> isprime(17)
+    True
+    """
+    if n <= 1 or n % 2 == 0 or n%3 == 0:
+        return False
+
+    divides = lambda a,b: b % a == 0
+
+    return proc((True, 5),
+                alive = lambda s: s[1]*s[1] <= n and s[0],
+                update = lambda s: ((not
+                                    (divides(s[1],n)
+                                     or divides(s[1]+2,n)),
+                                    s[1]+6)))[0]
+
+
+
+def observers(n, external=False, proper=False, prime=False):
+    """Return the list of observers of n"""
+    from collatz import collatz_sequence
+    divides = lambda a,b: b % a == 0
+    colseq = collatz_sequence(n)
+    sumcolseq = sum(colseq)
+    return [m for m in range(2,n)
+            if divides(m, sumcolseq)
+               and
+               (not external or m not in colseq)
+               and
+               (not proper or m < n)
+               and
+               (not prime or isprime(m))
+           ]
 

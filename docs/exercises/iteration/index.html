@@ -35,7 +35,7 @@
 
 
 
-  <meta property="article:published_time" content="2025-12-31T12:19:26+03:00">
+  <meta property="article:published_time" content="2025-12-31T13:17:51+03:00">
 
 
 
@@ -314,7 +314,7 @@ hr.topic-symbol::before {
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Iteration">
     <meta itemprop="description" content="A set of programming exercises to practice iteration.">
-    <meta itemprop="datePublished" content="2025-12-31T12:19:26+03:00">
+    
     
 
     <div class="page__inner-wrap">
@@ -354,24 +354,26 @@ hr.topic-symbol::before {
      5040
      """</span>
 </code></pre></div>    </div>
-    <!--  ```python
- def factorial(n):
-     """Return the factorial of n (n>=0).
+    <details>
+      <summary>Solutions</summary>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+     <span class="s">"""Return the factorial of n (n&gt;=0).
 
-     >>> factorial(0)
+     &gt;&gt;&gt; factorial(0)
      1
-     >>> factorial(5)
+     &gt;&gt;&gt; factorial(5)
      120
-     >>> factorial(7)
+     &gt;&gt;&gt; factorial(7)
      5040
-     """
-     store = 1
-     k = 1
-     while k <= n:
-         store *= k
-         k += 1
-     return store
- ``` -->
+     """</span>
+     <span class="n">store</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="k">while</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+         <span class="n">store</span> <span class="o">*=</span> <span class="n">k</span>
+         <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+     <span class="k">return</span> <span class="n">store</span>
+</code></pre></div>      </div>
+    </details>
   </li>
   <li>
     <p>Implement the modulo operation using iteration by <code class="language-plaintext highlighter-rouge">while</code>. The modulo operation \(a \bmod b\) returns the remainder of the division of \(a\) by \(b\). You can assume that \(a \geq 0\) and \(b &gt; 0\).</p>
@@ -387,21 +389,23 @@ hr.topic-symbol::before {
      0
      """</span>
 </code></pre></div>    </div>
-    <!--  ```python
- def modulo(a, b):
-     """Return a mod b (a>=0, b>0).
+    <details>
+      <summary>Solutions</summary>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">modulo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+     <span class="s">"""Return a mod b (a&gt;=0, b&gt;0).
 
-     >>> modulo(10, 3)
+     &gt;&gt;&gt; modulo(10, 3)
      1
-     >>> modulo(14, 5)
+     &gt;&gt;&gt; modulo(14, 5)
      4
-     >>> modulo(9, 9)
+     &gt;&gt;&gt; modulo(9, 9)
      0
-     """
-     while a >= b:
-         a -= b
-     return a
- ``` -->
+     """</span>
+     <span class="k">while</span> <span class="n">a</span> <span class="o">&gt;=</span> <span class="n">b</span><span class="p">:</span>
+         <span class="n">a</span> <span class="o">-=</span> <span class="n">b</span>
+     <span class="k">return</span> <span class="n">a</span>
+</code></pre></div>      </div>
+    </details>
   </li>
   <li>
     <p id="fibonacci-def">The Fibonacci function \(F_n\) is defined as:</p>
@@ -427,26 +431,28 @@ hr.topic-symbol::before {
      13
      """</span>
 </code></pre></div>    </div>
-    <!--  ```python
- def fibonacci(n):
-     """Return the n-th Fibonacci number (n>=1).
+    <details>
+      <summary>Solutions</summary>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+     <span class="s">"""Return the n-th Fibonacci number (n&gt;=1).
 
-     >>> fibonacci(1)
+     &gt;&gt;&gt; fibonacci(1)
      0
-     >>> fibonacci(2)
+     &gt;&gt;&gt; fibonacci(2)
      1
-     >>> fibonacci(8)
+     &gt;&gt;&gt; fibonacci(8)
      13
-     """
-     if n <= 2:
-         return n - 1
-     count = 3
-     prev, curr = 0, 1
-     while count <= n:
-         prev, curr = curr, prev + curr
-         count += 1
-     return curr
- ``` -->
+     """</span>
+     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+         <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+     <span class="n">count</span> <span class="o">=</span> <span class="mi">3</span>
+     <span class="n">prev</span><span class="p">,</span> <span class="n">curr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+     <span class="k">while</span> <span class="n">count</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+         <span class="n">prev</span><span class="p">,</span> <span class="n">curr</span> <span class="o">=</span> <span class="n">curr</span><span class="p">,</span> <span class="n">prev</span> <span class="o">+</span> <span class="n">curr</span>
+         <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+     <span class="k">return</span> <span class="n">curr</span>
+</code></pre></div>      </div>
+    </details>
   </li>
   <li>You have a message source that emits random integers in the range 1–100 (check <a href="/cogs501/posts/course/iteration-by-while/">this</a> for how to implement such a source). Define a function that listens to this source and returns the first three consecutive integers \(m\), \(n\) and \(p\) such that \(m\leq n \leq p\). You can assume that such a triplet will eventually be emitted by the source. When returning the result you can put comma between the variables (e.g. <code class="language-plaintext highlighter-rouge">return m, n, p</code>).
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">first_non_decreasing_triplet</span><span class="p">():</span>
@@ -459,21 +465,24 @@ hr.topic-symbol::before {
      """</span>
 </code></pre></div>    </div>
 
-    <!--  ```python
- def first_non_decreasing_triplet():
-     """Return the first non-decreasing triplet of random integers between 1 and 100.
+    <details>
+      <summary>Solutions</summary>
 
-     >>> import random
-     >>> random.seed(48)
-     >>> first_non_decreasing_triplet()
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">first_non_decreasing_triplet</span><span class="p">():</span>
+     <span class="s">"""Return the first non-decreasing triplet of random integers between 1 and 100.
+
+     &gt;&gt;&gt; import random
+     &gt;&gt;&gt; random.seed(48)
+     &gt;&gt;&gt; first_non_decreasing_triplet()
      (17, 72, 92)
-     """
-     from random import randint
-     m, n, p = randint(1, 100), randint(1, 100), randint(1, 100)
-     while not (m <= n and  n <= p):  # not (x <= y <= z) for short
-         m, n, p = n, p, randint(1, 100)
-     return (m, n, p)
- ``` -->
+     """</span>
+     <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+     <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+     <span class="k">while</span> <span class="ow">not</span> <span class="p">(</span><span class="n">m</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="ow">and</span>  <span class="n">n</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">):</span>  <span class="c1"># not (x &lt;= y &lt;= z) for short
+</span>         <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+     <span class="k">return</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+</code></pre></div>      </div>
+    </details>
   </li>
   <li>
     <p>Define a function that takes a positive integer and returns the sum of its digits. Two mathematical operations that might be useful here are modulo and division.</p>
@@ -489,33 +498,37 @@ hr.topic-symbol::before {
      7
      """</span>
 </code></pre></div>    </div>
-    <!--  ```python
- def sum_of_digits(n):
-     """Return the sum of the digits of a positive integer n.
+    <details>
+      <summary>Solutions</summary>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">sum_of_digits</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+     <span class="s">"""Return the sum of the digits of a positive integer n.
 
-     >>> sum_of_digits(123)
+     &gt;&gt;&gt; sum_of_digits(123)
      6
-     >>> sum_of_digits(4096)
+     &gt;&gt;&gt; sum_of_digits(4096)
      19
-     >>> sum_of_digits(7)
+     &gt;&gt;&gt; sum_of_digits(7)
      7
-     """
-     total = 0
-     while n > 0:
-         digit = n % 10
-         total += digit
-         n = n // 10
-     return total
- ``` -->
+     """</span>
+     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+     <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+         <span class="n">digit</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">10</span>
+         <span class="n">total</span> <span class="o">+=</span> <span class="n">digit</span>
+         <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">10</span>
+     <span class="k">return</span> <span class="n">total</span>
+</code></pre></div>      </div>
+    </details>
   </li>
   <li>Write a Python function <code class="language-plaintext highlighter-rouge">gcd</code> that implements <a href="/cogs501/posts/course/euclids-algorithm/">Euclid’s algorithm</a>. The function should return the greatest common divisor of the two input integers \(a\) and \(b\).</li>
   <li>An aliquot sequence is a sequence seeded by a positive integer and each number in the sequence, except the seed, is equal to the sum of the <a href="/cogs501/posts/course/intro-number-theory">proper divisors</a> of the number immediately preceding it. Write a function that maps a given positive integer into the next item in its aliquot sequence.</li>
-  <li>An integer is <strong>happy</strong> if it divides the sum of the numbers in its collatz sequence. The <strong>pride</strong> of an integer is the total number of happy integers in its collatz sequence, excluding itself if it is happy. Define a function that computes the largest and most proud integer less than a given positive integer \(k\).
+  <li>
+    <p>An integer is <strong>happy</strong> if it divides the sum of the numbers in its collatz sequence. The <strong>pride</strong> of an integer is the total number of happy integers in its collatz sequence, excluding itself if it is happy. Define a function that computes the largest and most proud integer less than a given positive integer \(k\).</p>
+
     <details>
       <summary>Criteria</summary>
 
       <p>Those who solved <a href="/cogs501/exercises/sequence-operations/#ref:sum">this</a> can use Python’s built-in <code class="language-plaintext highlighter-rouge">sum</code>.
- You can use <code class="language-plaintext highlighter-rouge">collatz_sequence</code> from <a href="/cogs501/code/python/modules/collatz/"><code class="language-plaintext highlighter-rouge">collatz</code> module</a> is also usable.</p>
+ You can use <code class="language-plaintext highlighter-rouge">collatz_sequence</code> from <a href="/cogs501/code/python/modules/collatz/"><code class="language-plaintext highlighter-rouge">collatz</code> module</a>.</p>
     </details>
 
     <details>
@@ -540,6 +553,19 @@ hr.topic-symbol::before {
                            <span class="p">({</span><span class="s">'maxpride'</span><span class="p">:</span> <span class="n">newpride</span><span class="p">,</span> <span class="s">'maxn'</span><span class="p">:</span> <span class="n">newn</span><span class="p">}</span>
                             <span class="k">if</span> <span class="p">(</span><span class="n">newpride</span> <span class="p">:</span><span class="o">=</span> <span class="n">pride</span><span class="p">(</span><span class="n">newn</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">s</span><span class="p">[</span><span class="s">'maxpride'</span><span class="p">]</span>
                             <span class="k">else</span> <span class="n">s</span><span class="o">|</span><span class="p">{</span><span class="s">'n'</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="s">'n'</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">}))</span>
+</code></pre></div>      </div>
+
+      <p>Alternative definitions of <code class="language-plaintext highlighter-rouge">pride</code>:</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">pride</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">happy</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">collatz_sequence</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span>
+</code></pre></div>      </div>
+
+      <p>or</p>
+
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+ <span class="n">pride</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">acc</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">acc</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">happy</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>
+                          <span class="n">collatz_sequence</span><span class="p">(</span><span class="n">n</span><span class="p">),</span>
+                          <span class="mi">0</span><span class="p">)</span>
 </code></pre></div>      </div>
     </details>
   </li>
@@ -681,8 +707,6 @@ hr.topic-symbol::before {
 
 
         
-
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-12-31T12:19:26+03:00">2025-12-31</time></p>
 
       </footer>
 

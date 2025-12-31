@@ -407,6 +407,15 @@ def pride(n):
     """The number of happy integers in n's Collatz sequence"""
     return len([x for x in collatz_sequence(n) if happy(x)])
 
+def pride(n):
+    """The number of happy integers in n's Collatz sequence"""
+    return sum([int(happy(x)) for x in collatz_sequence(n)])
+
+def pride(n):
+    """The number of happy integers in n's Collatz sequence"""
+    from functools import reduce
+    return reduce(lambda acc, x: acc + int(happy(x)), collatz_sequence(n), 0)
+
 def most_proud(k):
     """return the most proud largest integer less than k"""
     return proc({'n':1,'maxpride':0, 'maxn':1},
